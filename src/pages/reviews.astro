@@ -1,0 +1,213 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Reviews — Customer Testimonials',
+  description: 'Read what our customers have to say about our web design and development services.',
+  ignoreTitleTemplate: true,
+};
+
+// Sample review data - in a real app this could come from a CMS or API
+const reviews = [
+  {
+    id: 1,
+    name: 'Sarah Johnson',
+    role: 'Small Business Owner',
+    avatar: '/assets/images/avatar-placeholder.png',
+    rating: 5,
+    content: 'DJH Web Designs transformed our online presence completely. The new website is not only beautiful but also drives significantly more leads for our business.',
+  },
+  {
+    id: 2,
+    name: 'Michael Chen',
+    role: 'E-commerce Store Owner',
+    content: 'Outstanding work on our e-commerce platform. The team delivered exactly what we needed - a fast, user-friendly site that converts visitors into customers.',
+    avatar: '/assets/images/avatar-placeholder.png',
+    rating: 5,
+  },
+  {
+    id: 3,
+    name: 'Emily Rodriguez',
+    role: 'Marketing Director',
+    content: 'Professional, responsive, and creative. They took our vision and made it even better than we imagined. Highly recommend for any web development needs.',
+    avatar: '/assets/images/avatar-placeholder.png',
+    rating: 5,
+  },
+  {
+    id: 4,
+    name: 'David Thompson',
+    role: 'Restaurant Owner',
+    content: 'The mobile-optimized website they built for us has dramatically increased our online orders. Great attention to detail and excellent customer service.',
+    avatar: '/assets/images/avatar-placeholder.png',
+    rating: 5,
+  },
+  {
+    id: 5,
+    name: 'Lisa Park',
+    role: 'Non-profit Director',
+    content: 'They delivered a beautiful, accessible website that perfectly represents our mission. The team was patient and collaborative throughout the process.',
+    avatar: '/assets/images/avatar-placeholder.png',
+    rating: 5,
+  },
+  {
+    id: 6,
+    name: 'James Wilson',
+    role: 'Tech Startup Founder',
+    content: 'Fast turnaround, modern design, and clean code. Everything we needed for our product launch. The website performs flawlessly across all devices.',
+    avatar: '/assets/images/avatar-placeholder.png',
+    rating: 5,
+  },
+];
+
+// Generate star rating HTML
+const getStarRating = (rating: number) => {
+  return Array.from({ length: 5 }, (_, i) => i < rating).map(filled => 
+    filled ? '★' : '☆'
+  ).join('');
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    tagline="Customer Reviews"
+    title="What Our Clients Say"
+    subtitle="Don't just take our word for it. Read what our clients have to say about working with DJH Web Designs."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get Your Quote',
+        href: '/contact',
+        icon: 'tabler:arrow-right',
+      },
+    ]}
+  />
+
+  <!-- Reviews Section -->
+  <section class="py-16 md:py-20 bg-gray-50 dark:bg-gray-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="grid gap-8 md:gap-12 lg:gap-16">
+        <!-- Reviews Grid -->
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+          {reviews.map((review) => (
+            <div class="review-card bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 relative">
+              <!-- Avatar -->
+              <div class="absolute -top-6 left-6">
+                <img
+                  src={review.avatar}
+                  alt={`${review.name} profile picture`}
+                  class="w-12 h-12 rounded-full border-4 border-white dark:border-gray-800 bg-gray-200 dark:bg-gray-700"
+                  width="48"
+                  height="48"
+                  onerror="this.style.display='none'"
+                />
+              </div>
+
+              <!-- Review Content -->
+              <div class="pt-8">
+                <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-sm">
+                  "{review.content}"
+                </p>
+
+                <!-- Rating and Author -->
+                <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <div class="font-bold text-gray-900 dark:text-white text-sm">
+                        {review.name}
+                      </div>
+                      <div class="text-xs text-gray-600 dark:text-gray-400">
+                        {review.role}
+                      </div>
+                    </div>
+                    
+                    <!-- Star Rating -->
+                    <div class="flex items-center gap-1 text-yellow-400 text-lg">
+                      <span set:html={getStarRating(review.rating)} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="mt-16 text-center">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="stat">
+              <div class="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400">50+</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Happy Clients</div>
+            </div>
+            <div class="stat">
+              <div class="text-3xl md:text-4xl font-bold text-green-600 dark:text-green-400">100%</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Satisfaction Rate</div>
+            </div>
+            <div class="stat">
+              <div class="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400">3+</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Years Experience</div>
+            </div>
+            <div class="stat">
+              <div class="text-3xl md:text-4xl font-bold text-orange-600 dark:text-orange-400">24/7</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="Ready to Join Our Happy Clients?"
+    subtitle="Let's create something amazing together. Get started with a free consultation today."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Start Your Project',
+        href: '/contact',
+        icon: 'tabler:arrow-right',
+      },
+      {
+        text: 'View Our Work',
+        href: '/services',
+      },
+    ]}
+  />
+</Layout>
+
+<style>
+  .review-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  :global(.dark) .review-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stat {
+    animation: fadeInUp 0.6s ease forwards;
+  }
+  
+  .stat:nth-child(2) { animation-delay: 0.1s; }
+  .stat:nth-child(3) { animation-delay: 0.2s; }
+  .stat:nth-child(4) { animation-delay: 0.3s; }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
