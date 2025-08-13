@@ -1,0 +1,138 @@
+{
+	"name": "DJH Web Designs",
+	"email": "hello@djhwebdesigns.com",
+	"phoneForTel": "555-123-4567",
+	"phoneFormatted": "(555) 123-4567",
+	"address": {
+		"lineOne": "123 Main Street",
+		"lineTwo": "Suite 100",
+		"city": "San Francisco",
+		"state": "CA",
+		"zip": "94102",
+		"mapLink": "https://goo.gl/maps/example"
+	},
+	"domain": "www.djhwebdesigns.com",
+	"businessHours": {
+		"monday": { "open": "09:00", "close": "17:00", "closed": false },
+		"tuesday": { "open": "09:00", "close": "17:00", "closed": false },
+		"wednesday": { "open": "09:00", "close": "17:00", "closed": false },
+		"thursday": { "open": "09:00", "close": "17:00", "closed": false },
+		"friday": { "open": "09:00", "close": "17:00", "closed": false },
+		"saturday": { "open": "10:00", "close": "15:00", "closed": false },
+		"sunday": { "open": "", "close": "", "closed": true }
+	},
+	"socialMedia": {
+		"facebook": "https://facebook.com/djhwebdesigns",
+		"instagram": "https://instagram.com/djhwebdesigns",
+		"twitter": "https://twitter.com/djhwebdesigns",
+		"linkedin": "https://linkedin.com/company/djhwebdesigns",
+		"youtube": "",
+		"google": ""
+	},
+	"services": [
+		{
+			"name": "Web Design & Development",
+			"description": "Custom website design and development with modern frameworks and responsive design",
+			"featured": true
+		},
+		{
+			"name": "SEO Optimization",
+			"description": "Search engine optimization to improve your online visibility and organic traffic",
+			"featured": true
+		},
+		{
+			"name": "Website Maintenance",
+			"description": "Ongoing support, updates, and maintenance for your website to keep it running smoothly",
+			"featured": false
+		},
+		{
+			"name": "E-commerce Solutions",
+			"description": "Complete online store setup with payment processing and inventory management",
+			"featured": true
+		}
+	],
+	"team": [
+		{
+			"name": "Jason Hwang",
+			"role": "Founder & Lead Developer",
+			"bio": "Full-stack developer with expertise in modern web technologies and user experience design.",
+			"image": "/assets/images/team/jason.jpg",
+			"email": "jason@djhwebdesigns.com",
+			"social": {
+				"linkedin": "https://linkedin.com/in/jasonhwang",
+				"twitter": "https://twitter.com/jasonhwang",
+				"github": "https://github.com/jasonhwang"
+			}
+		}
+	],
+	"locations": [
+		{
+			"id": "main",
+			"name": "DJH Web Designs HQ",
+			"address": {
+				"lineOne": "123 Main Street",
+				"lineTwo": "Suite 100",
+				"city": "San Francisco",
+				"state": "CA",
+				"zip": "94102",
+				"mapLink": "https://goo.gl/maps/example"
+			},
+			"phone": {
+				"tel": "555-123-4567",
+				"formatted": "(555) 123-4567"
+			},
+			"email": "hello@djhwebdesigns.com",
+			"isPrimary": true
+		}
+	],
+	"company": {
+		"founded": "2020",
+		"tagline": "Building beautiful, functional websites that drive results",
+		"description": "We are a boutique web design and development studio specializing in creating stunning, user-friendly websites that help businesses grow their online presence.",
+		"certifications": ["Google Partner", "Certified Developer"],
+		"specialties": ["Responsive Design", "E-commerce", "SEO", "Custom Development", "UI/UX Design"]
+	},
+	"analytics": {
+		"googleAnalytics": {
+			"measurementId": "",
+			"enabled": false
+		},
+		"googleTagManager": {
+			"containerId": "",
+			"enabled": false
+		},
+		"facebookPixel": {
+			"pixelId": "",
+			"enabled": false
+		},
+		"conversionGoals": {
+			"contactForm": {
+				"eventName": "contact_form_submit",
+				"enabled": true
+			},
+			"phoneCall": {
+				"eventName": "phone_call_click",
+				"enabled": true
+			},
+			"emailClick": {
+				"eventName": "email_click",
+				"enabled": true
+			},
+			"mapDirections": {
+				"eventName": "directions_click",
+				"enabled": true
+			}
+		},
+		"performanceTracking": {
+			"coreWebVitals": true,
+			"pageLoadTimes": true,
+			"errorTracking": true
+		}
+	},
+	"theme": {
+		"name": "astrowind",
+		"industry": "web-design",
+		"colorScheme": "default",
+		"variant": "tailwind"
+	}
+}
