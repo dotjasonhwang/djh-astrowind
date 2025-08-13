@@ -11,13 +11,25 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# testing
+coverage/
+test-results/
+playwright-report/
 
 # environment variables
 .env
 .env.production
 
-# macOS-specific files
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
 .DS_Store
+Thumbs.db
 
 pnpm-lock.yaml
 
