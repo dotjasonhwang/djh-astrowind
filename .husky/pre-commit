@@ -1,0 +1,21 @@
+echo "🧪 Running pre-commit checks..."
+
+# Run unit tests
+echo "📋 Running unit tests..."
+npm run test
+
+if [ $? -ne 0 ]; then
+  echo "❌ Unit tests failed. Commit aborted."
+  exit 1
+fi
+
+# Run build test to ensure project compiles
+echo "🔨 Testing build process..."
+npm run build
+
+if [ $? -ne 0 ]; then
+  echo "❌ Build failed. Commit aborted."
+  exit 1
+fi
+
+echo "✅ All pre-commit checks passed!"

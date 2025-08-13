@@ -1,0 +1,14 @@
+echo "🚀 Running pre-push checks..."
+
+# Run only fast unit tests (accessibility tests moved to CI/CD)
+echo "🧪 Running unit tests..."
+npm run test
+
+if [ $? -ne 0 ]; then
+  echo "❌ Unit tests failed. Push aborted."
+  echo "💡 Run 'npm run test' to see details"
+  exit 1
+fi
+
+echo "✅ Unit tests passed! Push proceeding..."
+echo "📋 Note: Full test suite (including accessibility) runs in GitHub Actions"
