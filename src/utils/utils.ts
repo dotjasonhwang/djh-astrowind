@@ -77,7 +77,7 @@ export const formatDate = (date: Date | string): string => {
   });
 };
 
-export const isBusinessOpen = (businessHours: any): boolean => {
+export const isBusinessOpen = (businessHours: Record<string, { open: string; close: string; closed: boolean }>): boolean => {
   const now = new Date();
   const day = now.toLocaleDateString('en-US', { weekday: 'short' }).toLowerCase();
   const dayMap: { [key: string]: string } = {
@@ -100,7 +100,7 @@ export const isBusinessOpen = (businessHours: any): boolean => {
   return currentTime >= openTime && currentTime <= closeTime;
 };
 
-export const getTodaysHours = (businessHours: any): string => {
+export const getTodaysHours = (businessHours: Record<string, { open: string; close: string; closed: boolean }>): string => {
   const now = new Date();
   const day = now.toLocaleDateString('en-US', { weekday: 'short' }).toLowerCase();
   const dayMap: { [key: string]: string } = {

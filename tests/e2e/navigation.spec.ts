@@ -216,7 +216,7 @@ test.describe('Navigation', () => {
         const firstExternalLink = externalLinks.first();
         const href = await firstExternalLink.getAttribute('href');
         expect(href, 'External link should have href').toBeTruthy();
-        expect(href.startsWith('http'), 'External link should start with http').toBe(true);
+        expect(href?.startsWith('http'), 'External link should start with http').toBe(true);
       }
     }
   });

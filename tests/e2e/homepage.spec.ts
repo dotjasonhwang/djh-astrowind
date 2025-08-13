@@ -19,7 +19,7 @@ test.describe('Homepage', () => {
     await page.goto('/');
     
     // Check page title contains site name
-    await expect(page).toHaveTitle(/DJH|AstroWind/);
+    await expect(page).toHaveTitle(/Your Business Name|Professional Services/);
     
     // Check meta description is present
     const metaDescription = await page.locator('meta[name="description"]').getAttribute('content');

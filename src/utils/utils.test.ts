@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { formatTime, getCurrentYear, formatDate, isBusinessOpen, getTodaysHours } from './utils';
 
 describe('Utils Functions', () => {

@@ -7,7 +7,7 @@ import Testimonials from '~/components/widgets/Testimonials.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
-  title: 'Services',
+  title: 'Our Services',
 };
 ---
 
@@ -16,73 +16,76 @@ const metadata = {
 
   <Hero
     tagline="Services"
-    title="Elevate your projects with our stunning templates"
-    subtitle="Explore our meticulously crafted templates tailored to various industries and purposes. From captivating presentations to functional website designs, we offer the tools you need to succeed."
-    actions={[{ variant: 'primary', target: '_blank', text: 'Start exploring', href: '/' }]}
+    title="Professional Services That Drive Results"
+    subtitle="Discover our comprehensive range of services designed to help your business grow, innovate, and succeed in today's competitive marketplace."
+    actions={[{ variant: 'primary', target: '_self', text: 'View All Services', href: '#services' }]}
     image={{
       src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'AstroWind Hero Image',
+      alt: 'Our Professional Services',
     }}
   />
 
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="Explore our diverse templates"
-    subtitle="Discover our selection below to streamline and elevate your projects."
+    id="services"
+    title="Our Core Service Areas"
+    subtitle="We offer comprehensive services across multiple domains, each designed to deliver exceptional results for your business."
     columns={3}
     items={[
       {
-        title: 'Educational',
+        title: 'Web Development',
         description:
-          'By harmonizing instructional design and visual appeal, templates streamline content creation for varied materials, expediting development and cultivating engaging educational spaces.',
-        icon: 'tabler:school',
+          'Custom websites and web applications built with modern technologies. From corporate sites to e-commerce platforms, we deliver responsive, fast, and user-friendly solutions.',
+        icon: 'tabler:world-www',
       },
       {
-        title: 'Interior Design',
+        title: 'Digital Marketing',
         description:
-          'Crafting functional, visually appealing spaces for residential and commercial use. Templates emphasize layout, colors, and furniture setups, offering a versatile toolkit for your design vision.',
-        icon: 'tabler:home-star',
+          'Comprehensive digital marketing campaigns that drive results. Including SEO optimization, social media strategy, and content marketing to boost your online presence.',
+        icon: 'tabler:chart-line',
       },
       {
-        title: 'Photography',
-        description: `Empowering photographers, our templates facilitate captivating storytelling. With a keen focus on layout, galleries, and typography, they cater to both professionals and enthusiasts.`,
-        icon: 'tabler:photo',
+        title: 'Brand Identity',
+        description:
+          'Complete brand identity development from logo design to brand guidelines. We help businesses establish a strong, memorable visual identity that resonates with their audience.',
+        icon: 'tabler:palette',
       },
       {
-        title: 'E-commerce',
+        title: 'E-commerce Solutions',
         description:
-          'Developing engaging online stores, our E-commerce templates ensure a dynamic presence to effectively showcase products. Ideal for startups or revamps.',
+          'End-to-end e-commerce platforms with secure payment processing, inventory management, and optimized user experiences that convert visitors into customers.',
         icon: 'tabler:shopping-cart',
       },
       {
-        title: 'Blog',
+        title: 'Mobile Applications',
         description:
-          'With attention to typography, these templates empower effective content presentation for writers at any stage, ensuring visually engaging and user-friendly blogs.',
-        icon: 'tabler:article',
+          'Native and cross-platform mobile apps designed for optimal performance and user engagement. From concept to app store deployment and ongoing support.',
+        icon: 'tabler:device-mobile',
       },
       {
-        title: 'Business',
+        title: 'Data Analytics',
         description:
-          'Providing polished options for effective visual communication, these templates empower both startups and established companies for a professional brand presence.',
-        icon: 'tabler:building-store',
+          'Custom analytics solutions and dashboards that transform raw data into actionable insights, helping businesses make informed decisions and track performance.',
+        icon: 'tabler:chart-dots',
       },
       {
-        title: 'Branding',
+        title: 'Cloud Infrastructure',
         description:
-          'Offering pre-designed elements for a consistent brand identity, including logos and marketing materials. Ideal for new ventures or revamps.',
-        icon: 'tabler:arrow-big-up-lines',
+          'Scalable cloud solutions including migration, optimization, and management. Ensuring your systems are secure, reliable, and cost-effective.',
+        icon: 'tabler:cloud',
       },
       {
-        title: 'Medical',
-        description: `From presentations to patient forms, these tools enhance communication effectiveness for healthcare professionals. Ideal for medical practices and research pursuits.`,
-        icon: 'tabler:vaccine',
+        title: 'Consulting Services',
+        description:
+          'Strategic technology consulting to help businesses leverage digital solutions effectively. From architecture planning to implementation roadmaps.',
+        icon: 'tabler:bulb',
       },
       {
-        title: 'Fashion Design',
+        title: 'Automation Solutions',
         description:
-          'With attention to detail, customization, and contemporary design, they empower designers to showcase ideas cohesively. Ideal for all levels of designers.',
-        icon: 'tabler:tie',
+          'Custom automation tools and workflows that streamline business processes, reduce manual work, and improve operational efficiency across your organization.',
+        icon: 'tabler:robot',
       },
     ]}
   />
@@ -93,37 +96,37 @@ const metadata = {
     isReversed
     items={[
       {
-        title: 'High-Quality Designs',
+        title: 'Strategic Planning',
         description:
-          'Our templates feature top-tier designs that ensure a professional and polished appearance for your projects.',
-        icon: 'tabler:wand',
+          'Every project begins with thorough research and strategic planning to ensure we deliver solutions that align with your business objectives and user needs.',
+        icon: 'tabler:target',
       },
       {
-        title: 'Customization Tools',
+        title: 'Modern Technologies',
         description:
-          'Tailor each template to your unique needs with user-friendly customization tools that let you personalize colors, fonts, and content.',
-        icon: 'tabler:settings',
+          'We leverage cutting-edge technologies and industry best practices to build robust, scalable, and future-proof solutions for your business.',
+        icon: 'tabler:code',
       },
       {
-        title: 'Pre-Designed Elements',
+        title: 'User-Centered Design',
         description:
-          'Save time and effort with our ready-to-use elements, including graphics, icons, and layouts that enhance the visual appeal of your creations.',
-        icon: 'tabler:presentation',
+          'Our design process prioritizes user experience, creating intuitive interfaces that engage your audience and drive desired actions.',
+        icon: 'tabler:users',
       },
       {
-        title: 'Preview and Mockup Views',
+        title: 'Quality Assurance',
         description:
-          'Visualize the final outcome before making any changes using our preview and mockup views, ensuring your projects meet your expectations.',
-        icon: 'tabler:carousel-horizontal',
+          'Rigorous testing and quality assurance processes ensure every project meets our high standards for performance, security, and reliability.',
+        icon: 'tabler:shield-check',
       },
     ]}
     image={{
       src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-      alt: 'Features Image',
+      alt: 'Our Approach',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Our Approach</h3>
     </Fragment>
   </Content>
 
@@ -133,77 +136,77 @@ const metadata = {
     isAfterContent
     items={[
       {
-        title: 'Time Savings',
+        title: 'Faster Time to Market',
         description:
-          'Streamline your workflow, enabling you to create stunning materials efficiently and allocate more time to your core tasks.',
+          'Our streamlined development process and agile methodology help you launch your projects faster while maintaining high quality standards.',
         icon: 'tabler:clock',
       },
       {
-        title: 'Professional Appearance',
+        title: 'Measurable Results',
         description:
-          'Elevate your projects with the polished and sophisticated look that our templates provide, making a lasting impression on your audience.',
-        icon: 'tabler:school',
+          'We focus on delivering solutions that provide tangible business value, with clear metrics and KPIs to track success and ROI.',
+        icon: 'tabler:chart-arrows',
       },
       {
-        title: 'Cost-Efficiency',
+        title: 'Scalable Solutions',
         description:
-          'Benefit from cost savings by avoiding the need for custom design work, as our templates offer professional-grade designs at a fraction of the cost.',
-        icon: 'tabler:coin',
+          'Built with growth in mind, our solutions can adapt and scale with your business needs, ensuring long-term value and flexibility.',
+        icon: 'tabler:trending-up',
       },
       {
-        title: 'Instant Download',
+        title: 'Ongoing Support',
         description:
-          'Enjoy immediate access to your chosen templates upon purchase, enabling you to begin working on your projects without delay.',
-        icon: 'tabler:file-download',
+          'Comprehensive post-launch support and maintenance ensure your projects continue to perform optimally and evolve with your needs.',
+        icon: 'tabler:headset',
       },
     ]}
     image={{
       src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Benefits Image',
+      alt: 'Project Benefits',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Benefits</h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Project Benefits</h3>
     </Fragment>
   </Content>
 
   <!-- Testimonials Widget *********** -->
 
   <Testimonials
-    title="Words from real customers"
+    title="Client Success Stories"
     testimonials={[
       {
-        testimonial: `The designs are not only visually appealing but also highly professional. The templates have saved me a significant amount of time while helping me make a lasting impression on my clients.`,
-        name: 'Emily Kennedy',
-        job: 'Front-end developer',
+        testimonial: `Working with this team transformed our online presence completely. The new website not only looks amazing but has increased our conversion rates by 40%. Their attention to detail and understanding of our business goals was exceptional.`,
+        name: 'Emily Rodriguez',
+        job: 'CEO, TechStart Inc.',
         image: {
           src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
-          alt: 'Emily Kennedy Image',
+          alt: 'Emily Rodriguez',
         },
       },
       {
-        testimonial: `It beautifully showcases my work, with its clean and elegant design that lets my photographs shine. Customization was a breeze, even for a non-tech person like me. The result is a professional and immersive portfolio that's garnered numerous compliments.`,
-        name: 'Sarah Hansen',
-        job: 'Photographer',
+        testimonial: `The mobile app they developed for us has been a game-changer. User engagement increased by 200% and our customer satisfaction scores have never been higher. The project was delivered on time and within budget.`,
+        name: 'Michael Chen',
+        job: 'Product Manager, RetailPlus',
         image: {
           src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Sarah Hansen Image',
+          alt: 'Michael Chen',
         },
       },
       {
-        testimonial: `I discovered these templates and I'm impressed by their variety and quality. They've helped me establish a consistent brand image across my marketing and social platforms, elevating my business's overall appearance.`,
-        name: 'Mark Wilkinson',
-        job: 'Small business owner',
+        testimonial: `Their digital marketing strategy helped us reach new markets and increased our online sales by 150%. The team's expertise in SEO and social media marketing is outstanding. Highly recommended for any business looking to grow.`,
+        name: 'Sarah Thompson',
+        job: 'Marketing Director, GrowthCo',
         image: {
           src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
-          alt: 'Mark Wilkinson Image',
+          alt: 'Sarah Thompson',
         },
       },
     ]}
     callToAction={{
-      target: '_blank',
-      text: 'More testimonials...',
-      href: 'https://github.com/onwidget/astrowind',
+      target: '_self',
+      text: 'View more case studies',
+      href: '/reviews',
       icon: 'tabler:chevron-right',
     }}
   />
@@ -214,11 +217,11 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Start exploring',
-        href: '/',
+        text: 'Start Your Project',
+        href: '/contact',
       },
     ]}
-    title="Dive into our template collection"
-    subtitle="Whether you're in business, design, or education, our templates are here to elevate your projects."
+    title="Ready to Bring Your Vision to Life?"
+    subtitle="Let's discuss your project requirements and create something amazing together. Contact us for a free consultation and project quote."
   />
 </Layout>

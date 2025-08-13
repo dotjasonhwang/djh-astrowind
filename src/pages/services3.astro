@@ -1,0 +1,115 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Service 3 - Specialized Solutions',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Service 3"
+    title="Specialized Service 3 Solutions"
+    subtitle="Discover our specialized Service 3 offerings that provide targeted solutions for unique business challenges and specialized industry requirements."
+    actions={[{ variant: 'primary', target: '_self', text: 'Discover More', href: '/contact' }]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Service 3 Solutions',
+    }}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Service 3 Specializations"
+    subtitle="Our Service 3 team brings deep expertise in specialized areas that require focused knowledge and proven experience."
+    columns={2}
+    items={[
+      {
+        title: 'Industry Expertise',
+        description: 'Deep understanding of industry-specific challenges and regulatory requirements for Service 3 implementations.',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'Custom Development', 
+        description: 'Tailored Service 3 solutions built from the ground up to meet your unique specifications and requirements.',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'Compliance Ready',
+        description: 'Service 3 solutions designed to meet strict compliance standards and regulatory requirements in your industry.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Performance Optimization',
+        description: 'Advanced optimization techniques ensure your Service 3 solution delivers maximum performance and efficiency.',
+        icon: 'tabler:speedboat',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    items={[
+      {
+        title: 'Specialized Training',
+        description: 'Comprehensive training programs ensure your team can effectively utilize and maintain your Service 3 solution.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Expert Consultation',
+        description: 'Access to specialized consultants who understand the unique challenges and opportunities in your Service 3 domain.',
+        icon: 'tabler:user-star',
+      },
+      {
+        title: 'Long-term Partnership',
+        description: 'Ongoing partnership and support to help your Service 3 solution evolve with changing business needs and industry standards.',
+        icon: 'tabler:users',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1553484771-371a605b060b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Service 3 Partnership',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Service 3 Partnership</h3>
+      We believe in building lasting partnerships that extend beyond initial implementation, providing ongoing value and support for your Service 3 needs.
+    </Fragment>
+  </Content>
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    title="Service 3 Track Record"
+    stats={[
+      { title: 'Specialized Projects', amount: '25+' },
+      { title: 'Industry Compliance', amount: '100%' },
+      { title: 'Client Retention', amount: '95%' },
+      { title: 'Expert Consultants', amount: '12' },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Consult on Service 3',
+        href: '/contact',
+      },
+    ]}
+    title="Need Specialized Service 3 Expertise?"
+    subtitle="Connect with our Service 3 specialists to discuss your unique requirements and explore how we can deliver the specialized solutions you need."
+  />
+</Layout>

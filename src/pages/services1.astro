@@ -1,0 +1,115 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Service 1 - Professional Solutions',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Service 1"
+    title="Professional Service 1 Solutions"
+    subtitle="Comprehensive description of Service 1 and how it delivers exceptional value to your business through proven methodologies and expert execution."
+    actions={[{ variant: 'primary', target: '_self', text: 'Get Started', href: '/contact' }]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      alt: 'Service 1 Solutions',
+    }}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Service 1 Key Features"
+    subtitle="Discover the comprehensive features and benefits that make our Service 1 offering stand out in the industry."
+    columns={2}
+    items={[
+      {
+        title: 'Feature 1',
+        description: 'Detailed description of the first key feature of Service 1 and how it benefits your business operations.',
+        icon: 'tabler:check',
+      },
+      {
+        title: 'Feature 2', 
+        description: 'Explanation of the second important feature that sets our Service 1 apart from competitors.',
+        icon: 'tabler:star',
+      },
+      {
+        title: 'Feature 3',
+        description: 'Description of the third feature that adds significant value to your Service 1 experience.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Feature 4',
+        description: 'Details about the fourth feature that ensures optimal results from our Service 1 offering.',
+        icon: 'tabler:shield',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    items={[
+      {
+        title: 'Expert Implementation',
+        description: 'Our experienced team follows industry best practices to ensure your Service 1 project is implemented correctly from start to finish.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Custom Solutions',
+        description: 'We tailor our Service 1 approach to meet your specific business requirements and objectives.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Ongoing Support',
+        description: 'Comprehensive support and maintenance ensure your Service 1 solution continues to deliver results long after implementation.',
+        icon: 'tabler:headset',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+      alt: 'Service 1 Process',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Our Service 1 Process</h3>
+      We follow a proven methodology that ensures successful outcomes for every Service 1 project, delivering measurable results that drive your business forward.
+    </Fragment>
+  </Content>
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    title="Service 1 Success Metrics"
+    stats={[
+      { title: 'Projects Completed', amount: '75+' },
+      { title: 'Client Satisfaction', amount: '98%' },
+      { title: 'Average ROI', amount: '250%' },
+      { title: 'Support Response', amount: '<2hrs' },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Start Your Service 1 Project',
+        href: '/contact',
+      },
+    ]}
+    title="Ready to Get Started with Service 1?"
+    subtitle="Contact us today to discuss your Service 1 needs and discover how we can help your business achieve its goals."
+  />
+</Layout>

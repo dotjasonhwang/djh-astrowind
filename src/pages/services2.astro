@@ -1,0 +1,115 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Service 2 - Advanced Solutions',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Service 2"
+    title="Advanced Service 2 Solutions"
+    subtitle="Explore our advanced Service 2 offerings designed to tackle complex challenges and deliver innovative solutions that drive business transformation."
+    actions={[{ variant: 'primary', target: '_self', text: 'Learn More', href: '/contact' }]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      alt: 'Service 2 Solutions',
+    }}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Service 2 Capabilities"
+    subtitle="Our Service 2 offering includes cutting-edge capabilities that address the most demanding business requirements."
+    columns={2}
+    items={[
+      {
+        title: 'Advanced Analytics',
+        description: 'Leverage powerful analytics and data insights to make informed decisions and optimize your Service 2 outcomes.',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Scalable Architecture', 
+        description: 'Built on scalable foundations that grow with your business needs and adapt to changing requirements.',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Integration Ready',
+        description: 'Seamlessly integrates with your existing systems and workflows for maximum efficiency and minimal disruption.',
+        icon: 'tabler:plug',
+      },
+      {
+        title: 'Security First',
+        description: 'Enterprise-grade security measures protect your data and ensure compliance with industry standards.',
+        icon: 'tabler:shield-lock',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    items={[
+      {
+        title: 'Strategic Consulting',
+        description: 'Our Service 2 experts provide strategic guidance to help you maximize the value of your investment and achieve your business objectives.',
+        icon: 'tabler:bulb',
+      },
+      {
+        title: 'Implementation Excellence',
+        description: 'Proven implementation methodologies ensure smooth deployment and rapid time-to-value for your Service 2 solution.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: '24/7 Monitoring',
+        description: 'Continuous monitoring and proactive maintenance keep your Service 2 solution running at peak performance.',
+        icon: 'tabler:eye',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80',
+      alt: 'Service 2 Implementation',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Service 2 Implementation</h3>
+      Our comprehensive approach to Service 2 ensures successful deployment and long-term success through careful planning, expert execution, and ongoing optimization.
+    </Fragment>
+  </Content>
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    title="Service 2 Performance"
+    stats={[
+      { title: 'Implementations', amount: '50+' },
+      { title: 'Uptime Guarantee', amount: '99.9%' },
+      { title: 'Performance Boost', amount: '300%' },
+      { title: 'Cost Reduction', amount: '40%' },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Explore Service 2',
+        href: '/contact',
+      },
+    ]}
+    title="Transform Your Business with Service 2"
+    subtitle="Ready to take your operations to the next level? Let's discuss how Service 2 can drive innovation and growth for your organization."
+  />
+</Layout>

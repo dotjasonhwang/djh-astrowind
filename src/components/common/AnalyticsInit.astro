@@ -216,7 +216,7 @@ const isDebug = import.meta.env.DEV;
         
         // Collect form data (non-sensitive fields only)
         const formElements = form.elements;
-        for (let element of formElements) {
+        for (const element of formElements) {
           if (element.name && element.type !== 'password' && element.type !== 'hidden') {
             formData[element.name] = element.type === 'email' ? 'provided' : 'filled';
           }

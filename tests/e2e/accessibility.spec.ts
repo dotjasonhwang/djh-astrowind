@@ -216,7 +216,7 @@ test.describe('Accessibility Compliance', () => {
       expect(h1Count, 'Should have exactly one h1 in main content').toBe(1);
 
       // Check heading order (no skipping levels)
-      const headingLevels = [];
+      const headingLevels: number[] = [];
       for (let i = 0; i < headingCount; i++) {
         const heading = headings.nth(i);
         const tagName = await heading.evaluate(el => el.tagName.toLowerCase());
