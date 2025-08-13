@@ -14,6 +14,9 @@
 - ✅ Generation of **project sitemap** based on your routes.
 - ✅ **Open Graph tags** for social media sharing.
 - ✅ **Analytics** built-in Google Analytics, and Splitbee integration.
+- ✅ **Business Components** including Business Hours, Embedded Maps, and Reviews page.
+- ✅ **Content Management System** with Decap CMS integration for easy content editing.
+- ✅ **Comprehensive Testing** with unit tests, e2e tests, and accessibility compliance (WCAG 2.1 AA).
 
 <br>
 
@@ -38,6 +41,9 @@
 - [Getting started](#getting-started)
   - [Project structure](#project-structure)
   - [Commands](#commands)
+  - [Testing](#testing)
+  - [Business Components](#business-components)
+  - [Content Management](#content-management)
   - [Configuration](#configuration)
   - [Deploy](#deploy)
 - [Frequently Asked Questions](#frequently-asked-questions)
@@ -68,8 +74,21 @@ We're embarking on an exciting journey with **AstroWind 2.0**, and we want you t
 ## TL;DR
 
 ```shell
-npm create astro@latest -- --template arthelokyo/astrowind
+git clone https://github.com/arthelokyo/astrowind.git my-website
+cd my-website
+npm install
 ```
+
+**Quick Setup:**
+1. Update `src/config.yaml` with your site info
+2. Update `src/data/client.json` with your business data  
+3. Remove unused pages from `src/pages/`
+4. Update `src/navigation.ts` to match your pages
+5. Replace images in `src/assets/` and `public/`
+6. Run `npm run dev` to start development
+
+**Deploy:**
+Connect your GitHub repo to Netlify for automatic deployments.
 
 ## Getting started
 
@@ -86,6 +105,9 @@ Inside **AstroWind** template, you'll see the following folders and files:
 ```
 /
 ├── public/
+│   ├── admin/                 # CMS configuration
+│   │   ├── config.yml
+│   │   └── decap-preview-styles.css
 │   ├── _headers
 │   └── robots.txt
 ├── src/
@@ -97,8 +119,12 @@ Inside **AstroWind** template, you'll see the following folders and files:
 │   ├── components/
 │   │   ├── blog/
 │   │   ├── common/
+│   │   │   ├── AnalyticsInit.astro  # Enhanced analytics
+│   │   │   └── ...
 │   │   ├── ui/
 │   │   ├── widgets/
+│   │   │   ├── BusinessHours.astro  # Business hours display
+│   │   │   ├── EmbeddedMap.astro    # Google Maps integration
 │   │   │   ├── Header.astro
 │   │   │   └── ...
 │   │   ├── CustomStyles.astro
@@ -110,6 +136,8 @@ Inside **AstroWind** template, you'll see the following folders and files:
 │   │   │   ├── post-slug-2.mdx
 │   │   │   └── ...
 │   │   └-- config.ts
+│   ├── data/
+│   │   └── client.json          # Centralized business data
 │   ├── layouts/
 │   │   ├── Layout.astro
 │   │   ├── MarkdownLayout.astro
@@ -120,13 +148,22 @@ Inside **AstroWind** template, you'll see the following folders and files:
 │   │   │   ├── [tag]/
 │   │   │   ├── [...page].astro
 │   │   │   └── index.astro
+│   │   ├── admin.astro          # CMS admin interface
+│   │   ├── reviews.astro        # Customer testimonials
 │   │   ├── index.astro
 │   │   ├── 404.astro
 │   │   ├-- rss.xml.ts
 │   │   └── ...
 │   ├── utils/
+│   │   └── utils.ts             # Business utility functions
 │   ├── config.yaml
 │   └── navigation.js
+├── tests/                       # Testing framework
+│   ├── e2e/
+│   │   ├── accessibility.spec.ts
+│   │   ├── homepage.spec.ts
+│   │   └── navigation.spec.ts
+│   └── README.md
 ├── package.json
 ├── astro.config.ts
 └── ...
@@ -156,7 +193,111 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`   | Preview your build locally, before deploying       |
 | `npm run check`     | Check your project for errors                      |
 | `npm run fix`       | Run Eslint and format codes with Prettier          |
+| `npm run test`      | Run tests                                          |
 | `npm run astro ...` | Run CLI commands like `astro add`, `astro preview` |
+
+<br>
+
+### Testing
+
+AstroWind includes testing for code quality and accessibility compliance.
+
+```bash
+# Run tests
+npm run test
+
+# First time setup for browser tests (optional)
+npx playwright install
+```
+
+#### Git Hooks
+Automated quality checks run on every commit and push:
+- **Pre-commit**: Runs unit tests and build verification
+- **Pre-push**: Runs unit tests before pushing to remote
+- **GitHub Actions**: Full test suite including e2e and accessibility tests
+
+<br>
+
+### Business Components
+
+AstroWind includes specialized components for business websites:
+
+#### BusinessHours Component
+Displays current business status (open/closed) and weekly hours schedule.
+
+```astro
+---
+import BusinessHours from '~/components/widgets/BusinessHours.astro';
+---
+
+<!-- Show compact status only -->
+<BusinessHours compact={true} />
+
+<!-- Show full hours schedule -->  
+<BusinessHours showStatus={true} />
+```
+
+#### EmbeddedMap Component
+Google Maps integration with directions and contact actions.
+
+```astro
+---
+import EmbeddedMap from '~/components/widgets/EmbeddedMap.astro';
+---
+
+<!-- Basic map -->
+<EmbeddedMap />
+
+<!-- Customized map -->
+<EmbeddedMap 
+  location="primary" 
+  height="400px" 
+  showDirections={true}
+  zoom={15} 
+/>
+```
+
+#### Reviews Page
+Customer testimonials with responsive design and statistics.
+
+Access at `/reviews` - includes sample testimonials and business statistics.
+
+<br>
+
+### Content Management
+
+AstroWind includes Decap CMS for easy content management without technical knowledge.
+
+#### CMS Setup
+
+1. **Admin Interface**: Visit `/admin` to access the content management system
+2. **Configuration**: Located in `public/admin/config.yml`  
+3. **Authentication**: Configure with Netlify Identity, GitHub, or other providers
+
+#### Editable Content
+
+- Blog posts and pages
+- Business information (hours, contact, services)
+- Team member profiles
+- Social media links
+- Company details
+
+#### Business Data
+
+Centralized business information in `src/data/client.json`:
+
+```json
+{
+  "name": "Your Business Name",
+  "email": "contact@business.com", 
+  "businessHours": {
+    "monday": { "open": "09:00", "close": "17:00", "closed": false }
+  },
+  "services": [...],
+  "team": [...],
+  "locations": [...]
+}
+```
 
 <br>
 
@@ -235,6 +376,14 @@ analytics:
     googleAnalytics:
       id: null # or "G-XXXXXXXXXX"
 
+# Enhanced Analytics (business event tracking)  
+# Configure in src/data/client.json:
+# - Phone call click tracking
+# - Email click tracking  
+# - Form submission tracking
+# - Directions click tracking
+# - Core Web Vitals monitoring
+
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 ```
@@ -297,6 +446,16 @@ That would be very useful for all of us and we would be happy to listen and take
 ## Acknowledgements
 
 Initially created by **Arthelokyo** and maintained by a community of [contributors](https://github.com/arthelokyo/astrowind/graphs/contributors).
+
+## Enhanced Features
+
+This version includes additional business-focused features:
+
+- **Business Components**: Business Hours, Google Maps, Reviews page
+- **Content Management**: CMS integration for easy content editing  
+- **Enhanced Analytics**: Business event tracking
+- **Testing**: Quality assurance and accessibility compliance
+- **Centralized Data**: Business information in `client.json`
 
 ## License
 
