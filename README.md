@@ -73,22 +73,7 @@ We're embarking on an exciting journey with **AstroWind 2.0**, and we want you t
 
 ## TL;DR
 
-```shell
-git clone https://github.com/arthelokyo/astrowind.git my-website
-cd my-website
-npm install
-```
-
-**Quick Setup:**
-1. Update `src/config.yaml` with your site info
-2. Update `src/data/client.json` with your business data  
-3. Remove unused pages from `src/pages/`
-4. Update `src/navigation.ts` to match your pages
-5. Replace images in `src/assets/` and `public/`
-6. Run `npm run dev` to start development
-
-**Deploy:**
-Connect your GitHub repo to Netlify for automatic deployments.
+[TLDR](TLDR.md)
 
 ## Getting started
 
