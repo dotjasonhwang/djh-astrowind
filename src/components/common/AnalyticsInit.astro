@@ -21,18 +21,21 @@ const isDebug = import.meta.env.DEV;
 ---
 
 {/* Enhanced Analytics Initialization Script */}
-<script is:inline define:vars={{ 
-  conversionGoals, 
-  performanceTracking, 
-  hasGA4, 
-  hasGTM, 
-  hasFBPixel, 
-  isDebug 
-}}>
+<script
+  is:inline
+  define:vars={{
+    conversionGoals,
+    performanceTracking,
+    hasGA4,
+    hasGTM,
+    hasFBPixel,
+    isDebug,
+  }}
+>
   // Enhanced Analytics Tracking
   window.AnalyticsTracker = {
     // Track business events
-    trackEvent: function(eventName, eventData = {}) {
+    trackEvent: function (eventName, eventData = {}) {
       if (isDebug) {
         console.log('📊 Analytics Event:', eventName, eventData);
       }
@@ -43,7 +46,7 @@ const isDebug = import.meta.env.DEV;
           event_category: 'business_interaction',
           event_label: eventData.label || '',
           value: eventData.value || 0,
-          ...eventData
+          ...eventData,
         });
       }
 
@@ -55,7 +58,7 @@ const isDebug = import.meta.env.DEV;
           eventAction: eventName,
           eventLabel: eventData.label || '',
           eventValue: eventData.value || 0,
-          ...eventData
+          ...eventData,
         });
       }
 
@@ -66,52 +69,52 @@ const isDebug = import.meta.env.DEV;
     },
 
     // Track phone call clicks
-    trackPhoneCall: function(phoneNumber) {
+    trackPhoneCall: function (phoneNumber) {
       if (conversionGoals?.phoneCall?.enabled) {
         this.trackEvent(conversionGoals.phoneCall.eventName || 'phone_call_click', {
           label: phoneNumber,
           phone_number: phoneNumber,
-          interaction_type: 'phone_call'
+          interaction_type: 'phone_call',
         });
       }
     },
 
     // Track email clicks
-    trackEmailClick: function(emailAddress) {
+    trackEmailClick: function (emailAddress) {
       if (conversionGoals?.emailClick?.enabled) {
         this.trackEvent(conversionGoals.emailClick.eventName || 'email_click', {
           label: emailAddress,
           email_address: emailAddress,
-          interaction_type: 'email_click'
+          interaction_type: 'email_click',
         });
       }
     },
 
     // Track form submissions
-    trackFormSubmit: function(formName, formData = {}) {
+    trackFormSubmit: function (formName, formData = {}) {
       if (conversionGoals?.contactForm?.enabled) {
         this.trackEvent(conversionGoals.contactForm.eventName || 'contact_form_submit', {
           label: formName,
           form_name: formName,
           interaction_type: 'form_submission',
-          ...formData
+          ...formData,
         });
       }
     },
 
     // Track directions clicks
-    trackDirectionsClick: function(location) {
+    trackDirectionsClick: function (location) {
       if (conversionGoals?.mapDirections?.enabled) {
         this.trackEvent(conversionGoals.mapDirections.eventName || 'directions_click', {
           label: location,
           location: location,
-          interaction_type: 'directions_request'
+          interaction_type: 'directions_request',
         });
       }
     },
 
     // Track page performance
-    trackPerformance: function() {
+    trackPerformance: function () {
       if (!performanceTracking?.coreWebVitals) return;
 
       // Core Web Vitals tracking
@@ -132,7 +135,7 @@ const isDebug = import.meta.env.DEV;
               this.trackEvent('page_load_time', {
                 load_time: Math.round(navTiming.loadEventEnd - navTiming.fetchStart),
                 dom_content_loaded: Math.round(navTiming.domContentLoadedEventEnd - navTiming.fetchStart),
-                first_paint: Math.round(navTiming.responseEnd - navTiming.fetchStart)
+                first_paint: Math.round(navTiming.responseEnd - navTiming.fetchStart),
               });
             }
           }, 0);
@@ -141,17 +144,17 @@ const isDebug = import.meta.env.DEV;
     },
 
     // Report web vitals
-    reportWebVital: function(metric) {
+    reportWebVital: function (metric) {
       this.trackEvent('web_vital_' + metric.name.toLowerCase(), {
         metric_name: metric.name,
         metric_value: Math.round(metric.value),
         metric_id: metric.id,
-        metric_delta: Math.round(metric.delta)
+        metric_delta: Math.round(metric.delta),
       });
     },
 
     // Initialize error tracking
-    initErrorTracking: function() {
+    initErrorTracking: function () {
       if (!performanceTracking?.errorTracking) return;
 
       window.addEventListener('error', (event) => {
@@ -159,29 +162,29 @@ const isDebug = import.meta.env.DEV;
           error_message: event.message,
           error_filename: event.filename,
           error_line: event.lineno,
-          error_column: event.colno
+          error_column: event.colno,
         });
       });
 
       window.addEventListener('unhandledrejection', (event) => {
         this.trackEvent('unhandled_promise_rejection', {
           error_message: event.reason?.message || 'Unknown promise rejection',
-          error_type: 'promise_rejection'
+          error_type: 'promise_rejection',
         });
       });
-    }
+    },
   };
 
   // Initialize tracking when DOM is ready
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     // Initialize performance tracking
     window.AnalyticsTracker.trackPerformance();
-    
+
     // Initialize error tracking
     window.AnalyticsTracker.initErrorTracking();
 
     // Auto-track phone number clicks
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
       const target = event.target.closest('a[href^="tel:"]');
       if (target) {
         const phoneNumber = target.href.replace('tel:', '');
@@ -190,7 +193,7 @@ const isDebug = import.meta.env.DEV;
     });
 
     // Auto-track email clicks
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
       const target = event.target.closest('a[href^="mailto:"]');
       if (target) {
         const emailAddress = target.href.replace('mailto:', '');
@@ -199,7 +202,7 @@ const isDebug = import.meta.env.DEV;
     });
 
     // Auto-track directions clicks
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
       const target = event.target.closest('a[href*="maps.google.com"], .directions-btn');
       if (target) {
         const location = target.getAttribute('data-location') || 'primary';
@@ -208,12 +211,12 @@ const isDebug = import.meta.env.DEV;
     });
 
     // Auto-track form submissions
-    document.addEventListener('submit', function(event) {
+    document.addEventListener('submit', function (event) {
       const form = event.target;
       if (form.tagName === 'FORM') {
         const formName = form.getAttribute('name') || form.id || 'unnamed_form';
         const formData = {};
-        
+
         // Collect form data (non-sensitive fields only)
         const formElements = form.elements;
         for (const element of formElements) {
@@ -221,7 +224,7 @@ const isDebug = import.meta.env.DEV;
             formData[element.name] = element.type === 'email' ? 'provided' : 'filled';
           }
         }
-        
+
         window.AnalyticsTracker.trackFormSubmit(formName, formData);
       }
     });
@@ -235,16 +238,20 @@ const isDebug = import.meta.env.DEV;
 </script>
 
 {/* Load web-vitals library for Core Web Vitals tracking */}
-{performanceTracking?.coreWebVitals && (
-  <script async src="https://unpkg.com/web-vitals@3/dist/web-vitals.attribution.iife.js"></script>
-)}
+{
+  performanceTracking?.coreWebVitals && (
+    <script async src="https://unpkg.com/web-vitals@3/dist/web-vitals.attribution.iife.js" />
+  )
+}
 
 {/* Development mode indicator */}
-{isDebug && (hasGA4 || hasGTM || hasFBPixel) && (
-  <div class="fixed bottom-4 right-4 bg-blue-600 text-white text-xs px-3 py-2 rounded-lg shadow-lg z-50 font-mono">
-    📊 Analytics Debug Mode
-  </div>
-)}
+{
+  isDebug && (hasGA4 || hasGTM || hasFBPixel) && (
+    <div class="fixed bottom-4 right-4 bg-blue-600 text-white text-xs px-3 py-2 rounded-lg shadow-lg z-50 font-mono">
+      📊 Analytics Debug Mode
+    </div>
+  )
+}
 
 <style>
   /* Ensure analytics debug indicator is visible */

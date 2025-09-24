@@ -234,19 +234,19 @@
   .cms-preview-content {
     padding: 1rem;
   }
-  
+
   .cms-preview-content h1 {
     font-size: 2rem;
   }
-  
+
   .cms-preview-content h2 {
     font-size: 1.5rem;
   }
-  
+
   .cms-preview-content table {
     font-size: 0.75rem;
   }
-  
+
   .cms-preview-content th,
   .cms-preview-content td {
     padding: 0.5rem;
@@ -259,30 +259,30 @@
     background-color: #1f2937;
     color: #f3f4f6;
   }
-  
+
   .cms-preview-content h1,
   .cms-preview-content h2,
   .cms-preview-content h3 {
     color: #f9fafb;
   }
-  
+
   .cms-preview-content h4,
   .cms-preview-content h5,
   .cms-preview-content h6 {
     color: #e5e7eb;
   }
-  
+
   .cms-preview-content code {
     background-color: #374151;
     color: #fbbf24;
   }
-  
+
   .cms-preview-content blockquote {
     background-color: #374151;
     color: #d1d5db;
     border-left-color: #60a5fa;
   }
-  
+
   .cms-preview-meta {
     background-color: #374151;
     color: #d1d5db;

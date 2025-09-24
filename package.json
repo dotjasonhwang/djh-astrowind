@@ -44,6 +44,9 @@
     "lodash.merge": "^4.6.2",
     "unpic": "^4.1.3"
   },
+  "overrides": {
+    "vite": "6.0.2"
+  },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.3.3",
@@ -70,7 +73,6 @@
     "happy-dom": "^18.0.1",
     "husky": "^9.1.7",
     "js-yaml": "^4.1.0",
-    "lint-staged": "^16.1.5",
     "mdast-util-to-string": "^4.0.0",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",

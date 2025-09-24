@@ -19,9 +19,7 @@ export default getViteConfig({
         'tests/e2e/**',
       ],
     },
-    include: [
-      'src/**/*.{test,spec}.{js,ts}',
-    ],
+    include: ['src/**/*.{test,spec}.{js,ts}'],
     exclude: [
       'node_modules/',
       'dist/',

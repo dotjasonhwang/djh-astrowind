@@ -37,6 +37,7 @@
 
 - [Demo](#demo)
 - [Upcoming: AstroWind 2.0 – We Need Your Vision!](#-upcoming-astrowind-20--we-need-your-vision)
+- [Notes](#notes)
 - [TL;DR](#tldr)
 - [Getting started](#getting-started)
   - [Project structure](#project-structure)
@@ -67,6 +68,12 @@
 We're embarking on an exciting journey with **AstroWind 2.0**, and we want you to be a part of it! We're currently taking the first steps in developing this new version and your insights are invaluable. Join the discussion and share your feedback, ideas, and suggestions to help shape the future of **AstroWind**. Let's make **AstroWind 2.0** even better, together!
 
 [Share Your Feedback in Our Discussion!](https://github.com/arthelokyo/astrowind/discussions/392)
+
+<br>
+
+## Notes
+
+- **Vite Override**: Added `"vite": "6.0.2"` override in `package.json` to fix Vitest+Vite 6 compatibility issues with `vitest.config.ts`. See [astro/issues/12662](https://github.com/withastro/astro/issues/12662) for details.
 
 <br>
 
@@ -195,7 +202,9 @@ npx playwright install
 ```
 
 #### Git Hooks
+
 Automated quality checks run on every commit and push:
+
 - **Pre-commit**: Runs unit tests and build verification
 - **Pre-push**: Runs unit tests before pushing to remote
 - **GitHub Actions**: Full test suite including e2e and accessibility tests
@@ -207,6 +216,7 @@ Automated quality checks run on every commit and push:
 AstroWind includes specialized components for business websites:
 
 #### BusinessHours Component
+
 Displays current business status (open/closed) and weekly hours schedule.
 
 ```astro
@@ -217,11 +227,12 @@ import BusinessHours from '~/components/widgets/BusinessHours.astro';
 <!-- Show compact status only -->
 <BusinessHours compact={true} />
 
-<!-- Show full hours schedule -->  
+<!-- Show full hours schedule -->
 <BusinessHours showStatus={true} />
 ```
 
 #### EmbeddedMap Component
+
 Google Maps integration with directions and contact actions.
 
 ```astro
@@ -233,15 +244,11 @@ import EmbeddedMap from '~/components/widgets/EmbeddedMap.astro';
 <EmbeddedMap />
 
 <!-- Customized map -->
-<EmbeddedMap 
-  location="primary" 
-  height="400px" 
-  showDirections={true}
-  zoom={15} 
-/>
+<EmbeddedMap location="primary" height="400px" showDirections={true} zoom={15} />
 ```
 
 #### Reviews Page
+
 Customer testimonials with responsive design and statistics.
 
 Access at `/reviews` - includes sample testimonials and business statistics.
@@ -255,7 +262,7 @@ AstroWind includes Decap CMS for easy content management without technical knowl
 #### CMS Setup
 
 1. **Admin Interface**: Visit `/admin` to access the content management system
-2. **Configuration**: Located in `public/admin/config.yml`  
+2. **Configuration**: Located in `public/admin/config.yml`
 3. **Authentication**: Configure with Netlify Identity, GitHub, or other providers
 
 #### Editable Content
@@ -273,7 +280,7 @@ Centralized business information in `src/data/client.json`:
 ```json
 {
   "name": "Your Business Name",
-  "email": "contact@business.com", 
+  "email": "contact@business.com",
   "businessHours": {
     "monday": { "open": "09:00", "close": "17:00", "closed": false }
   },
@@ -360,10 +367,10 @@ analytics:
     googleAnalytics:
       id: null # or "G-XXXXXXXXXX"
 
-# Enhanced Analytics (business event tracking)  
+# Enhanced Analytics (business event tracking)
 # Configure in src/data/client.json:
 # - Phone call click tracking
-# - Email click tracking  
+# - Email click tracking
 # - Form submission tracking
 # - Directions click tracking
 # - Core Web Vitals monitoring
@@ -436,7 +443,7 @@ Initially created by **Arthelokyo** and maintained by a community of [contributo
 This version includes additional business-focused features:
 
 - **Business Components**: Business Hours, Google Maps, Reviews page
-- **Content Management**: CMS integration for easy content editing  
+- **Content Management**: CMS integration for easy content editing
 - **Enhanced Analytics**: Business event tracking
 - **Testing**: Quality assurance and accessibility compliance
 - **Centralized Data**: Business information in `client.json`

@@ -63,7 +63,7 @@ describe('Utils Functions', () => {
       thursday: { open: '09:00', close: '17:00', closed: false },
       friday: { open: '09:00', close: '17:00', closed: false },
       saturday: { open: '10:00', close: '15:00', closed: false },
-      sunday: { open: '', close: '', closed: true }
+      sunday: { open: '', close: '', closed: true },
     };
 
     it('should return true when business is open', () => {
@@ -96,7 +96,7 @@ describe('Utils Functions', () => {
       // Set time to exactly opening time
       vi.setSystemTime(new Date('2023-11-15T09:00:00')); // Wednesday 9 AM
       expect(isBusinessOpen(mockBusinessHours)).toBe(true);
-      
+
       // Set time to exactly closing time
       vi.setSystemTime(new Date('2023-11-15T17:00:00')); // Wednesday 5 PM
       expect(isBusinessOpen(mockBusinessHours)).toBe(true);
@@ -120,7 +120,7 @@ describe('Utils Functions', () => {
       thursday: { open: '09:00', close: '17:00', closed: false },
       friday: { open: '09:00', close: '17:00', closed: false },
       saturday: { open: '10:00', close: '15:00', closed: false },
-      sunday: { open: '', close: '', closed: true }
+      sunday: { open: '', close: '', closed: true },
     };
 
     it('should return formatted hours for current day', () => {
@@ -146,7 +146,7 @@ describe('Utils Functions', () => {
       // Monday
       vi.setSystemTime(new Date('2023-11-13T14:30:00'));
       expect(getTodaysHours(mockBusinessHours)).toBe('9:00 AM - 5:00 PM');
-      
+
       // Tuesday
       vi.setSystemTime(new Date('2023-11-14T14:30:00'));
       expect(getTodaysHours(mockBusinessHours)).toBe('9:00 AM - 5:00 PM');
