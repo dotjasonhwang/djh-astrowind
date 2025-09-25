@@ -258,12 +258,14 @@ Access at `/reviews` - includes sample testimonials and business statistics.
 ### Content Management
 
 AstroWind includes Decap CMS for easy content management without technical knowledge.
+Use Decap + Netlify Identity.
+Netlify Identity is getting deprecated. Consider DecapBridge
 
 #### CMS Setup
 
 1. **Admin Interface**: Visit `/admin` to access the content management system
 2. **Configuration**: Located in `public/admin/config.yml`
-3. **Authentication**: Configure with Netlify Identity, GitHub, or other providers
+3. **Authentication**: Configure with Netlify Identity
 
 #### Editable Content
 

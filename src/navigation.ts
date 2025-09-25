@@ -1,4 +1,5 @@
 import { getPermalink, getBlogPermalink } from './utils/permalinks';
+import clientData from './data/client.json';
 
 export const headerData = {
   links: [
@@ -76,11 +77,14 @@ export const footerData = {
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
+    { ariaLabel: 'X', icon: 'tabler:brand-x', href: clientData.socialMedia.twitter },
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: clientData.socialMedia.instagram },
+    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: clientData.socialMedia.facebook },
+    ...(clientData.socialMedia.linkedin
+      ? [{ ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: clientData.socialMedia.linkedin }]
+      : []),
   ],
   footNote: `
-    © ${new Date().getFullYear()} Your Business Name. All rights reserved.
+    © ${new Date().getFullYear()} ${clientData.name}. All rights reserved.
   `,
 };

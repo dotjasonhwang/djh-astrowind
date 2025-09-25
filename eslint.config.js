@@ -4,6 +4,7 @@ import globals from 'globals';
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import typescriptParser from '@typescript-eslint/parser';
+import unusedImports from 'eslint-plugin-unused-imports';
 
 export default [
   js.configs.recommended,
@@ -40,6 +41,9 @@ export default [
     languageOptions: {
       parser: typescriptParser,
     },
+    plugins: {
+      'unused-imports': unusedImports,
+    },
     rules: {
       // Note: you must disable the base rule as it can report incorrect errors
       'no-unused-vars': 'off',
@@ -48,9 +52,11 @@ export default [
         {
           argsIgnorePattern: '^_',
           destructuredArrayIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
         },
       ],
       '@typescript-eslint/no-non-null-assertion': 'off',
+      'unused-imports/no-unused-imports': 'error',
     },
   },
   {

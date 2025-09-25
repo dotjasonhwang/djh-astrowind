@@ -19,12 +19,13 @@ npm install
 
 ## Commands
 
-| Command            | Action                               |
-| :----------------- | :----------------------------------- |
-| `npm run dev`      | Start dev server at `localhost:4321` |
-| `npm run test`     | Run unit tests                       |
-| `npm run test:e2e` | Run e2e tests                        |
-| `npm run fix`      | Format code with Prettier + ESLint   |
+| Command            | Action                                     |
+| :----------------- | :----------------------------------------- |
+| `npm run dev`      | Start dev server at `localhost:4321`       |
+| `npm run test`     | Run unit tests                             |
+| `npm run test:e2e` | Run e2e tests                              |
+| `npm run check`    | Run all checks (astro + eslint + prettier) |
+| `npm run fix`      | Format code with Prettier + ESLint         |
 
 ## Testing
 
