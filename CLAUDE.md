@@ -58,3 +58,10 @@ Reference the Principles in [DESIGN_PRINCIPLES.md](DESIGN_PRINCIPLES.md)
 - ESLint uses flat config format (v9+)
 - Pre-commit hooks validate tests and build
 - All TypeScript files should use Prettier formatting
+
+## Migration Plan
+  ## Design Token Migration Strategy
+  1. Convert existing CSS custom properties to `@theme` format in tailwind.css
+  2. Remove manual utility definitions that can be auto-generated
+  3. Keep semantic utilities (`.btn`, `.card`) that need custom behavior
+  4. Update components to use new auto-generated utilities (`bg-brand-primary` instead of manual utilities)
