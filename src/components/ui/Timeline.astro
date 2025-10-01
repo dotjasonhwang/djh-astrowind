@@ -22,7 +22,7 @@ const {
 
 {
   items && items.length > 0 && (
-    <div class={containerClass}>
+    <div class={twMerge(`mt-8 md:mt-12`, containerClass)}>
       {items.map(({ title, description, icon, classes: itemClasses = {} }, index = 0) => (
         <div
           class={twMerge(

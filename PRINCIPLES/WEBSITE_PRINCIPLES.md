@@ -58,7 +58,7 @@
     - Margin: Space between separate components/elements (external spacing)
     - Padding: Space inside a component between its border and content (internal spacing)
 - Prefer margin-top over margin-bottom for vertical spacing consistency
-- Use first:mt-0 to remove top margin from first elements
+- Use first:mt-0 only for the first item in lists/repeated elements (not for singular elements)
 - Use Tailwind's spacing scale (multiples of 8px base unit)
 
 ### Rounding

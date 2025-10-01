@@ -2,6 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import heroImage from '~/assets/images/hero-image.png';
 
 const metadata = {
   title: 'Reviews — Customer Testimonials',
@@ -15,7 +16,7 @@ const reviews = [
     id: 1,
     name: 'Sarah Johnson',
     role: 'Small Business Owner',
-    avatar: '/assets/images/avatar-placeholder.png',
+    avatar: heroImage.src,
     rating: 5,
     content:
       'DJH Web Designs transformed our online presence completely. The new website is not only beautiful but also drives significantly more leads for our business.',
@@ -26,7 +27,7 @@ const reviews = [
     role: 'E-commerce Store Owner',
     content:
       'Outstanding work on our e-commerce platform. The team delivered exactly what we needed - a fast, user-friendly site that converts visitors into customers.',
-    avatar: '/assets/images/avatar-placeholder.png',
+    avatar: heroImage.src,
     rating: 5,
   },
   {
@@ -35,7 +36,7 @@ const reviews = [
     role: 'Marketing Director',
     content:
       'Professional, responsive, and creative. They took our vision and made it even better than we imagined. Highly recommend for any web development needs.',
-    avatar: '/assets/images/avatar-placeholder.png',
+    avatar: heroImage.src,
     rating: 5,
   },
   {
@@ -44,7 +45,7 @@ const reviews = [
     role: 'Restaurant Owner',
     content:
       'The mobile-optimized website they built for us has dramatically increased our online orders. Great attention to detail and excellent customer service.',
-    avatar: '/assets/images/avatar-placeholder.png',
+    avatar: heroImage.src,
     rating: 5,
   },
   {
@@ -53,7 +54,7 @@ const reviews = [
     role: 'Non-profit Director',
     content:
       'They delivered a beautiful, accessible website that perfectly represents our mission. The team was patient and collaborative throughout the process.',
-    avatar: '/assets/images/avatar-placeholder.png',
+    avatar: heroImage.src,
     rating: 5,
   },
   {
@@ -62,7 +63,7 @@ const reviews = [
     role: 'Tech Startup Founder',
     content:
       'Fast turnaround, modern design, and clean code. Everything we needed for our product launch. The website performs flawlessly across all devices.',
-    avatar: '/assets/images/avatar-placeholder.png',
+    avatar: heroImage.src,
     rating: 5,
   },
 ];
@@ -114,7 +115,7 @@ const getStarRating = (rating: number) => {
 
                 {/* Review Content */}
                 <div class="pt-8">
-                  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-sm">"{review.content}"</p>
+                  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mt-6 text-sm">"{review.content}"</p>
 
                   {/* Rating and Author */}
                   <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
