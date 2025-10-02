@@ -69,3 +69,113 @@ For each file in MIGRATION.md
 - If it is a separate item:
     - `mb-*` -> `mt-*`, trust that the other components will adjust accordingly
     - `my-*` -> `mt-* times 2`
+
+For each file in MIGRATION.md audit the following:
+1. vertical margin
+2. horizontal margin
+3. vertical padding
+4. horizontal padding
+
+## Spacing Audit Results (2025-10-02)
+
+### 1. Vertical Margins (mt-, mb-, my-)
+
+**Successfully Migrated Patterns:**
+- ✅ mb-* → mt-* conversion completed across all files
+- ✅ my-* → mt-* (doubled) conversion completed
+- ✅ Proper first:mt-0 usage on lists only (not singular elements)
+
+**Current Usage Analysis:**
+- **Hero Components** (Hero.astro, Hero2.astro, HeroText.astro): mt-6 between subtitle and actions
+- **Blog Components**: mt-8 md:mt-16 for headers, mt-2 for tags with first:mt-0
+- **Content Components**: mt-8 md:mt-12 for sections, mt-6 for content elements
+- **404 Page**: mt-16 for main container, mt-8 for heading
+- **List Items**: Proper first:mt-0 pattern in Tags.astro, Footer.astro
+
+**Spacing Scale Distribution:**
+- mt-1, mt-2: Small spacing (tags, form elements)
+- mt-4, mt-6: Medium spacing (content flow)
+- mt-8, mt-12: Section spacing (responsive)
+- mt-16, mt-20: Large section breaks
+
+**Issues Found:**
+- Inconsistent spacing scales across components
+- Some components use fixed values, others responsive
+- Hero components have complex mt-6 pattern between elements
+
+### 2. Horizontal Margins (ml-, mr-, mx-)
+
+**Container Patterns:**
+- mx-auto: Consistent centering across all major containers
+- max-w-7xl mx-auto: Standard layout container
+- max-w-3xl mx-auto: Content containers (blog, forms)
+- max-w-4xl mx-auto: Section containers
+
+**Element Spacing:**
+- ml-2/mr-2: Standard element spacing (buttons, icons, social links)
+- ml-4/mr-4: Larger element spacing (navigation, footer links)
+- ml-8: Definition list indentation (DListItem.astro)
+
+**RTL Support Patterns:**
+- Inconsistent implementation across components
+- Some use: ml-2 rtl:ml-0 rtl:mr-2
+- Others missing RTL considerations
+- Found in: Logo.astro, Content.astro, SocialShare.astro, Button.astro
+
+**Issues Found:**
+- RTL support not universally applied
+- Mixed margin values for similar use cases
+- Some negative margins (-ml-1.5, -mr-1.5) for icon positioning
+
+### 3. Vertical Padding (pt-, pb-, py-)
+
+**Section Patterns:**
+- py-12 md:py-16 lg:py-20: Standard section padding (WidgetWrapper)
+- py-8 sm:py-16 lg:py-20: Blog sections
+- py-12 md:py-20: Hero sections
+
+**Hero-Specific Patterns:**
+- pt-0 md:pt-[76px]: Header offset compensation
+- pb-10 md:pb-16: Hero content bottom padding
+- Complex responsive scaling
+
+**Form Elements:**
+- py-3 px-4: Standard input field padding (consistent)
+- py-2 px-5: Button padding variations
+- py-0.5 px-2: Small elements (tags)
+
+**Issues Found:**
+- Multiple py- patterns for similar section types
+- Hero components have complex responsive padding
+- Inconsistent button padding variations
+
+### 4. Horizontal Padding (pl-, pr-, px-)
+
+**Container Standards:**
+- px-4 sm:px-6: Small to medium containers
+- px-4 md:px-6: Most widget containers
+- px-6 sm:px-6: Blog content containers
+- px-3: Compact elements (buttons, small containers)
+
+**Form Elements:**
+- px-4: Standard input fields (consistent across Form.astro)
+- px-3 py-2: Small buttons and controls
+- px-5.5 md:px-6: CTA buttons
+
+**Complex Patterns:**
+- Steps2.astro: pr-4 sm:pl-4 rtl:pr-0 rtl:pl-4 sm:rtl:pl-0 sm:rtl:pr-4
+- Header.astro: px-3 md:px-6 responsive navigation
+- Dropdown menus: pl-4 md:pl-0 conditional padding
+
+**Issues Found:**
+- Steps2 has overly complex RTL padding logic
+- Inconsistent px- values for similar components
+- Some components missing responsive padding
+
+### Summary Recommendations
+
+1. **Standardize spacing scale**: Use consistent 4/6/8/12/16/20/24 progression
+2. **Create semantic spacing tokens** for common patterns
+3. **Unify RTL support** across all interactive elements
+4. **Simplify hero padding** patterns across Hero variants
+5. **Standardize container padding** approach

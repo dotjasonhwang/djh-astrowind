@@ -6,7 +6,6 @@
 - src/pages/admin.astro
 - src/pages/contact.astro
 - src/pages/pricing.astro
-- src/pages/reviews.astro
 - src/pages/services.astro
 - src/pages/services1.astro
 - src/pages/services2.astro
@@ -27,11 +26,9 @@
 - src/components/widgets/BlogHighlightedPosts.astro
 - src/components/widgets/BlogLatestPosts.astro
 - src/components/widgets/Brands.astro
-- src/components/widgets/BusinessHours.astro
 - src/components/widgets/CallToAction.astro
 - src/components/widgets/Contact.astro
 - src/components/widgets/Content.astro
-- src/components/widgets/EmbeddedMap.astro
 - src/components/widgets/FAQs.astro
 - src/components/widgets/Features.astro
 - src/components/widgets/Features2.astro
@@ -62,7 +59,7 @@
 ## Components - Blog (10 files)
 - src/components/blog/Grid.astro
 - src/components/blog/GridItem.astro
-- src/components/blog/Headline.astro
+- src/components/blog/BlogHeadline.astro
 - src/components/blog/List.astro
 - src/components/blog/ListItem.astro
 - src/components/blog/Pagination.astro
@@ -71,22 +68,13 @@
 - src/components/blog/Tags.astro
 - src/components/blog/ToBlogLink.astro
 
-## Components - Common (11 files)
-- src/components/common/Analytics.astro
-- src/components/common/AnalyticsInit.astro
-- src/components/common/ApplyColorMode.astro
-- src/components/common/BasicScripts.astro
-- src/components/common/CommonMeta.astro
-- src/components/common/Image.astro
-- src/components/common/Metadata.astro
-- src/components/common/SiteVerification.astro
+## Components - Common (3 files)
 - src/components/common/SocialShare.astro
 - src/components/common/ToggleMenu.astro
 - src/components/common/ToggleTheme.astro
 
-## Components - Root (3 files)
+## Components - Root (2 files)
 - src/components/CustomStyles.astro
-- src/components/Favicons.astro
 - src/components/Logo.astro
 
 ## Total: 75 Astro files
