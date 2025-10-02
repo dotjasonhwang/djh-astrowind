@@ -110,8 +110,6 @@ Inside **AstroWind** template, you'll see the following folders and files:
 │   ├── components/
 │   │   ├── blog/
 │   │   ├── common/
-│   │   │   ├── AnalyticsInit.astro  # Enhanced analytics
-│   │   │   └── ...
 │   │   ├── ui/
 │   │   ├── widgets/
 │   │   │   ├── BusinessHours.astro  # Business hours display
