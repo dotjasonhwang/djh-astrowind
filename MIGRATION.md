@@ -45,10 +45,9 @@
 - src/components/widgets/Steps2.astro
 - src/components/widgets/Testimonials.astro
 
-## Components - UI (9 files)
+## Components - UI (8 files)
 - src/components/ui/Background.astro
 - src/components/ui/Button.astro
-- src/components/ui/DListItem.astro
 - src/components/ui/Form.astro
 - src/components/ui/Headline.astro
 - src/components/ui/ItemGrid.astro
