@@ -13,10 +13,10 @@
     --foreground: #1a1a1a;
     --muted: #6b7280;
     --surface: #f9fafb;
-    --surface-elevated: #ffffff;
+    --surface-elevated: rgb(204, 217, 237);
     --border-subtle: #e5e7eb;
-    --primary: #3b82f6;
-    --secondary: #64748b;
+    --primary: rgb(1 97 239);
+    --secondary: rgb(1 84 207);
 }
 
 /* Dark mode semantic variables */

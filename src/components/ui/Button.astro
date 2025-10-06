@@ -23,7 +23,11 @@ const variants = {
 
 {
   type === 'button' || type === 'submit' || type === 'reset' ? (
-    <button type={type} class={twMerge('grid grid-flow-col auto-cols-max items-center gap-1', variants[variant] || '', className)} {...rest}>
+    <button
+      type={type}
+      class={twMerge('grid grid-flow-col auto-cols-max items-center gap-1', variants[variant] || '', className)}
+      {...rest}
+    >
       <Fragment set:html={text} />
       {icon && <Icon name={icon} class="w-5 h-5" />}
     </button>
