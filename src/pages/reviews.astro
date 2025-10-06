@@ -93,20 +93,20 @@ const getStarRating = (rating: number) => {
   />
 
   <!-- Reviews Section -->
-  <section class="py-16 md:py-20 bg-gray-50 dark:bg-gray-900">
+  <section class="py-16 md:py-20 bg-gray-50 bg-surface">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
       <div class="grid gap-8 md:gap-12 lg:gap-16">
         <!-- Reviews Grid -->
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
           {
             reviews.map((review) => (
-              <div class="review-card bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 relative">
+              <div class="review-card bg-white bg-surface-elevated rounded-lg shadow-lg p-6 relative">
                 {/* Avatar */}
                 <div class="absolute -top-6 left-6">
                   <img
                     src={review.avatar}
                     alt={`${review.name} profile picture`}
-                    class="w-12 h-12 rounded-full border-4 border-white dark:border-gray-800 bg-gray-200 dark:bg-gray-700"
+                    class="w-12 h-12 rounded-full border-4 border-white border-subtle bg-gray-200 bg-surface"
                     width="48"
                     height="48"
                     onerror="this.style.display='none'"
@@ -115,14 +115,14 @@ const getStarRating = (rating: number) => {
 
                 {/* Review Content */}
                 <div class="pt-8">
-                  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mt-6 text-sm">"{review.content}"</p>
+                  <p class="text-gray-700 text-foreground leading-relaxed mt-6 text-sm">"{review.content}"</p>
 
                   {/* Rating and Author */}
-                  <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+                  <div class="border-t border-gray-200 border-subtle pt-4">
                     <div class="flex items-center justify-between">
                       <div>
-                        <div class="font-bold text-gray-900 dark:text-white text-sm">{review.name}</div>
-                        <div class="text-xs text-gray-600 dark:text-gray-400">{review.role}</div>
+                        <div class="font-bold text-gray-900 text-foreground text-sm">{review.name}</div>
+                        <div class="text-xs text-gray-600 text-muted">{review.role}</div>
                       </div>
 
                       {/* Star Rating */}
@@ -141,20 +141,20 @@ const getStarRating = (rating: number) => {
         <div class="mt-12 md:mt-16 text-center">
           <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div class="stat">
-              <div class="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400">50+</div>
-              <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Happy Clients</div>
+              <div class="text-3xl md:text-4xl font-bold text-blue-600 text-primary">50+</div>
+              <div class="text-sm text-gray-600 text-muted mt-1">Happy Clients</div>
             </div>
             <div class="stat">
-              <div class="text-3xl md:text-4xl font-bold text-green-600 dark:text-green-400">100%</div>
-              <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Satisfaction Rate</div>
+              <div class="text-3xl md:text-4xl font-bold text-green-600 text-primary">100%</div>
+              <div class="text-sm text-gray-600 text-muted mt-1">Satisfaction Rate</div>
             </div>
             <div class="stat">
-              <div class="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400">3+</div>
-              <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Years Experience</div>
+              <div class="text-3xl md:text-4xl font-bold text-purple-600 text-primary">3+</div>
+              <div class="text-sm text-gray-600 text-muted mt-1">Years Experience</div>
             </div>
             <div class="stat">
-              <div class="text-3xl md:text-4xl font-bold text-orange-600 dark:text-orange-400">24/7</div>
-              <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Support</div>
+              <div class="text-3xl md:text-4xl font-bold text-orange-600 text-primary">24/7</div>
+              <div class="text-sm text-gray-600 text-muted mt-1">Support</div>
             </div>
           </div>
         </div>

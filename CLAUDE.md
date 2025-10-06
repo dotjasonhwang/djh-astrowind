@@ -172,10 +172,47 @@ For each file in MIGRATION.md audit the following:
 - Inconsistent px- values for similar components
 - Some components missing responsive padding
 
-### Summary Recommendations
+## Color Migration Strategy
 
-1. **Standardize spacing scale**: Use consistent 4/6/8/12/16/20/24 progression
-2. **Create semantic spacing tokens** for common patterns
-3. **Unify RTL support** across all interactive elements
-4. **Simplify hero padding** patterns across Hero variants
-5. **Standardize container padding** approach
+### ✅ NEXT: Color Migration (Eliminate dark: classes)
+
+**Goal:** Use Tailwind v4 @theme directive to eliminate all 135 `dark:` class occurrences across 47 files.
+
+**Approach:** CSS-first configuration with automatic theme switching via semantic color tokens.
+
+**Phase 1: Theme Infrastructure Setup**
+- Configure @theme directive with semantic CSS variables in tailwind.css
+- Set up automatic dark mode using @custom-variant
+- Replace existing --aw-color-* variables with semantic system
+- Create utility classes that automatically switch themes
+
+**Phase 2: Semantic Color System**
+- Define semantic tokens: --color-background, --color-foreground, --color-muted, --color-primary
+- Map to light/dark values using :root and .dark selectors
+- Register with @theme for automatic utility generation
+- Create semantic utilities: bg-background, text-foreground, text-muted
+
+**Phase 3: Systematic Component Migration (ALL 75 files in MIGRATION.md)**
+- **Pages (15 files):** index.astro → about.astro → admin.astro → contact.astro → pricing.astro → services.astro → services1.astro → services2.astro → services3.astro → 404.astro → [...blog]/index.astro → [...blog]/[...page].astro → [...blog]/[category]/[...page].astro → [...blog]/[tag]/[...page].astro
+- **Layouts (3 files):** Layout.astro → MarkdownLayout.astro → PageLayout.astro
+- **Components - Widgets (24 files):** All widget components systematically
+- **Components - UI (8 files):** Button.astro → Form.astro → Headline.astro → ItemGrid.astro → Timeline.astro → WidgetWrapper.astro → Background.astro
+- **Components - Blog (10 files):** All blog components
+- **Components - Common (3 files):** SocialShare.astro → ToggleMenu.astro → ToggleTheme.astro
+- **Components - Root (2 files):** CustomStyles.astro → Logo.astro
+
+**Common Replacement Patterns:**
+- `text-gray-900 dark:text-white` → `text-foreground`
+- `bg-white dark:bg-slate-800` → `bg-background`
+- `text-gray-600 dark:text-gray-400` → `text-muted`
+- `bg-gray-100 dark:bg-gray-700` → `bg-surface`
+- `border-gray-200 dark:border-gray-600` → `border-subtle`
+
+**Phase 4: Cleanup & Validation**
+- Remove redundant CSS variables and dark: classes
+- Test theme switching functionality across all components
+- Update documentation and validate design consistency
+
+**Result:** Zero dark: classes in HTML, fully automatic theme switching via CSS variables and @theme directive.
+
+
