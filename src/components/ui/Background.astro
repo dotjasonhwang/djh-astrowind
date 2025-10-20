@@ -1,11 +1,7 @@
 ---
-export interface Props {
-  isDark?: boolean;
-}
-
-const { isDark = false } = Astro.props;
+// Background component for widget wrappers
 ---
 
-<div class:list={['absolute inset-0', { 'bg-dark bg-surface': isDark }]}>
+<div class="absolute inset-0">
   <slot />
 </div>

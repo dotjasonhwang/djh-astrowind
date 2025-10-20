@@ -23,10 +23,10 @@ export interface Props {
   theme?: string;
 }
 
-const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Astro.props;
 ---
 
-<footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 border-subtle not-prose']}>
+<footer class:list={['relative border-t border-subtle not-prose']}>
   <div class="bg-surface absolute inset-0 pointer-events-none" aria-hidden="true"></div>
   <div
     class="relative max-w-7xl mx-auto px-4 sm:px-6 text-foreground intersect-once intersect-quarter intersect-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
@@ -42,7 +42,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
               <>
                 {index !== 0 ? ' · ' : ''}
                 <a
-                  class="text-muted hover:text-gray-700 text-muted hover:underline transition duration-150 ease-in-out"
+                  class="text-muted hover:text-gray-700 hover:underline transition duration-150 ease-in-out"
                   href={href}
                   set:html={text}
                 />
@@ -60,7 +60,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
                 {links.map(({ text, href, ariaLabel }) => (
                   <li class="mt-2 first:mt-0">
                     <a
-                      class="text-muted hover:text-gray-700 hover:underline text-muted transition duration-150 ease-in-out"
+                      class="text-muted hover:text-gray-700 hover:underline transition duration-150 ease-in-out"
                       href={href}
                       aria-label={ariaLabel}
                     >

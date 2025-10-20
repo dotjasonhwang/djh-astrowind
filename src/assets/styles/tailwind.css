@@ -10,13 +10,15 @@
 /* Light mode semantic variables */
 :root {
     --background: white;
-    --foreground: #1a1a1a;
-    --muted: #6b7280;
-    --surface: #f9fafb;
-    --surface-elevated: rgb(204, 217, 237);
+    --foreground: #101010;
+    --muted: rgba(16, 16, 16, 0.66);
+    --surface: rgb(239, 246, 255);
+    --surface-highlighted: white;
+    --surface-elevated: rgb(246, 250, 255);
     --border-subtle: #e5e7eb;
     --primary: rgb(1 97 239);
     --secondary: rgb(1 84 207);
+    --accent: #6d28d9;
 }
 
 /* Dark mode semantic variables */
@@ -25,6 +27,7 @@
     --foreground: #e5ecf6;
     --muted: rgba(229, 236, 246, 0.66);
     --surface: #030620;
+    --surface-highlighted: rgb(15, 23, 42);
     --surface-elevated: #374151;
     --border-subtle: #4b5563;
     --primary: #0161ef;
@@ -44,6 +47,7 @@
     --color-muted: var(--muted);
     --color-surface: var(--surface);
     --color-surface-elevated: var(--surface-elevated);
+    --color-surface-highlighted: var(--surface-highlighted);
     --color-border-subtle: var(--border-subtle);
     --color-primary: var(--primary);
     --color-secondary: var(--secondary);
