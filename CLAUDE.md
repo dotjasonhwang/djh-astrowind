@@ -18,10 +18,17 @@ AstroWind business website template built with Astro 5 & Tailwind 4. Optimized f
 
 ### Configuration Files
 
-- `src/config.yaml` - Site configuration
+- `src/config.yaml` - Site configuration + business data (single source of truth)
+- `public/decapcms/config.yml` - Decap CMS configuration (blog editing only)
 - `src/types.d.ts` - TypeScript definitions
 - `astro.config.ts` - Astro configuration with custom integrations
 - `vitest.config.ts` - Test configuration (requires Vite override)
+
+### Content Management
+
+- **Decap CMS**: Available at `/decapcms` for blog post editing
+- **Business Data**: Managed in `src/config.yaml` under the `business:` section
+- **Site Config**: All site settings in `src/config.yaml` (no separate client.json)
 
 ## Design Principles
 
@@ -230,11 +237,3 @@ For each file in MIGRATION.md audit the following:
 - `text-gray-600 dark:text-gray-400` → `text-muted`
 - `bg-gray-100 dark:bg-gray-700` → `bg-surface`
 - `border-gray-200 dark:border-gray-600` → `border-subtle`
-
-**Phase 4: Cleanup & Validation**
-
-- Remove redundant CSS variables and dark: classes
-- Test theme switching functionality across all components
-- Update documentation and validate design consistency
-
-**Result:** Zero dark: classes in HTML, fully automatic theme switching via CSS variables and @theme directive.

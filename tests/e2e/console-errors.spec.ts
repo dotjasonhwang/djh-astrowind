@@ -35,7 +35,7 @@ test.describe('Console Error Detection', () => {
           /@vite\/client/i, // Vite development messages
         ];
 
-        const isHarmless = harmlessPatterns.some(pattern => pattern.test(text));
+        const isHarmless = harmlessPatterns.some((pattern) => pattern.test(text));
         if (isHarmless) return;
 
         if (msg.type() === 'error') {
@@ -85,15 +85,17 @@ test.describe('Console Error Detection', () => {
     await page.waitForLoadState('networkidle');
 
     // Filter out acceptable resource failures
-    const criticalErrors = resourceErrors.filter(error => {
+    const criticalErrors = resourceErrors.filter((error) => {
       // Skip external resources that might be blocked or unavailable
       const url = error.split(' ')[1];
-      return !url.includes('google-analytics.com') &&
-             !url.includes('googletagmanager.com') &&
-             !url.includes('facebook.com') &&
-             !url.includes('twitter.com') &&
-             !url.includes('linkedin.com') &&
-             !url.includes('instagram.com');
+      return (
+        !url.includes('google-analytics.com') &&
+        !url.includes('googletagmanager.com') &&
+        !url.includes('facebook.com') &&
+        !url.includes('twitter.com') &&
+        !url.includes('linkedin.com') &&
+        !url.includes('instagram.com')
+      );
     });
 
     if (criticalErrors.length > 0) {
@@ -117,7 +119,7 @@ test.describe('Console Error Detection', () => {
     await test.step('Test navigation interactions', async () => {
       // Test mobile menu toggle with proper mobile viewport
       const mobileToggle = page.locator('[data-aw-toggle-menu]');
-      if (await mobileToggle.count() > 0) {
+      if ((await mobileToggle.count()) > 0) {
         // Set mobile viewport to make hamburger menu visible
         await page.setViewportSize({ width: 390, height: 844 });
         await page.waitForTimeout(200); // Let responsive CSS settle
@@ -128,7 +130,7 @@ test.describe('Console Error Detection', () => {
           await mobileToggle.click();
           await page.waitForTimeout(500);
           await mobileToggle.click(); // Close menu
-        } catch (error) {
+        } catch {
           console.log('Mobile toggle not visible, skipping interaction');
         }
 
@@ -139,19 +141,19 @@ test.describe('Console Error Detection', () => {
 
       // Try theme toggle if it exists and is visible
       const themeToggle = page.locator('[data-aw-toggle-color-scheme]');
-      if (await themeToggle.count() > 0) {
+      if ((await themeToggle.count()) > 0) {
         try {
           await themeToggle.waitFor({ state: 'visible', timeout: 3000 });
           await themeToggle.click();
           await page.waitForTimeout(500);
-        } catch (error) {
+        } catch {
           console.log('Theme toggle not visible, skipping interaction');
         }
       }
 
       // Test form interactions if forms exist
       const forms = page.locator('form');
-      if (await forms.count() > 0) {
+      if ((await forms.count()) > 0) {
         const firstForm = forms.first();
         const inputs = firstForm.locator('input, textarea');
         const inputCount = await inputs.count();

@@ -9,30 +9,30 @@
 
 /* Light mode semantic variables */
 :root {
-    --background: white;
-    --foreground: #101010;
-    --muted: rgba(16, 16, 16, 0.66);
-    --surface: rgb(239, 246, 255);
-    --surface-highlighted: white;
-    --surface-elevated: rgb(246, 250, 255);
-    --border-subtle: #e5e7eb;
-    --primary: rgb(1 97 239);
-    --secondary: rgb(1 84 207);
-    --accent: #6d28d9;
+  --background: white;
+  --foreground: #101010;
+  --muted: rgba(16, 16, 16, 0.66);
+  --surface: rgb(239, 246, 255);
+  --surface-highlighted: white;
+  --surface-elevated: rgb(246, 250, 255);
+  --border-subtle: #e5e7eb;
+  --primary: rgb(1 97 239);
+  --secondary: rgb(1 84 207);
+  --accent: #6d28d9;
 }
 
 /* Dark mode semantic variables */
 .dark {
-    --background: #030620;
-    --foreground: #e5ecf6;
-    --muted: rgba(229, 236, 246, 0.66);
-    --surface: #030620;
-    --surface-highlighted: rgb(15, 23, 42);
-    --surface-elevated: #374151;
-    --border-subtle: #4b5563;
-    --primary: #0161ef;
-    --secondary: rgb(191 219 254);
-    --accent: #6d28d9;
+  --background: #030620;
+  --foreground: #e5ecf6;
+  --muted: rgba(229, 236, 246, 0.66);
+  --surface: #030620;
+  --surface-highlighted: rgb(15, 23, 42);
+  --surface-elevated: #374151;
+  --border-subtle: #4b5563;
+  --primary: #0161ef;
+  --secondary: rgb(191 219 254);
+  --accent: #6d28d9;
 }
 
 /* ===========================
@@ -41,43 +41,41 @@
    Register all customizations with Tailwind via @theme directive
 */
 @theme {
-    /* NEW: Semantic color tokens (will replace --aw-color-* system) */
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --color-muted: var(--muted);
-    --color-surface: var(--surface);
-    --color-surface-elevated: var(--surface-elevated);
-    --color-surface-highlighted: var(--surface-highlighted);
-    --color-border-subtle: var(--border-subtle);
-    --color-primary: var(--primary);
-    --color-secondary: var(--secondary);
-    --color-accent: var(--accent);
+  /* NEW: Semantic color tokens (will replace --aw-color-* system) */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-highlighted: var(--surface-highlighted);
+  --color-border-subtle: var(--border-subtle);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
 
-    /* LEGACY: Color mappings for backward compatibility - DELETE AFTER MIGRATION */
-    --color-default: var(--foreground);
+  /* LEGACY: Color mappings for backward compatibility - DELETE AFTER MIGRATION */
+  --color-default: var(--foreground);
 
-    /* Font families (still uses --aw-font-* from CustomStyles.astro) */
-    --font-family-sans: var(--aw-font-sans, ui-sans-serif), system-ui, sans-serif;
-    --font-family-serif: var(--aw-font-serif, ui-serif), serif;
-    --font-family-heading: var(--aw-font-heading, ui-sans-serif), system-ui, sans-serif;
+  /* Font families (still uses --aw-font-* from CustomStyles.astro) */
+  --font-family-sans: var(--aw-font-sans, ui-sans-serif), system-ui, sans-serif;
+  --font-family-serif: var(--aw-font-serif, ui-serif), serif;
+  --font-family-heading: var(--aw-font-heading, ui-sans-serif), system-ui, sans-serif;
 
-    /* Animation */
-    --animate-fade: fadeInUp 1s both;
+  /* Animation */
+  --animate-fade: fadeInUp 1s both;
 
-    /* Animation keyframes */
-    --animate-fadeInUp: {
-        0% {
-            opacity: 0;
-            transform: translateY(2rem);
-        }
-
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
+  /* Animation keyframes */
+  --animate-fadeInUp: {
+    0% {
+      opacity: 0;
+      transform: translateY(2rem);
     }
 
-    ;
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  };
 }
 
 /* ===========================
@@ -91,15 +89,15 @@
 
 /* Animation keyframes */
 @keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(2rem);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /*
@@ -111,14 +109,13 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-
-    *,
-    ::after,
-    ::before,
-    ::backdrop,
-    ::file-selector-button {
-        border-color: var(--color-gray-200, currentColor);
-    }
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
 }
 
 /* ===========================
@@ -129,33 +126,33 @@
 
 /* Background utilities */
 @utility bg-page {
-    background-color: var(--background);
+  background-color: var(--background);
 }
 
 @utility bg-surface {
-    background-color: var(--surface);
+  background-color: var(--surface);
 }
 
 @utility bg-surface-elevated {
-    background-color: var(--surface-elevated);
+  background-color: var(--surface-elevated);
 }
 
 /* Text utilities */
 @utility text-page {
-    color: var(--foreground);
+  color: var(--foreground);
 }
 
 @utility text-foreground {
-    color: var(--foreground);
+  color: var(--foreground);
 }
 
 @utility text-muted {
-    color: var(--muted);
+  color: var(--muted);
 }
 
 /* Border utilities */
 @utility border-subtle {
-    border-color: var(--border-subtle);
+  border-color: var(--border-subtle);
 }
 
 /* ===========================
@@ -164,11 +161,11 @@
    These maintain backward compatibility during migration
 */
 @utility bg-dark {
-    background-color: var(--surface);
+  background-color: var(--surface);
 }
 
 @utility bg-light {
-    background-color: var(--background);
+  background-color: var(--background);
 }
 
 /* ===========================
@@ -178,19 +175,19 @@
    TODO: Replace hardcoded colors with semantic tokens
 */
 @utility btn {
-    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
+  @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
 }
 
 @utility btn-primary {
-    @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
+  @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
 }
 
 @utility btn-secondary {
-    @apply btn;
+  @apply btn;
 }
 
 @utility btn-tertiary {
-    @apply btn border-none shadow-none text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
+  @apply btn border-none shadow-none text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
 }
 
 /* ===========================
@@ -198,15 +195,15 @@
    ===========================
    TODO: Replace hardcoded colors and dark: selectors
 */
-#header.scroll>div:first-child {
-    @apply bg-page md:bg-white/90 md:backdrop-blur-md;
-    box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
+#header.scroll > div:first-child {
+  @apply bg-page md:bg-white/90 md:backdrop-blur-md;
+  box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
 }
 
-.dark #header.scroll>div:first-child,
-#header.scroll.dark>div:first-child {
-    @apply bg-page md:bg-[#030621e6] border-b border-gray-500/20;
-    box-shadow: none;
+.dark #header.scroll > div:first-child,
+#header.scroll.dark > div:first-child {
+  @apply bg-page md:bg-[#030621e6] border-b border-gray-500/20;
+  box-shadow: none;
 }
 
 /* #header.scroll > div:last-child {
@@ -214,38 +211,38 @@
 } */
 
 #header.expanded nav {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    bottom: 70px !important;
-    padding: 0 5px;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 70px !important;
+  padding: 0 5px;
 }
 
 .dropdown:focus .dropdown-menu,
 .dropdown:focus-within .dropdown-menu,
 .dropdown:hover .dropdown-menu {
-    display: block;
+  display: block;
 }
 
-[astro-icon].icon-light>* {
-    stroke-width: 1.2;
+[astro-icon].icon-light > * {
+  stroke-width: 1.2;
 }
 
-[astro-icon].icon-bold>* {
-    stroke-width: 2.4;
+[astro-icon].icon-bold > * {
+  stroke-width: 2.4;
 }
 
 [data-aw-toggle-menu] path {
-    @apply transition;
+  @apply transition;
 }
 
-[data-aw-toggle-menu].expanded g>path:first-child {
-    @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
+[data-aw-toggle-menu].expanded g > path:first-child {
+  @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
 }
 
-[data-aw-toggle-menu].expanded g>path:last-child {
-    @apply rotate-45 translate-y-[-8px] translate-x-[14px];
+[data-aw-toggle-menu].expanded g > path:last-child {
+  @apply rotate-45 translate-y-[-8px] translate-x-[14px];
 }
 
 /* ===========================
@@ -254,5 +251,5 @@
 */
 
 .dd *:first-child {
-    margin-top: 0;
+  margin-top: 0;
 }

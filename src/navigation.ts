@@ -1,5 +1,5 @@
 import { getPermalink, getBlogPermalink } from './utils/permalinks';
-import clientData from './data/client.json';
+import { BUSINESS } from 'astrowind:config';
 
 export const headerData = {
   links: [
@@ -77,14 +77,14 @@ export const footerData = {
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: clientData.socialMedia.twitter },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: clientData.socialMedia.instagram },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: clientData.socialMedia.facebook },
-    ...(clientData.socialMedia.linkedin
-      ? [{ ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: clientData.socialMedia.linkedin }]
+    { ariaLabel: 'X', icon: 'tabler:brand-x', href: BUSINESS.socialMedia?.twitter },
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: BUSINESS.socialMedia?.instagram },
+    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: BUSINESS.socialMedia?.facebook },
+    ...(BUSINESS.socialMedia?.linkedin
+      ? [{ ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: BUSINESS.socialMedia.linkedin }]
       : []),
   ],
   footNote: `
-    © ${new Date().getFullYear()} ${clientData.name}. All rights reserved.
+    © ${new Date().getFullYear()} ${BUSINESS.name}. All rights reserved.
   `,
 };

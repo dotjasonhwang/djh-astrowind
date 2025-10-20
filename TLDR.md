@@ -10,12 +10,11 @@ npm install
 
 **Quick Configuration:**
 
-1. Update `src/config.yaml` with your site info
-2. Update `src/data/client.json` with your business data
-3. Remove unused pages from `src/pages/`
-4. Update `src/navigation.ts` to match your pages
-5. Replace images in `src/assets/` and `public/`
-6. Run `npm run dev` to start development
+1. Update `src/config.yaml` with your site and business info (single source of truth)
+2. Remove unused pages from `src/pages/`
+3. Update `src/navigation.ts` to match your pages
+4. Replace images in `src/assets/` and `public/`
+5. Run `npm run dev` to start development
 
 ## Commands
 
@@ -39,7 +38,9 @@ Tests run automatically on commit/push via git hooks.
 
 ## Content Management (Optional)
 
-Access `/admin` for Decap CMS interface to edit content without code.
+Access `/decapcms` for Decap CMS interface to edit blog content without code.
+
+Business information is managed in `src/config.yaml` under the `business:` section.
 
 ## Deploy
 

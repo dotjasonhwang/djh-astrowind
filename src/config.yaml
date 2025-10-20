@@ -70,3 +70,16 @@ analytics:
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+
+# Business Information
+business:
+  name: 'Your Business Name'
+  email: 'hello@yourbusiness.com'
+  phone:
+    tel: '555-123-4567'
+    formatted: '(555) 123-4567'
+  socialMedia:
+    twitter: 'https://twitter.com/yourbusiness'
+    instagram: 'https://instagram.com/yourbusiness'
+    facebook: 'https://facebook.com/yourbusiness'
+    linkedin: 'https://linkedin.com/company/yourbusiness'
