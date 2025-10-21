@@ -1,33 +1,26 @@
 ---
 import { UI } from 'astrowind:config';
-
-// TODO: This code is temporary
 ---
 
 <script is:inline define:vars={{ defaultTheme: UI.theme || 'system' }}>
-  function applyTheme(theme) {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    const matches = document.querySelectorAll('[data-aw-toggle-color-scheme] > input');
-
-    if (matches && matches.length) {
-      matches.forEach((elem) => {
-        elem.checked = theme !== 'dark';
-      });
-    }
+  // Handle forced themes (dark:only, light:only)
+  if (defaultTheme && defaultTheme.endsWith(':only')) {
+    document.documentElement.classList.toggle('dark', defaultTheme === 'dark:only');
+  } else {
+    // Standard three-way theme support (Tailwind official pattern)
+    // Supports: light mode, dark mode, and system preference
+    document.documentElement.classList.toggle(
+      'dark',
+      localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    );
   }
 
-  if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
-    applyTheme(defaultTheme.replace(':only', ''));
-  } else if (
-    localStorage.theme === 'dark' ||
-    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-  ) {
-    applyTheme('dark');
-  } else {
-    applyTheme('light');
+  // Sync theme toggle switches to match current theme
+  const matches = document.querySelectorAll('[data-aw-toggle-color-scheme] > input');
+  if (matches?.length) {
+    matches.forEach((elem) => {
+      elem.checked = !document.documentElement.classList.contains('dark');
+    });
   }
 </script>
