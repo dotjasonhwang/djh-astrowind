@@ -42,7 +42,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Ast
               <>
                 {index !== 0 ? ' · ' : ''}
                 <a
-                  class="text-muted hover:text-gray-700 hover:underline transition duration-150 ease-in-out"
+                  class="text-muted hover:text-foreground hover:underline transition duration-150 ease-in-out"
                   href={href}
                   set:html={text}
                 />
@@ -54,13 +54,14 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Ast
       {
         links.map(({ title, links }) => (
           <div class="col-span-6 md:col-span-3 lg:col-span-2">
-            <div class="text-foreground font-medium mt-2">{title}</div>
+            {/* use my  */}
+            <div class="text-foreground font-medium my-2">{title}</div>
             {links && Array.isArray(links) && links.length > 0 && (
               <ul class="text-sm">
                 {links.map(({ text, href, ariaLabel }) => (
                   <li class="mt-2 first:mt-0">
                     <a
-                      class="text-muted hover:text-gray-700 hover:underline transition duration-150 ease-in-out"
+                      class="text-muted hover:text-foreground hover:underline transition duration-150 ease-in-out"
                       href={href}
                       aria-label={ariaLabel}
                     >
@@ -81,7 +82,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Ast
             {socialLinks.map(({ ariaLabel, href, text, icon }) => (
               <li>
                 <a
-                  class="text-muted text-muted hover:bg-gray-100 hover:bg-surface-elevated focus:outline-hidden focus:ring-4 focus:ring-gray-200 focus:ring-subtle rounded-lg text-sm p-2.5 inline-flex items-center"
+                  class="text-muted hover:bg-surface-elevated focus:outline-hidden focus:ring-4 focus:ring-subtle rounded-lg text-sm p-2.5 inline-flex items-center"
                   aria-label={ariaLabel}
                   href={href}
                 >
