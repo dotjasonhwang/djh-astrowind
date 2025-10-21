@@ -76,6 +76,16 @@
       transform: translateY(0);
     }
   };
+
+  --animate-skeleton: {
+    0% {
+      background-position: 200% 0;
+    }
+
+    100% {
+      background-position: -200% 0;
+    }
+  };
 }
 
 /* ===========================
@@ -97,6 +107,16 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes skeleton {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
   }
 }
 

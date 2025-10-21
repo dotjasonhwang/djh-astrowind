@@ -223,7 +223,7 @@ import EmbeddedMap from '~/components/widgets/EmbeddedMap.astro';
 <EmbeddedMap />
 
 <!-- Customized map -->
-<EmbeddedMap location="primary" height="400px" showDirections={true} zoom={15} />
+<EmbeddedMap title="Visit Our Office" subtitle="We'd love to see you!" height="500px" zoom={16} showDirections={true} />
 ```
 
 #### Reviews Page

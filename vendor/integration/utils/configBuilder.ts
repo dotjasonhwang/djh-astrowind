@@ -90,6 +90,11 @@ export interface BusinessConfig {
     tel: string;
     formatted: string;
   };
+  location?: {
+    address: string;
+    coordinates: string;
+    placeId?: string;
+  };
   socialMedia?: {
     twitter?: string;
     instagram?: string;

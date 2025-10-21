@@ -78,6 +78,10 @@ business:
   phone:
     tel: '555-123-4567'
     formatted: '(555) 123-4567'
+  location:
+    address: '123 Main Street, San Francisco, CA 94102'
+    coordinates: '37.7749,-122.4194' # lat,lng for San Francisco
+    placeId: '' # Optional: Google Maps Place ID for more accurate embedding
   socialMedia:
     twitter: 'https://twitter.com/yourbusiness'
     instagram: 'https://instagram.com/yourbusiness'
