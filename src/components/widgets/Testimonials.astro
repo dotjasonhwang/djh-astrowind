@@ -27,16 +27,16 @@ const {
         testimonials.map(({ title, testimonial, name, job, image }) => (
           <div class="flex h-auto intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
             <div class="flex flex-col p-4 md:p-6 rounded-md shadow-xl border border-subtle">
-              {title && <h2 class="text-lg font-medium leading-6 pb-4">{title}</h2>}
+              {title && <h2 class="text-lg font-medium leading-6 mb-2">{title}</h2>}
               {testimonial && (
                 <blockquote class="flex-auto">
                   <p class="text-muted">" {testimonial} "</p>
                 </blockquote>
               )}
 
-              <hr class="border-subtle mt-8" />
+              <hr class="border-subtle mt-4" />
 
-              <div class="flex items-center">
+              <div class="flex items-center mt-4">
                 {image && (
                   <div class="h-10 w-10 rounded-full border border-subtle">
                     {typeof image === 'string' ? (
