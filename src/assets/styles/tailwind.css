@@ -1,13 +1,11 @@
 @import 'tailwindcss';
 
 /* ===========================
-   NEW SEMANTIC THEME SYSTEM
+   SEMANTIC THEME SYSTEM
    ===========================
-   This will replace all --aw-color-* variables from CustomStyles.astro
-   after migration is complete.
 */
 
-/* Light mode semantic variables */
+/* Light mode variables */
 :root {
   --background: white;
   --foreground: #101010;
@@ -26,7 +24,7 @@
   --header-scroll-border: transparent;
 }
 
-/* Dark mode semantic variables */
+/* Dark mode variables */
 .dark {
   --background: #030620;
   --foreground: #e5ecf6;
@@ -51,7 +49,7 @@
    Register all customizations with Tailwind via @theme directive
 */
 @theme {
-  /* NEW: Semantic color tokens (will replace --aw-color-* system) */
+  /* Semantic color tokens */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
@@ -156,9 +154,8 @@
 }
 
 /* ===========================
-   NEW SEMANTIC UTILITY CLASSES
+   SEMANTIC UTILITY CLASSES
    ===========================
-   These replace manual dark: classes throughout the codebase
 */
 
 /* Background utilities */
@@ -222,9 +219,11 @@
 }
 
 /* ===========================
-   HEADER SCROLL STYLES
+   COMPONENT STYLES
    ===========================
 */
+
+/* Header */
 #header.scroll > div:first-child {
   @apply bg-page md:backdrop-blur-md border-b;
   background-color: var(--background);
@@ -242,10 +241,6 @@
   }
 }
 
-/* #header.scroll > div:last-child {
-  @apply py-3;
-} */
-
 #header.expanded nav {
   position: fixed;
   top: 70px;
@@ -255,12 +250,14 @@
   padding: 0 5px;
 }
 
+/* Dropdown menus */
 .dropdown:focus .dropdown-menu,
 .dropdown:focus-within .dropdown-menu,
 .dropdown:hover .dropdown-menu {
   display: block;
 }
 
+/* Icons */
 [astro-icon].icon-light > * {
   stroke-width: 1.2;
 }
@@ -269,6 +266,7 @@
   stroke-width: 2.4;
 }
 
+/* Toggle menu animation */
 [data-aw-toggle-menu] path {
   @apply transition;
 }

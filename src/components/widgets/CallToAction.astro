@@ -26,16 +26,7 @@ const {
 
 <WidgetWrapper id={id} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
   <div class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl border-subtle">
-    <Headline
-      title={title}
-      subtitle={subtitle}
-      tagline={tagline}
-      classes={{
-        container: '',
-        title: 'text-4xl md:text-4xl font-bold tracking-tighter font-heading',
-        subtitle: 'text-xl text-muted mt-4',
-      }}
-    />
+    <Headline title={title} subtitle={subtitle} tagline={tagline} />
     {
       actions && (
         <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6">

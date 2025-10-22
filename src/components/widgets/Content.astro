@@ -35,14 +35,13 @@ const {
     tagline={tagline}
     classes={{
       container: 'max-w-xl sm:mx-auto lg:max-w-2xl',
-      title: 'text-4xl md:text-5xl font-bold tracking-tighter font-heading',
-      subtitle: 'max-w-3xl mx-auto sm:text-center text-xl text-muted',
+      subtitle: 'max-w-3xl mx-auto sm:text-center',
     }}
   />
   <div class="mx-auto max-w-7xl p-4 md:px-8 mt-8 md:mt-12">
     <div class={`md:flex ${isReversed ? 'md:flex-row-reverse' : ''} md:gap-16`}>
       <div class="md:basis-1/2">
-        {content && <div class="text-lg text-muted" set:html={content} />}
+        {content && <div class="text-lg text-foreground" set:html={content} />}
 
         {
           callToAction && (
@@ -59,9 +58,9 @@ const {
           classes={{
             container: `gap-y-4 md:gap-y-8`,
             panel: 'max-w-none',
-            title: 'text-lg font-medium leading-6 ml-2',
-            description: 'text-muted ml-2',
-            icon: 'flex h-7 w-7 items-center justify-center rounded-full bg-primary text-on-primary p-1',
+            title: 'text-xl font-medium leading-6 ml-2',
+            description: 'ml-2',
+            icon: 'rounded-full bg-primary text-on-primary p-1',
             action: 'text-lg font-medium leading-6 ml-2',
           }}
         />
