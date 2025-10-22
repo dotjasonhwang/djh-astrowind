@@ -18,7 +18,7 @@ const {
 
 {
   (title || subtitle || tagline) && (
-    <div class={twMerge('md:mx-auto text-center', containerClass)}>
+    <div class={twMerge('md:mx-auto text-center intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade', containerClass)}>
       {tagline && <p class="text-base text-secondary font-bold tracking-wide uppercase" set:html={tagline} />}
       {title && (
         <h2
