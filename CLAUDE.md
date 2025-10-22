@@ -132,16 +132,8 @@ For each file in MIGRATION.md audit the following:
 - ml-4/mr-4: Larger element spacing (navigation, footer links)
 - ml-8: Definition list indentation (DListItem.astro)
 
-**RTL Support Patterns:**
-
-- Inconsistent implementation across components
-- Some use: ml-2 rtl:ml-0 rtl:mr-2
-- Others missing RTL considerations
-- Found in: Logo.astro, Content.astro, SocialShare.astro, Button.astro
-
 **Issues Found:**
 
-- RTL support not universally applied
 - Mixed margin values for similar use cases
 - Some negative margins (-ml-1.5, -mr-1.5) for icon positioning
 
@@ -188,13 +180,11 @@ For each file in MIGRATION.md audit the following:
 
 **Complex Patterns:**
 
-- Steps2.astro: pr-4 sm:pl-4 rtl:pr-0 rtl:pl-4 sm:rtl:pl-0 sm:rtl:pr-4
 - Header.astro: px-3 md:px-6 responsive navigation
 - Dropdown menus: pl-4 md:pl-0 conditional padding
 
 **Issues Found:**
 
-- Steps2 has overly complex RTL padding logic
 - Inconsistent px- values for similar components
 - Some components missing responsive padding
 

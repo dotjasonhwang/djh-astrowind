@@ -29,7 +29,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Ast
 <footer class:list={['relative border-t border-subtle not-prose']}>
   <div class="bg-surface absolute inset-0 pointer-events-none" aria-hidden="true"></div>
   <div
-    class="relative max-w-7xl mx-auto px-4 sm:px-6 text-foreground intersect-once intersect-quarter intersect-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+    class="relative max-w-7xl mx-auto px-4 sm:px-6 intersect-once intersect-quarter intersect-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
   >
     <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
       <div class="col-span-12 lg:col-span-4">
@@ -42,7 +42,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Ast
               <>
                 {index !== 0 ? ' · ' : ''}
                 <a
-                  class="text-muted hover:text-foreground hover:underline transition duration-150 ease-in-out"
+                  class="text-muted hover:hover:underline transition duration-150 ease-in-out"
                   href={href}
                   set:html={text}
                 />
@@ -55,13 +55,13 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Ast
         links.map(({ title, links }) => (
           <div class="col-span-6 md:col-span-3 lg:col-span-2">
             {/* use my  */}
-            <div class="text-foreground font-medium my-2">{title}</div>
+            <div class="font-medium my-2">{title}</div>
             {links && Array.isArray(links) && links.length > 0 && (
               <ul class="text-sm">
                 {links.map(({ text, href, ariaLabel }) => (
                   <li class="mt-2 first:mt-0">
                     <a
-                      class="text-muted hover:text-foreground hover:underline transition duration-150 ease-in-out"
+                      class="text-muted hover:hover:underline transition duration-150 ease-in-out"
                       href={href}
                       aria-label={ariaLabel}
                     >
@@ -78,7 +78,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Ast
     <div class="md:flex md:items-center md:justify-between py-6 md:py-8">
       {
         socialLinks?.length ? (
-          <ul class="flex mt-4 first:mt-0 md:order-1 -ml-2 md:ml-4 md:mt-0 rtl:ml-0 rtl:-mr-2 md:rtl:ml-0 md:rtl:mr-4">
+          <ul class="flex mt-4 first:mt-0 md:order-1 -ml-2 md:ml-4 md:mt-0">
             {socialLinks.map(({ ariaLabel, href, text, icon }) => (
               <li>
                 <a
