@@ -55,7 +55,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
             id="disclaimer"
             name="disclaimer"
             type="checkbox"
-            class="cursor-pointer mt-1 py-3 px-4 block w-full text-md rounded-lg border border-subtle bg-white bg-surface-elevated"
+            class="cursor-pointer mt-1 py-3 px-4 block w-full text-md rounded-lg border border-subtle bg-surface-elevated"
           />
         </div>
         <div class="ml-3">
@@ -69,7 +69,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
 
   {
     button && (
-      <div class="mt-10 grid">
+      <div class="mt-4 flex justify-center">
         <Button variant="primary" type="submit">
           {button}
         </Button>
@@ -79,7 +79,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
 
   {
     description && (
-      <div class="mt-3 text-center">
+      <div class="mt-4 text-center">
         <p class="text-sm text-muted">{description}</p>
       </div>
     )

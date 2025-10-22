@@ -38,7 +38,7 @@ Reference the Principles in [DESIGN_PRINCIPLES.md](DESIGN_PRINCIPLES.md)
 
 - **Code Style**: 2-space indentation, Prettier formatting
 - **TypeScript**: Strict mode enabled, prefer explicit types
-- **Testing**: Unit, accessibility, e2e tests, maintain high coverage
+- **Testing**: Unit tests (Vitest), E2E tests (Playwright), Accessibility tests (Playwright with @axe-core/playwright), maintain high coverage
 - **Commits**: Use conventional commits with pre-commit hooks
 
 ### Formatter Configuration
@@ -58,6 +58,7 @@ Reference the Principles in [DESIGN_PRINCIPLES.md](DESIGN_PRINCIPLES.md)
 - `npm run build` - Production build
 - `npm test` - Run unit tests
 - `npm run test:e2e` - Run Playwright tests
+- `npm run test:a11y` - Run Playwright accessibility tests (includes axe-core WCAG 2.2 AA/AAA scans)
 - `npm run check` - Run all checks (astro + eslint + prettier)
 - `npm run fix` - Auto-fix ESLint and Prettier issues
 

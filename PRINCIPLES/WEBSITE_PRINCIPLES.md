@@ -19,11 +19,13 @@
 
 ### Accessibility First
 
-- WCAG 2.1 AA compliance as minimum standard
+- WCAG 2.2 AA compliance as minimum standard, AAA where feasible
 - Color contrast ratios must meet accessibility requirements
 - All interactive elements must be keyboard accessible
+- Touch targets must meet minimum size requirements (24x24px)
 - Screen reader compatibility for all content
 - Focus indicators must be clearly visible
+- Automated testing: @axe-core/playwright integrated into Playwright tests for comprehensive WCAG AA/AAA validation
 
 ### Performance
 

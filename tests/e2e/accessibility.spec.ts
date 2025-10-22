@@ -1,11 +1,36 @@
 /**
  * Accessibility tests including automated color contrast testing
- * Tests WCAG 2.1 AA compliance requirements
+ * Tests WCAG 2.2 AA/AAA compliance requirements using axe-core
  */
 
 import { test, expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
 
 test.describe('Accessibility Compliance', () => {
+  test('should not have automatically detectable WCAG 2.2 AA/AAA violations', async ({ page }) => {
+    await page.goto('/');
+
+    const accessibilityScanResults = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag2aaa', 'wcag21a', 'wcag21aa', 'wcag21aaa', 'wcag22aa', 'wcag22aaa'])
+      .analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
+
+  test('should not have accessibility violations on key pages', async ({ page }) => {
+    const pages = ['/', '/about', '/services', '/pricing', '/contact'];
+
+    for (const pagePath of pages) {
+      await page.goto(pagePath);
+
+      const accessibilityScanResults = await new AxeBuilder({ page })
+        .withTags(['wcag2a', 'wcag2aa', 'wcag2aaa', 'wcag21a', 'wcag21aa', 'wcag21aaa', 'wcag22aa', 'wcag22aaa'])
+        .analyze();
+
+      expect(accessibilityScanResults.violations, `${pagePath} should have no violations`).toEqual([]);
+    }
+  });
+
   test('should meet WCAG 2.1 AA color contrast requirements', async ({ page }) => {
     await page.goto('/');
 

@@ -29,9 +29,9 @@ npm install
 ## Testing
 
 ```bash
-npm run test          # Unit tests
-npm run test:e2e      # End-to-end tests
-npm run test:a11y     # Accessibility tests
+npm run test          # Unit tests (Vitest)
+npm run test:e2e      # End-to-end tests (Playwright)
+npm run test:a11y     # Accessibility tests (Playwright with axe-core WCAG 2.2 AA/AAA scans)
 ```
 
 Tests run automatically on commit/push via git hooks.

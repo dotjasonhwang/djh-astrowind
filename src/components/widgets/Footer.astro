@@ -42,7 +42,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Ast
               <>
                 {index !== 0 ? ' · ' : ''}
                 <a
-                  class="text-muted hover:hover:underline transition duration-150 ease-in-out"
+                  class="text-muted hover:underline transition duration-150 ease-in-out"
                   href={href}
                   set:html={text}
                 />
@@ -61,7 +61,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Ast
                 {links.map(({ text, href, ariaLabel }) => (
                   <li class="mt-2 first:mt-0">
                     <a
-                      class="text-muted hover:hover:underline transition duration-150 ease-in-out"
+                      class="text-muted hover:underline transition duration-150 ease-in-out"
                       href={href}
                       aria-label={ariaLabel}
                     >
