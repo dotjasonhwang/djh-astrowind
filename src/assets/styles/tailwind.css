@@ -1,3 +1,6 @@
+/* Font imports MUST come before Tailwind CSS import */
+@import '@fontsource-variable/inter';
+
 @import 'tailwindcss';
 
 /* ===========================
@@ -66,10 +69,10 @@
   --color-header-scroll-bg: var(--header-scroll-bg);
   --color-header-scroll-border: var(--header-scroll-border);
 
-  /* Font families (still uses --aw-font-* from CustomStyles.astro) */
-  --font-family-sans: var(--aw-font-sans, ui-sans-serif), system-ui, sans-serif;
-  --font-family-serif: var(--aw-font-serif, ui-serif), serif;
-  --font-family-heading: var(--aw-font-heading, ui-sans-serif), system-ui, sans-serif;
+  /* Font families - Tailwind v4 CSS-first configuration */
+  --font-family-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-family-serif: 'Inter Variable', ui-serif, serif;
+  --font-family-heading: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
 
   /* Animation */
   --animate-fade: fadeInUp 1s both;
@@ -150,6 +153,16 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
+  }
+
+  /* Text selection styles */
+  ::selection {
+    background-color: lavender;
+  }
+
+  .dark ::selection {
+    background-color: black;
+    color: snow;
   }
 }
 
