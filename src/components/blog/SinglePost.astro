@@ -22,8 +22,8 @@ const { post, url } = Astro.props;
   <article>
     <header
       class={post.image
-        ? 'intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade'
-        : 'intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade'}
+        ? 'animate-on-scroll'
+        : 'animate-on-scroll'}
     >
       <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-2 px-4 md:px-6 sm:items-center">
         <p>

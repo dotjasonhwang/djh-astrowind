@@ -31,7 +31,7 @@ const {
         {
           tagline && (
             <p
-              class="text-base text-secondary  font-bold tracking-wide uppercase motion-safe:md:animate-fade"
+              class="text-base text-secondary  font-bold tracking-wide uppercase animate-immediate"
               set:html={tagline}
             />
           )
@@ -39,7 +39,7 @@ const {
         {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mt-4 font-heading motion-safe:md:animate-fade"
+              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mt-4 font-heading animate-immediate"
               set:html={title}
             />
           )
@@ -48,7 +48,7 @@ const {
           {
             subtitle && (
               <p
-                class="text-xl text-muted mt-6 motion-safe:md:animate-fade"
+                class="text-xl text-muted mt-6 animate-immediate"
                 set:html={subtitle}
               />
             )
@@ -56,7 +56,7 @@ const {
 
           {
             actions && (
-              <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6 lg:justify-start lg:m-0 lg:max-w-7xl motion-safe:md:animate-fade">
+              <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6 lg:justify-start lg:m-0 lg:max-w-7xl animate-immediate">
                 {Array.isArray(actions) ? (
                   actions.map((action) => (
                     <div class="flex w-full sm:w-auto">
@@ -75,7 +75,7 @@ const {
       <div class="basis-1/2">
         {
           image && (
-            <div class="relative m-auto max-w-5xl motion-safe:md:animate-fade">
+            <div class="relative m-auto max-w-5xl animate-immediate">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (

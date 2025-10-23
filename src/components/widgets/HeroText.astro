@@ -30,7 +30,7 @@ const {
         {
           tagline && (
             <p
-              class="text-base text-secondary font-bold tracking-wide uppercase motion-safe:md:animate-fade"
+              class="text-base text-secondary font-bold tracking-wide uppercase animate-immediate"
               set:html={tagline}
             />
           )
@@ -38,7 +38,7 @@ const {
         {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter font-heading motion-safe:md:animate-fade"
+              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter font-heading animate-immediate"
               set:html={title}
             />
           )
@@ -47,13 +47,13 @@ const {
           {
             subtitle && (
               <p
-                class="text-xl text-muted mt-4 motion-safe:md:animate-fade"
+                class="text-xl text-muted mt-4 animate-immediate"
                 set:html={subtitle}
               />
             )
           }
           <div
-            class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6 motion-safe:md:animate-fade"
+            class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6 animate-immediate"
           >
             {
               callToAction && (
