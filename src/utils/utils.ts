@@ -51,18 +51,6 @@ export const toUiAmount = (amount: number) => {
   return value;
 };
 
-// Business utility functions for client data
-export const formatTime = (time: string): string => {
-  if (!time) return '';
-  
-  const [hours, minutes] = time.split(':');
-  const hour = parseInt(hours);
-  const period = hour >= 12 ? 'PM' : 'AM';
-  const displayHour = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour;
-  
-  return `${displayHour}:${minutes} ${period}`;
-};
-
 export const getCurrentYear = (): number => {
   return new Date().getFullYear();
 };
@@ -71,50 +59,8 @@ export const formatDate = (date: Date | string): string => {
   const dateObj = typeof date === 'string' ? new Date(date + 'T00:00:00') : date;
   return dateObj.toLocaleDateString('en-US', {
     year: 'numeric',
-    month: 'short', 
+    month: 'short',
     day: 'numeric',
-    timeZone: 'UTC'
+    timeZone: 'UTC',
   });
-};
-
-export const isBusinessOpen = (businessHours: Record<string, { open: string; close: string; closed: boolean }>): boolean => {
-  const now = new Date();
-  const day = now.toLocaleDateString('en-US', { weekday: 'short' }).toLowerCase();
-  const dayMap: { [key: string]: string } = {
-    sun: "sunday",
-    mon: "monday", 
-    tue: "tuesday",
-    wed: "wednesday",
-    thu: "thursday",
-    fri: "friday",
-    sat: "saturday"
-  };
-  
-  const todayHours = businessHours[dayMap[day]];
-  if (!todayHours || todayHours.closed) return false;
-  
-  const currentTime = now.getHours() * 100 + now.getMinutes();
-  const openTime = parseInt(todayHours.open.replace(":", ""));
-  const closeTime = parseInt(todayHours.close.replace(":", ""));
-  
-  return currentTime >= openTime && currentTime <= closeTime;
-};
-
-export const getTodaysHours = (businessHours: Record<string, { open: string; close: string; closed: boolean }>): string => {
-  const now = new Date();
-  const day = now.toLocaleDateString('en-US', { weekday: 'short' }).toLowerCase();
-  const dayMap: { [key: string]: string } = {
-    sun: "sunday",
-    mon: "monday",
-    tue: "tuesday", 
-    wed: "wednesday",
-    thu: "thursday",
-    fri: "friday",
-    sat: "saturday"
-  };
-  
-  const todayHours = businessHours[dayMap[day]];
-  if (!todayHours || todayHours.closed) return 'Closed';
-  
-  return `${formatTime(todayHours.open)} - ${formatTime(todayHours.close)}`;
 };

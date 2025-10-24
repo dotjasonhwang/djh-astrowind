@@ -5,7 +5,6 @@ import { I18N } from 'astrowind:config';
 
 import CommonMeta from '~/components/common/CommonMeta.astro';
 import Favicons from '~/components/Favicons.astro';
-import CustomStyles from '~/components/CustomStyles.astro';
 import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
 import Metadata from '~/components/common/Metadata.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
@@ -30,7 +29,6 @@ const { language, textDirection } = I18N;
   <head>
     <CommonMeta />
     <Favicons />
-    <CustomStyles />
     <ApplyColorMode />
     <Metadata {...metadata} />
     <SiteVerification />

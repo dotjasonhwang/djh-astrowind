@@ -1,197 +1,115 @@
 ---
-/**
- * Embedded Map component for business locations
- * Supports Google Maps embed with directions and mobile-optimized interactions
- */
+import { BUSINESS } from 'astrowind:config';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 
-import client from '~/data/client.json';
+const { id, classes = {}, bg = await Astro.slots.render('bg') } = Astro.props;
 
-interface Props {
-  location?: 'primary' | string; // Location ID from client.json locations array
-  height?: string;
-  showDirections?: boolean;
-  showInfoWindow?: boolean;
-  zoom?: number;
-}
+const location = BUSINESS?.location;
+const zoom = 15;
 
-const { 
-  location = 'primary', 
-  height = '300px',
-  showDirections = true,
-  showInfoWindow = true,
-  zoom = 15
-} = Astro.props;
+// Generate Google Maps URLs
+const getMapEmbedUrl = () => {
+  if (!location) return '';
 
-// Get location data
-function getLocationData() {
-  if (location === 'primary') {
-    // Use main address if no locations array or find primary location
-    const primaryLocation = client.locations?.find(loc => loc.isPrimary);
-    if (primaryLocation) {
-      return {
-        address: primaryLocation.address,
-        name: primaryLocation.name || client.name,
-        phone: primaryLocation.phone || { tel: client.phoneForTel, formatted: client.phoneFormatted },
-        email: primaryLocation.email || client.email
-      };
-    }
-    // Fallback to main client data
-    return {
-      address: client.address,
-      name: client.name,
-      phone: { tel: client.phoneForTel, formatted: client.phoneFormatted },
-      email: client.email
-    };
+  // Use Place ID if available for more accurate embedding
+  if (location.placeId) {
+    return `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=place_id:${location.placeId}&zoom=${zoom}`;
   }
-  
-  // Find specific location by ID
-  const specificLocation = client.locations?.find(loc => loc.id === location);
-  if (specificLocation) {
-    return {
-      address: specificLocation.address,
-      name: specificLocation.name,
-      phone: specificLocation.phone,
-      email: specificLocation.email
-    };
-  }
-  
-  // Fallback to primary
-  return getLocationData();
-}
 
-const locationData = getLocationData();
+  // Fallback to coordinates or address
+  const query = location.coordinates || location.address;
+  return `https://maps.google.com/maps?q=${encodeURIComponent(query)}&t=&z=${zoom}&ie=UTF8&iwloc=&output=embed`;
+};
 
-// Build Google Maps embed URL
-function buildMapsEmbedUrl() {
-  const address = `${locationData.address.lineOne}, ${locationData.address.city}, ${locationData.address.state} ${locationData.address.zip}`;
-  const encodedAddress = encodeURIComponent(address);
-  
-  // Use simple maps URL without API key requirement
-  const simpleUrl = `https://maps.google.com/maps?q=${encodedAddress}&t=&z=${zoom}&ie=UTF8&iwloc=&output=embed`;
-  
-  return simpleUrl;
-}
+const embedUrl = getMapEmbedUrl();
 
-// Build directions URL for mobile
-function buildDirectionsUrl() {
-  const address = `${locationData.address.lineOne}, ${locationData.address.city}, ${locationData.address.state} ${locationData.address.zip}`;
-  const encodedAddress = encodeURIComponent(address);
-  
-  // Use universal maps URL that works on both iOS and Android
-  return `https://maps.google.com/?q=${encodedAddress}&navigate=yes`;
-}
-
-const embedUrl = buildMapsEmbedUrl();
-const directionsUrl = buildDirectionsUrl();
+// Generate unique IDs for accessibility
+const mapId = id || 'embedded-map';
+const regionId = `${mapId}-region`;
 ---
 
-<div class="map-container w-full relative my-6">
-  <div class="map-wrapper relative rounded-lg overflow-hidden shadow-lg" style={`height: ${height}`}>
-    <iframe
-      src={embedUrl}
-      width="100%"
-      height="100%"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      title={`Map location for ${locationData.name}`}
-      class="rounded-lg"
-    ></iframe>
-    
-    {showInfoWindow && (
-      <div class="map-overlay absolute top-4 left-4 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-lg p-4 shadow-lg max-w-[calc(100%-2rem)] lg:static lg:mt-3 lg:bg-white lg:dark:bg-gray-800">
-        <div class="map-info">
-          <h3 class="text-base font-bold mb-2 text-gray-900 dark:text-white">{locationData.name}</h3>
-          <div class="address mb-3">
-            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              {locationData.address.lineOne}<br>
-              {locationData.address.lineTwo && <>{locationData.address.lineTwo}<br></>}
-              {locationData.address.city}, {locationData.address.state} {locationData.address.zip}
-            </p>
-          </div>
-          
-          <div class="contact-actions flex gap-2 flex-wrap">
-            {showDirections && (
-              <a 
-                href={directionsUrl} 
-                class="directions-btn inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-full transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Get directions to our location"
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0">
-                  <path d="M12 2L13.09 6.26L17.64 7.35L13.09 8.44L12 12.7L10.91 8.44L6.36 7.35L10.91 6.26L12 2Z"/>
-                  <path d="M19.5 12.5L18.79 10.44L16.73 11.15L18.79 11.86L19.5 14L20.21 11.86L22.27 11.15L20.21 10.44L19.5 12.5Z"/>
-                </svg>
-                Directions
-              </a>
-            )}
-            
-            {locationData.phone && (
-              <a 
-                href={`tel:${locationData.phone.tel}`}
-                class="call-btn inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-white bg-green-600 hover:bg-green-700 rounded-full transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-                aria-label="Call our business"
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0">
-                  <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
-                </svg>
-                Call
-              </a>
-            )}
-          </div>
-        </div>
-      </div>
-    )}
-  </div>
-</div>
-
-{/* Responsive adjustments */}
 <style>
-  /* Mobile Optimizations */
-  @media (max-width: 768px) {
-    .map-container .map-overlay {
-      position: static;
-      margin-top: 0.75rem;
-      background: white;
-      backdrop-filter: none;
-      max-width: 100%;
-    }
-    
-    .map-container .contact-actions {
-      justify-content: center;
-    }
-    
-    .map-container .directions-btn,
-    .map-container .call-btn {
-      flex: 1;
-      justify-content: center;
-      min-width: 7.5rem;
+  /* Responsive height: 400px mobile, 800px desktop */
+  .map-container {
+    height: 400px;
+  }
+
+  @media (min-width: 768px) {
+    .map-container {
+      height: 800px;
     }
   }
 
-  /* Touch device optimizations */
-  @media (hover: none) and (pointer: coarse) {
-    .map-container .directions-btn,
-    .map-container .call-btn {
-      padding: 0.75rem 1rem;
-      font-size: 0.875rem;
-      min-height: 2.75rem; /* iOS minimum touch target */
-    }
-  }
-
-  /* Dark mode enhancements */
-  :global(.dark) .map-container .map-overlay {
-    background: rgba(31, 41, 55, 0.95);
-  }
-  
-  /* Focus ring adjustments for dark mode */
-  :global(.dark) .map-container .directions-btn:focus {
-    ring-color: rgb(59 130 246);
-  }
-  
-  :global(.dark) .map-container .call-btn:focus {
-    ring-color: rgb(34 197 94);
+  /* Loading skeleton animation */
+  .map-skeleton {
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-muted) 10%, transparent) 25%,
+      color-mix(in srgb, var(--color-muted) 20%, transparent) 50%,
+      color-mix(in srgb, var(--color-muted) 10%, transparent) 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton 1.5s ease-in-out infinite;
   }
 </style>
+
+<script>
+  // Handle iframe loading state
+  document.addEventListener('DOMContentLoaded', () => {
+    const mapIframes = document.querySelectorAll('.map-container iframe');
+
+    mapIframes.forEach((iframe) => {
+      const container = iframe.closest('.map-container');
+      const skeleton = container?.querySelector('.map-skeleton');
+
+      iframe.addEventListener('load', () => {
+        // Fade in iframe
+        iframe.classList.remove('opacity-0');
+        iframe.classList.add('opacity-100');
+
+        // Hide skeleton
+        if (skeleton instanceof HTMLElement) {
+          skeleton.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
+{
+  location && (
+    <WidgetWrapper id={mapId} containerClass={`max-w-6xl ${classes?.container ?? ''}`} bg={bg}>
+      <div
+        class="map-container relative overflow-hidden rounded-lg shadow-lg focus-within:outline-2 focus-within:outline-primary focus-within:outline-offset-2"
+        role="region"
+        aria-label={`Interactive map showing ${BUSINESS.name} at ${location.address}`}
+        id={regionId}
+      >
+        {/* Loading skeleton - visible until iframe loads */}
+        <div class="map-skeleton absolute inset-0 flex items-center justify-center" aria-hidden="true">
+          <div class="text-muted text-sm">Loading map...</div>
+        </div>
+
+        <iframe
+          src={embedUrl}
+          width="100%"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title={`Interactive map showing ${BUSINESS.name} location at ${location.address}`}
+          aria-describedby={`${mapId}-address`}
+          tabindex="0"
+          class="w-full h-full opacity-0 transition-opacity duration-300 ease-out"
+        />
+      </div>
+    </WidgetWrapper>
+  )
+}
+
+{
+  !location && (
+    <div class="text-center p-8 text-muted" role="alert" aria-live="polite">
+      <p>Location information not configured. Please add location details to your config.yaml file.</p>
+    </div>
+  )
+}

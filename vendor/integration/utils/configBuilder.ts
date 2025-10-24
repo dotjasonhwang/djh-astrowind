@@ -11,6 +11,7 @@ export type Config = {
   };
   ui?: unknown;
   analytics?: unknown;
+  business?: BusinessConfig;
 };
 
 export interface SiteConfig {
@@ -80,6 +81,26 @@ export interface AnalyticsConfig {
 
 export interface UIConfig {
   theme: string;
+}
+
+export interface BusinessConfig {
+  name: string;
+  email?: string;
+  phone?: {
+    tel: string;
+    formatted: string;
+  };
+  location?: {
+    address: string;
+    coordinates: string;
+    placeId?: string;
+  };
+  socialMedia?: {
+    twitter?: string;
+    instagram?: string;
+    facebook?: string;
+    linkedin?: string;
+  };
 }
 
 const DEFAULT_SITE_NAME = 'Website';
@@ -193,6 +214,17 @@ const getAnalytics = (config: Config) => {
   return merge({}, _default, config?.analytics ?? {}) as AnalyticsConfig;
 };
 
+const getBusiness = (config: Config) => {
+  const _default = {
+    name: 'Your Business',
+    email: undefined,
+    phone: undefined,
+    socialMedia: {},
+  };
+
+  return merge({}, _default, config?.business ?? {}) as BusinessConfig;
+};
+
 export default (config: Config) => ({
   SITE: getSite(config),
   I18N: getI18N(config),
@@ -200,4 +232,5 @@ export default (config: Config) => ({
   APP_BLOG: getAppBlog(config),
   UI: getUI(config),
   ANALYTICS: getAnalytics(config),
+  BUSINESS: getBusiness(config),
 });

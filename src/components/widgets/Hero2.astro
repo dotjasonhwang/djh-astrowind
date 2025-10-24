@@ -24,14 +24,14 @@ const {
       {bg ? <Fragment set:html={bg} /> : null}
     </slot>
   </div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+  <div class="relative max-w-7xl mx-auto px-4 md:px-6">
     <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
     <div class="py-12 md:py-20 lg:py-0 lg:flex lg:items-center lg:h-screen lg:gap-8">
       <div class="basis-1/2 text-center lg:text-left pb-10 md:pb-16 mx-auto">
         {
           tagline && (
             <p
-              class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter"
+              class="text-base text-secondary  font-bold tracking-wide uppercase animate-immediate"
               set:html={tagline}
             />
           )
@@ -39,7 +39,7 @@ const {
         {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter"
+              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mt-4 font-heading animate-immediate"
               set:html={title}
             />
           )
@@ -48,7 +48,7 @@ const {
           {
             subtitle && (
               <p
-                class="text-xl text-muted mb-6 dark:text-slate-300 intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter"
+                class="text-xl text-muted mt-6 animate-immediate"
                 set:html={subtitle}
               />
             )
@@ -56,11 +56,11 @@ const {
 
           {
             actions && (
-              <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 lg:justify-start lg:m-0 lg:max-w-7xl intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
+              <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6 lg:justify-start lg:m-0 lg:max-w-7xl animate-immediate">
                 {Array.isArray(actions) ? (
                   actions.map((action) => (
                     <div class="flex w-full sm:w-auto">
-                      <Button {...(action || {})} class="w-full sm:mb-0" />
+                      <Button {...(action || {})} class="w-full sm:mt-0" />
                     </div>
                   ))
                 ) : (
@@ -75,7 +75,7 @@ const {
       <div class="basis-1/2">
         {
           image && (
-            <div class="relative m-auto max-w-5xl intersect-once intersect-no-queue motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
+            <div class="relative m-auto max-w-5xl animate-immediate">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (

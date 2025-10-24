@@ -162,84 +162,49 @@ import { UI } from 'astrowind:config';
 </script>
 
 <script is:inline>
-  /* Inspired by: https://github.com/heidkaemper/tailwindcss-intersect */
+  /* Simple 3-class animation system: animate-immediate, animate-on-scroll, animate-together */
   const Observer = {
     observer: null,
     delayBetweenAnimations: 100,
-    animationCounter: 0,
+    sectionCounters: new Map(),
 
     start() {
-      const selectors = [
-        '[class*=" intersect:"]',
-        '[class*=":intersect:"]',
-        '[class^="intersect:"]',
-        '[class="intersect"]',
-        '[class*=" intersect "]',
-        '[class^="intersect "]',
-        '[class$=" intersect"]',
-      ];
-
-      const elements = Array.from(document.querySelectorAll(selectors.join(',')));
-
-      const getThreshold = (element) => {
-        if (element.classList.contains('intersect-full')) return 0.99;
-        if (element.classList.contains('intersect-half')) return 0.5;
-        if (element.classList.contains('intersect-quarter')) return 0.25;
-        return 0;
-      };
-
-      elements.forEach((el) => {
-        el.setAttribute('no-intersect', '');
-        el._intersectionThreshold = getThreshold(el);
-      });
+      // Select elements with animate-on-scroll or animate-together classes
+      const elements = Array.from(document.querySelectorAll('.animate-on-scroll, .animate-together'));
 
       const callback = (entries) => {
         entries.forEach((entry) => {
           requestAnimationFrame(() => {
             const target = entry.target;
-            const intersectionRatio = entry.intersectionRatio;
-            const threshold = target._intersectionThreshold;
+            const noStagger = target.classList.contains('animate-together');
 
-            if (target.classList.contains('intersect-no-queue')) {
-              if (entry.isIntersecting) {
-                target.removeAttribute('no-intersect');
-                if (target.classList.contains('intersect-once')) {
-                  this.observer.unobserve(target);
+            // Fixed threshold of 0.25 (25% visibility)
+            if (entry.intersectionRatio >= 0.25) {
+              if (!target.hasAttribute('data-visible')) {
+                target.setAttribute('data-visible', 'true');
+
+                // Apply stagger delay only for animate-on-scroll
+                if (!noStagger) {
+                  // Find parent container to group stagger animations
+                  const parent = target.parentElement;
+                  if (!this.sectionCounters.has(parent)) {
+                    this.sectionCounters.set(parent, 0);
+                  }
+                  const counter = this.sectionCounters.get(parent);
+                  const delay = counter * this.delayBetweenAnimations;
+                  this.sectionCounters.set(parent, counter + 1);
+                  target.style.animationDelay = `${delay}ms`;
                 }
-              } else {
-                target.setAttribute('no-intersect', '');
+
+                // Always "once" - unobserve after animation triggers
+                this.observer.unobserve(target);
               }
-              return;
-            }
-
-            if (intersectionRatio >= threshold) {
-              if (!target.hasAttribute('data-animated')) {
-                target.removeAttribute('no-intersect');
-                target.setAttribute('data-animated', 'true');
-
-                const delay = this.animationCounter * this.delayBetweenAnimations;
-                this.animationCounter++;
-
-                target.style.transitionDelay = `${delay}ms`;
-                target.style.animationDelay = `${delay}ms`;
-
-                if (target.classList.contains('intersect-once')) {
-                  this.observer.unobserve(target);
-                }
-              }
-            } else {
-              target.setAttribute('no-intersect', '');
-              target.removeAttribute('data-animated');
-              target.style.transitionDelay = '';
-              target.style.animationDelay = '';
-
-              this.animationCounter = 0;
             }
           });
         });
       };
 
-      this.observer = new IntersectionObserver(callback.bind(this), { threshold: [0, 0.25, 0.5, 0.99] });
+      this.observer = new IntersectionObserver(callback.bind(this), { threshold: [0.25] });
 
       elements.forEach((el) => {
         this.observer.observe(el);

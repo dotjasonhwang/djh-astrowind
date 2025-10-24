@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
+import heroImage from '~/assets/images/hero-image.png';
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
@@ -30,17 +30,17 @@ const metadata = {
       },
       { text: 'Our Services', href: '/services' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'Professional Services Hero Image' }}
+    image={{ src: heroImage, alt: 'Professional Services Hero Image' }}
   >
     <Fragment slot="title">
-      Professional <span class="text-accent dark:text-white">Business Solutions</span> for Your Success
+      Professional <span class="text-accent">Business Solutions</span> for Your Success
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
         We deliver <span class="font-semibold">exceptional results</span> through innovative strategies and expert execution.</span
       >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">Results-driven solutions.</span>
+      <span class="block mt-1 sm:hidden font-bold text-primary">Results-driven solutions.</span>
       Helping businesses grow with custom services, proven methodologies, and dedicated support tailored to your unique needs.
     </Fragment>
   </Hero>
@@ -59,20 +59,17 @@ const metadata = {
     items={[
       {
         title: 'Service 1',
-        description:
-          'Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.',
+        description: 'Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.',
         icon: 'tabler:settings',
       },
       {
         title: 'Service 2',
-        description:
-          'Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.',
+        description: 'Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.',
         icon: 'tabler:bulb',
       },
       {
         title: 'Service 3',
-        description:
-          'Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.',
+        description: 'Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.',
         icon: 'tabler:rocket',
       },
     ]}
@@ -107,17 +104,18 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building lasting partnerships</h3>
-      We believe in creating long-term relationships with our clients through trust, transparency, and exceptional service delivery.
+      <h3 class="text-xl font-bold tracking-tight mt-2">Building lasting partnerships</h3>
+      We believe in creating long-term relationships with our clients through trust, transparency, and exceptional service
+      delivery.
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-surface"></div>
     </Fragment>
   </Content>
 
   <!-- Portfolio/Projects Preview ******* -->
-  
+
   <Features2
     title="Our Portfolio"
     subtitle="See examples of our recent work and successful project deliveries"
@@ -141,7 +139,7 @@ const metadata = {
     ]}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-surface"></div>
     </Fragment>
   </Features2>
 
@@ -224,7 +222,9 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      Join hundreds of satisfied clients who have achieved their goals with our expert services. <br class="hidden md:inline" />Contact us today for a free consultation.
+      Join hundreds of satisfied clients who have achieved their goals with our expert services. <br
+        class="hidden md:inline"
+      />Contact us today for a free consultation.
     </Fragment>
   </CallToAction>
 </Layout>

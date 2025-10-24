@@ -13,28 +13,36 @@ const {
   ...rest
 } = Astro.props;
 
+// Base button styles
+const baseStyles = 'inline-flex items-center justify-center rounded-full border-subtle border bg-transparent font-medium text-center text-base text-foreground leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-primary focus:ring-offset-background focus:ring-2 focus:ring-offset-2 hover:bg-surface-elevated hover:border-muted cursor-pointer';
+
+// Variant styles - all button variants with complete styling
 const variants = {
-  primary: 'btn-primary',
-  secondary: 'btn-secondary',
-  tertiary: 'btn btn-tertiary',
+  primary: 'inline-flex items-center justify-center rounded-full font-semibold font-medium text-center text-base leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-primary focus:ring-offset-background focus:ring-2 focus:ring-offset-2 cursor-pointer bg-primary text-white border-primary border hover:bg-primary-bold hover:border-primary-bold',
+  secondary: baseStyles,
+  tertiary: 'inline-flex items-center justify-center rounded-full bg-transparent font-medium text-center text-base text-muted leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-primary focus:ring-offset-background focus:ring-2 focus:ring-offset-2 hover:text-foreground cursor-pointer border-none shadow-none',
   link: 'cursor-pointer hover:text-primary',
 };
 ---
 
 {
-  type === 'button' || type === 'submit' || type === 'reset' ? (
-    <button type={type} class={twMerge(variants[variant] || '', className)} {...rest}>
+  type ? (
+    <button
+      type={type}
+      class={twMerge('grid grid-flow-col auto-cols-max items-center gap-1', variants[variant] || variants.secondary, className)}
+      {...rest}
+    >
       <Fragment set:html={text} />
-      {icon && <Icon name={icon} class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" />}
+      {icon && <Icon name={icon} class="w-5 h-5" />}
     </button>
   ) : (
     <a
-      class={twMerge(variants[variant] || '', className)}
+      class={twMerge('grid grid-flow-col auto-cols-max items-center gap-1', variants[variant] || variants.secondary, className)}
       {...(target ? { target: target, rel: 'noopener noreferrer' } : {})}
       {...rest}
     >
       <Fragment set:html={text} />
-      {icon && <Icon name={icon} class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" />}
+      {icon && <Icon name={icon} class="w-5 h-5" />}
     </a>
   )
 }

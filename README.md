@@ -37,6 +37,7 @@
 
 - [Demo](#demo)
 - [Upcoming: AstroWind 2.0 – We Need Your Vision!](#-upcoming-astrowind-20--we-need-your-vision)
+- [Notes](#notes)
 - [TL;DR](#tldr)
 - [Getting started](#getting-started)
   - [Project structure](#project-structure)
@@ -70,6 +71,11 @@ We're embarking on an exciting journey with **AstroWind 2.0**, and we want you t
 
 <br>
 
+## Notes
+
+- **Vite Override**: Added `"vite": "6.0.2"` override in `package.json` to fix Vitest+Vite 6 compatibility issues with `vitest.config.ts`. See [astro/issues/12662](https://github.com/withastro/astro/issues/12662) for details.
+
+<br>
 
 ## TL;DR
 
@@ -90,9 +96,9 @@ Inside **AstroWind** template, you'll see the following folders and files:
 ```
 /
 ├── public/
-│   ├── admin/                 # CMS configuration
+│   ├── decapcms/              # Decap CMS configuration (blog editing)
 │   │   ├── config.yml
-│   │   └── decap-preview-styles.css
+│   │   └── index.html
 │   ├── _headers
 │   └── robots.txt
 ├── src/
@@ -104,11 +110,8 @@ Inside **AstroWind** template, you'll see the following folders and files:
 │   ├── components/
 │   │   ├── blog/
 │   │   ├── common/
-│   │   │   ├── AnalyticsInit.astro  # Enhanced analytics
-│   │   │   └── ...
 │   │   ├── ui/
 │   │   ├── widgets/
-│   │   │   ├── BusinessHours.astro  # Business hours display
 │   │   │   ├── EmbeddedMap.astro    # Google Maps integration
 │   │   │   ├── Header.astro
 │   │   │   └── ...
@@ -121,8 +124,6 @@ Inside **AstroWind** template, you'll see the following folders and files:
 │   │   │   ├── post-slug-2.mdx
 │   │   │   └── ...
 │   │   └-- config.ts
-│   ├── data/
-│   │   └── client.json          # Centralized business data
 │   ├── layouts/
 │   │   ├── Layout.astro
 │   │   ├── MarkdownLayout.astro
@@ -133,15 +134,15 @@ Inside **AstroWind** template, you'll see the following folders and files:
 │   │   │   ├── [tag]/
 │   │   │   ├── [...page].astro
 │   │   │   └── index.astro
-│   │   ├── admin.astro          # CMS admin interface
+│   │   ├── decapcms.astro       # CMS admin interface (blog editing)
 │   │   ├── reviews.astro        # Customer testimonials
 │   │   ├── index.astro
 │   │   ├── 404.astro
 │   │   ├-- rss.xml.ts
 │   │   └── ...
 │   ├── utils/
-│   │   └── utils.ts             # Business utility functions
-│   ├── config.yaml
+│   │   └── utils.ts             # Utility functions
+│   ├── config.yaml              # Site + business configuration (single source of truth)
 │   └── navigation.js
 ├── tests/                       # Testing framework
 │   ├── e2e/
@@ -196,7 +197,9 @@ npx playwright install
 ```
 
 #### Git Hooks
+
 Automated quality checks run on every commit and push:
+
 - **Pre-commit**: Runs unit tests and build verification
 - **Pre-push**: Runs unit tests before pushing to remote
 - **GitHub Actions**: Full test suite including e2e and accessibility tests
@@ -207,22 +210,8 @@ Automated quality checks run on every commit and push:
 
 AstroWind includes specialized components for business websites:
 
-#### BusinessHours Component
-Displays current business status (open/closed) and weekly hours schedule.
-
-```astro
----
-import BusinessHours from '~/components/widgets/BusinessHours.astro';
----
-
-<!-- Show compact status only -->
-<BusinessHours compact={true} />
-
-<!-- Show full hours schedule -->  
-<BusinessHours showStatus={true} />
-```
-
 #### EmbeddedMap Component
+
 Google Maps integration with directions and contact actions.
 
 ```astro
@@ -234,15 +223,11 @@ import EmbeddedMap from '~/components/widgets/EmbeddedMap.astro';
 <EmbeddedMap />
 
 <!-- Customized map -->
-<EmbeddedMap 
-  location="primary" 
-  height="400px" 
-  showDirections={true}
-  zoom={15} 
-/>
+<EmbeddedMap title="Visit Our Office" subtitle="We'd love to see you!" height="500px" zoom={16} showDirections={true} />
 ```
 
 #### Reviews Page
+
 Customer testimonials with responsive design and statistics.
 
 Access at `/reviews` - includes sample testimonials and business statistics.
@@ -251,44 +236,43 @@ Access at `/reviews` - includes sample testimonials and business statistics.
 
 ### Content Management
 
-AstroWind includes Decap CMS for easy content management without technical knowledge.
+AstroWind includes Decap CMS for blog content management.
 
 #### CMS Setup
 
-1. **Admin Interface**: Visit `/admin` to access the content management system
-2. **Configuration**: Located in `public/admin/config.yml`  
-3. **Authentication**: Configure with Netlify Identity, GitHub, or other providers
+1. **Admin Interface**: Visit `/decapcms` to access the content management system
+2. **Configuration**: Located in `public/decapcms/config.yml`
+3. **Authentication**: Configure with Netlify Identity or DecapBridge
 
 #### Editable Content
 
 - Blog posts and pages
-- Business information (hours, contact, services)
-- Team member profiles
-- Social media links
-- Company details
+- Post metadata (title, description, tags, categories)
+- Featured images
 
 #### Business Data
 
-Centralized business information in `src/data/client.json`:
+Business information is managed in `src/config.yaml` under the `business:` section:
 
-```json
-{
-  "name": "Your Business Name",
-  "email": "contact@business.com", 
-  "businessHours": {
-    "monday": { "open": "09:00", "close": "17:00", "closed": false }
-  },
-  "services": [...],
-  "team": [...],
-  "locations": [...]
-}
+```yaml
+business:
+  name: 'Your Business Name'
+  email: 'hello@yourbusiness.com'
+  phone:
+    tel: '555-123-4567'
+    formatted: '(555) 123-4567'
+  socialMedia:
+    twitter: 'https://twitter.com/yourbusiness'
+    instagram: 'https://instagram.com/yourbusiness'
+    facebook: 'https://facebook.com/yourbusiness'
+    linkedin: 'https://linkedin.com/company/yourbusiness'
 ```
 
 <br>
 
 ### Configuration
 
-Basic configuration file: `./src/config.yaml`
+All site and business configuration is centralized in `./src/config.yaml`
 
 ```yaml
 site:
@@ -361,13 +345,18 @@ analytics:
     googleAnalytics:
       id: null # or "G-XXXXXXXXXX"
 
-# Enhanced Analytics (business event tracking)  
-# Configure in src/data/client.json:
-# - Phone call click tracking
-# - Email click tracking  
-# - Form submission tracking
-# - Directions click tracking
-# - Core Web Vitals monitoring
+# Business information
+business:
+  name: 'Your Business Name'
+  email: 'hello@yourbusiness.com'
+  phone:
+    tel: '555-123-4567'
+    formatted: '(555) 123-4567'
+  socialMedia:
+    twitter: 'https://twitter.com/yourbusiness'
+    instagram: 'https://instagram.com/yourbusiness'
+    facebook: 'https://facebook.com/yourbusiness'
+    linkedin: 'https://linkedin.com/company/yourbusiness'
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
@@ -436,11 +425,10 @@ Initially created by **Arthelokyo** and maintained by a community of [contributo
 
 This version includes additional business-focused features:
 
-- **Business Components**: Business Hours, Google Maps, Reviews page
-- **Content Management**: CMS integration for easy content editing  
-- **Enhanced Analytics**: Business event tracking
+- **Business Components**: Google Maps integration, Reviews page
+- **Content Management**: Decap CMS for blog editing
 - **Testing**: Quality assurance and accessibility compliance
-- **Centralized Data**: Business information in `client.json`
+- **Centralized Configuration**: All site and business data in `config.yaml`
 
 ## License
 

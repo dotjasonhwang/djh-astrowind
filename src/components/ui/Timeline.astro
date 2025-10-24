@@ -16,22 +16,22 @@ const {
   panel: panelClass = '',
   title: titleClass = '',
   description: descriptionClass = '',
-  icon: defaultIconClass = 'text-primary dark:text-slate-200 border-primary dark:border-blue-700',
+  icon: defaultIconClass = 'text-primary border-primary border-primary',
 } = classes;
 ---
 
 {
   items && items.length > 0 && (
-    <div class={containerClass}>
+    <div class={twMerge(`mt-8 md:mt-12`, containerClass)}>
       {items.map(({ title, description, icon, classes: itemClasses = {} }, index = 0) => (
         <div
           class={twMerge(
-            'flex intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade',
+            'flex animate-on-scroll',
             panelClass,
             itemClasses?.panel
           )}
         >
-          <div class="flex flex-col items-center mr-4 rtl:mr-0 rtl:ml-4">
+          <div class="flex flex-col items-center mr-4">
             <div>
               <div class="flex items-center justify-center">
                 {(icon || defaultIcon) && (
@@ -42,7 +42,7 @@ const {
                 )}
               </div>
             </div>
-            {index !== items.length - 1 && <div class="w-px h-full bg-black/10 dark:bg-slate-400/50" />}
+            {index !== items.length - 1 && <div class="w-px h-full bg-black/10 bg-surface-elevated" />}
           </div>
           <div class={`pt-1 ${index !== items.length - 1 ? 'pb-8' : ''}`}>
             {title && <p class={twMerge('text-xl font-bold', titleClass, itemClasses?.title)} set:html={title} />}
