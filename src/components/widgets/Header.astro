@@ -46,7 +46,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 <header
   class:list={[
     { sticky: isSticky, relative: !isSticky },
-    'top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out',
+    'top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-slow',
   ]}
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
@@ -89,7 +89,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                   <button type="button" class="px-4 py-3 flex items-center whitespace-nowrap">
                     {text} <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 hidden md:inline" />
                   </button>
-                  <ul class="dropdown-menu bg-page md:bg-page/90 md:backdrop-blur-md rounded-sm md:absolute pl-4 md:pl-0 md:hidden font-medium md:min-w-[200px] drop-shadow-xl">
+                  <ul class="dropdown-menu bg-background md:bg-background/90 md:backdrop-blur-md md:rounded-sm md:absolute pl-4 md:pl-0 md:hidden font-medium md:min-w-[200px] md:drop-shadow-xl">
                     {links.map(({ text: text2, href: href2 }) => (
                       <li>
                         <a
@@ -146,3 +146,41 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     </div>
   </div>
 </header>
+
+<style>
+  /* Header scroll styles */
+  header.scroll > div:first-child {
+    background-color: var(--background);
+    border-bottom-width: 1px;
+    border-color: var(--header-scroll-border);
+  }
+
+  @media (min-width: 768px) {
+    header.scroll > div:first-child {
+      background-color: var(--header-scroll-bg);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
+    }
+
+    :global(.dark) header.scroll > div:first-child {
+      box-shadow: none;
+    }
+  }
+
+  /* Header expanded navigation */
+  header.expanded nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 70px !important;
+    padding: 0 5px;
+  }
+
+  /* Dropdown menu */
+  :global(.dropdown:focus .dropdown-menu),
+  :global(.dropdown:focus-within .dropdown-menu),
+  :global(.dropdown:hover .dropdown-menu) {
+    display: block;
+  }
+</style>
