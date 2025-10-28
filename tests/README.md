@@ -31,17 +31,23 @@ npm run test:coverage
 # Install Playwright browsers (first time only)
 npm run playwright:install
 
-# Run e2e tests
+# Run e2e tests (chromium only - fast)
 npm run test:e2e
+
+# Run e2e tests on all browsers
+npm run test:e2e:full
 
 # Run e2e tests with UI
 npm run test:e2e:ui
 
-# Run accessibility tests specifically
-npm run test:accessibility
+# Run accessibility tests (chromium only)
+npm run test:a11y
 
-# Run all tests (unit + e2e)
+# Run all tests (unit + e2e chromium)
 npm run test:all
+
+# Full test suite for CI (all browsers)
+npm run test:ci
 ```
 
 ## Test Categories
@@ -55,20 +61,25 @@ npm run test:all
 ### E2E Tests
 
 - **Homepage Tests**: Navigation, hero section, responsiveness
-- **Accessibility Tests**: WCAG compliance, keyboard navigation, color contrast
+- **Accessibility Tests**: Automated WCAG 2.2 AA compliance using axe-core
 - **Navigation Tests**: Menu functionality, routing
 
 ### Accessibility Testing
 
-Our accessibility tests check for:
+Our accessibility tests use **axe-core** (via @axe-core/playwright) to automatically scan for 90+ accessibility issues including:
 
-- WCAG 2.1 AA color contrast compliance
-- Keyboard navigation support
-- Proper focus indicators
-- Form accessibility
+- Color contrast compliance (WCAG 2.2 AA)
+- Keyboard navigation and focus management
+- Form accessibility (labels, ARIA attributes)
 - Image alt text
-- Heading structure
+- Heading structure and hierarchy
+- Landmark roles and page structure
 - Screen reader compatibility
+- ARIA usage and implementation
+
+Tests run in both **light and dark modes** across 5 key pages (`/`, `/about`, `/services`, `/pricing`, `/contact`).
+
+**Note**: AAA standards are aspirational but not enforced.
 
 ## Writing Tests
 

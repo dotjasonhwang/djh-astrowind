@@ -30,9 +30,14 @@ npm install
 
 ```bash
 npm run test          # Unit tests (Vitest)
-npm run test:e2e      # End-to-end tests (Playwright)
-npm run test:a11y     # Accessibility tests (Playwright with axe-core WCAG 2.2 AA/AAA scans)
+npm run test:e2e      # E2E tests (Playwright, chromium only)
+npm run test:e2e:full # E2E tests (all browsers)
+npm run test:a11y     # Accessibility tests (axe-core, WCAG 2.2 AA, light + dark modes, 5 pages)
+npm run test:all      # Unit + E2E (chromium)
+npm run test:ci       # Full suite for CI
 ```
+
+**Accessibility Testing**: Uses axe-core to automatically scan for 90+ WCAG 2.2 AA violations including color contrast, keyboard navigation, form accessibility, and more.
 
 Tests run automatically on commit/push via git hooks.
 
