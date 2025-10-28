@@ -27,7 +27,7 @@ export interface Props {
   isSticky?: boolean;
   isFullWidth?: boolean;
   showToggleTheme?: boolean;
-  position?: string;
+  position?: 'left' | 'center' | 'right';
 }
 
 const {
@@ -68,7 +68,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     ]}
   >
     <div class:list={[{ 'mr-auto': position === 'right' }, 'flex justify-between order-0 md:order-none']}>
-      <a class="flex items-center" href={getHomePermalink()}>
+      <a class="flex items-center" href={getHomePermalink()} aria-label="Go to homepage">
         <Logo />
       </a>
       <div class="flex items-center md:hidden">
@@ -87,7 +87,12 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
             <li class={links?.length ? 'dropdown' : ''}>
               {links?.length ? (
                 <>
-                  <button type="button" class="px-4 py-3 flex items-center whitespace-nowrap">
+                  <button
+                    type="button"
+                    class="px-4 py-3 flex items-center whitespace-nowrap"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
                     {text} <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 hidden md:inline" />
                   </button>
                   <ul class="dropdown-menu bg-background md:bg-background/90 md:backdrop-blur-md md:rounded-sm md:absolute pl-4 md:pl-0 md:hidden font-medium md:min-w-[200px] md:drop-shadow-xl">
@@ -122,34 +127,37 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         }
       </ul>
     </nav>
-    <div
+    <nav
       class:list={[
         { 'ml-auto': position === 'left' },
         'hidden md:self-center md:flex items-center w-full md:w-auto justify-end p-3 md:p-0 md:justify-self-end',
         'order-1 md:order-none',
       ]}
+      aria-label="Header actions"
     >
       <div class="items-center flex justify-between w-full md:w-auto">
         <div class="flex">
           {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
         </div>
         {
-          actions?.length ? (
+          actions?.length && (
             <span class="ml-4">
               {actions.map((btnProps) => (
-                <Button {...btnProps} class="ml-2 py-2.5 px-4 md:px-6 font-semibold text-sm w-auto" />
+                <Button variant="primary" {...btnProps} class="ml-2 py-2.5 px-4 md:px-6 font-semibold text-sm w-auto" />
               ))}
             </span>
-          ) : (
-            ''
           )
         }
       </div>
-    </div>
+    </nav>
   </div>
 </header>
 
 <style>
+  :root {
+    --header-height: 70px;
+  }
+
   /* Header scroll styles */
   header.scroll > div:first-child {
     background-color: var(--background);
@@ -157,6 +165,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     border-color: var(--header-scroll-border);
   }
 
+  /* Desktop-specific styles */
   @media (min-width: 768px) {
     header.scroll > div:first-child {
       background-color: var(--header-scroll-bg);
@@ -170,20 +179,21 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
   }
 
   /* Header expanded navigation */
-  header.expanded nav {
+  header.expanded nav[aria-label='Main navigation'] {
     position: fixed;
-    top: 70px;
+    top: var(--header-height);
     left: 0;
     right: 0;
     bottom: 0;
     padding: 0 5px;
-    padding-top: 70px; /* Space for action buttons */
+    padding-top: var(--header-height); /* Space for action buttons */
+    will-change: transform; /* Better animation performance on mobile */
   }
 
   /* Position action buttons at top of expanded menu */
-  header.expanded nav ~ div {
+  header.expanded nav[aria-label='Header actions'] {
     position: fixed;
-    top: 70px;
+    top: var(--header-height);
     left: 0;
     right: 0;
     z-index: 50;
