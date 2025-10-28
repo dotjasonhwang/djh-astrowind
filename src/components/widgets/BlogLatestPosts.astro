@@ -25,7 +25,6 @@ const {
   count = 4,
 
   id,
-  classes = {},
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
 
@@ -34,7 +33,7 @@ const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
 
 {
   APP_BLOG.isEnabled ? (
-    <WidgetWrapper id={id} containerClass={classes?.container as string} bg={bg}>
+    <WidgetWrapper id={id} bg={bg}>
       <div class="flex flex-col lg:justify-between lg:flex-row mt-8 md:mt-12">
         {title && (
           <div class="md:max-w-sm">

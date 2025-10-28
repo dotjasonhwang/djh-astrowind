@@ -26,7 +26,7 @@ export interface Props {
 const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Astro.props;
 ---
 
-<footer class:list={['relative border-t border-subtle not-prose']}>
+<footer class:list={['relative border-t border-border-subtle not-prose']}>
   <div class="bg-surface absolute inset-0 pointer-events-none" aria-hidden="true"></div>
   <div
     class="relative max-w-7xl mx-auto px-4 sm:px-6 animate-together"
@@ -42,7 +42,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Ast
               <>
                 {index !== 0 ? ' · ' : ''}
                 <a
-                  class="text-muted hover:underline transition duration-150 ease-in-out"
+                  class="text-muted hover:underline transition-fast"
                   href={href}
                   set:html={text}
                 />
@@ -61,7 +61,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Ast
                 {links.map(({ text, href, ariaLabel }) => (
                   <li class="mt-2 first:mt-0">
                     <a
-                      class="text-muted hover:underline transition duration-150 ease-in-out"
+                      class="text-muted hover:underline transition-fast"
                       href={href}
                       aria-label={ariaLabel}
                     >

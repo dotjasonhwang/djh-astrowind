@@ -17,19 +17,17 @@ const {
   isAfterContent,
 
   id,
-  classes = {},
+  containerClass = '',
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
 ---
 
 <WidgetWrapper
   id={id}
-  containerClass={`${isBeforeContent ? 'md:pb-8 lg:pb-12' : ''} ${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''} ${
-    classes?.container ?? ''
-  }`}
+  containerClass={`${isBeforeContent ? 'md:pb-8 lg:pb-12' : ''} ${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''} ${containerClass}`}
   bg={bg}
 >
-  <Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline as Record<string, string>} />
+  <Headline title={title} subtitle={subtitle} tagline={tagline} />
 
   <div aria-hidden="true" class="aspect-w-16 aspect-h-7">
     {
@@ -62,7 +60,6 @@ const {
       title: 'text-xl font-semibold',
       description: 'mt-0.5',
       icon: 'shrink-0 mt-1 text-primary w-6 h-6',
-      ...((classes?.items as object) ?? {}),
     }}
   />
 </WidgetWrapper>

@@ -2,7 +2,7 @@
 import { BUSINESS } from 'astrowind:config';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 
-const { id, classes = {}, bg = await Astro.slots.render('bg') } = Astro.props;
+const { id, bg = await Astro.slots.render('bg') } = Astro.props;
 
 const location = BUSINESS?.location;
 const zoom = 15;
@@ -78,7 +78,7 @@ const regionId = `${mapId}-region`;
 
 {
   location && (
-    <WidgetWrapper id={mapId} containerClass={`max-w-6xl ${classes?.container ?? ''}`} bg={bg}>
+    <WidgetWrapper id={mapId} containerClass="max-w-6xl" bg={bg}>
       <div
         class="map-container relative overflow-hidden rounded-lg shadow-lg focus-within:outline-2 focus-within:outline-primary focus-within:outline-offset-2"
         role="region"
@@ -99,7 +99,7 @@ const regionId = `${mapId}-region`;
           title={`Interactive map showing ${BUSINESS.name} location at ${location.address}`}
           aria-describedby={`${mapId}-address`}
           tabindex="0"
-          class="w-full h-full opacity-0 transition-opacity duration-300 ease-out"
+          class="w-full h-full opacity-0 transition-regular"
         />
       </div>
     </WidgetWrapper>

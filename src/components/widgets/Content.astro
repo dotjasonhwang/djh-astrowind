@@ -19,14 +19,13 @@ const {
   isAfterContent = false,
 
   id,
-  classes = {},
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
 ---
 
 <WidgetWrapper
   id={id}
-  containerClass={`max-w-7xl mx-auto ${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''} ${classes?.container ?? ''}`}
+  containerClass={`max-w-7xl mx-auto ${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''}`}
   bg={bg}
 >
   <Headline

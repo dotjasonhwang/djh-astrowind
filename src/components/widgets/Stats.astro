@@ -11,12 +11,11 @@ const {
   stats = [],
 
   id,
-  classes = {},
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
 ---
 
-<WidgetWrapper id={id} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+<WidgetWrapper id={id} containerClass="max-w-6xl mx-auto" bg={bg}>
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
   <div class="mt-8 md:mt-12 flex flex-wrap justify-center -m-4 text-center">
     {
