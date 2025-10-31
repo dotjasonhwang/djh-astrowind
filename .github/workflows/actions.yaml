@@ -22,25 +22,16 @@ jobs:
       
       - name: Install dependencies
         run: npm ci
-      
-      - name: Run unit tests
-        run: npm run test
-      
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
-      
-      - name: Run homepage E2E tests
-        run: playwright test tests/e2e/homepage.spec.ts
-      
-      - name: Run navigation E2E tests
-        run: playwright test tests/e2e/navigation.spec.ts
-      
-      - name: Run accessibility tests
-        run: playwright test tests/e2e/accessibility.spec.ts
-      
+
+      - name: Run all checks and tests
+        run: npm run test:ci
+
       - name: Build project
         run: npm run build
-      
+
       - name: Upload test results
         uses: actions/upload-artifact@v4
         if: failure()
