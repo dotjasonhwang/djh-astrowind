@@ -12,7 +12,7 @@ This document tracks the completed Tailwind CSS v4 migration and modernization e
 
 **Completed Tasks:**
 
-- ✅ Vertical margin migration (mb-* → mt-* patterns with first:mt-0)
+- ✅ Vertical margin migration (mb-_ → mt-_ patterns with first:mt-0)
 - ✅ Horizontal margin cleanup (negative margin modernization)
 - ✅ Vertical padding standardization (consistent responsive breakpoints)
 - ✅ Horizontal padding standardization (px-4 md:px-6 pattern)
@@ -43,18 +43,9 @@ This document tracks the completed Tailwind CSS v4 migration and modernization e
 
 ```css
 /* Light mode */
---background: white
---foreground: #101010
---muted: rgba(16, 16, 16, 0.66)
---surface: rgb(239, 246, 255)
---primary: rgb(1 97 239)
-
-/* Dark mode */
---background: #030620
---foreground: #e5ecf6
---muted: rgba(229, 236, 246, 0.66)
---surface: #030620
---primary: #0161ef
+--background: white --foreground: #101010 --muted: rgba(16, 16, 16, 0.66) --surface: rgb(239, 246, 255)
+  --primary: rgb(1 97 239) /* Dark mode */ --background: #030620 --foreground: #e5ecf6
+  --muted: rgba(229, 236, 246, 0.66) --surface: #030620 --primary: #0161ef;
 ```
 
 **Replacement Patterns:**
@@ -92,6 +83,7 @@ Created semantic utility classes for scroll-triggered animations:
 - ✅ `animate-together` - Sections (triggers on scroll without stagger)
 
 **Features:**
+
 - Respects `prefers-reduced-motion`
 - Mobile-optimized (only animates on min-width: 768px)
 - Uses IntersectionObserver for performance

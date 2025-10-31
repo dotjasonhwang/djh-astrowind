@@ -39,7 +39,7 @@
   --primary: #0161ef;
   --primary-bold: rgb(1 84 207);
   --secondary: rgb(191 219 254);
-  --accent: #AD78FF;
+  --accent: #ad78ff;
   --on-primary: white;
   --placeholder: #6b7280;
   --header-scroll-bg: rgba(3, 6, 33, 0.9);
@@ -214,4 +214,3 @@
 [astro-icon].icon-light > * {
   stroke-width: 1.2;
 }
-

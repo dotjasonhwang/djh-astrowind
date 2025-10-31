@@ -17,9 +17,7 @@ const image = await findImage(post.image);
 const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : '';
 ---
 
-<article
-  class="mt-6 first:mt-0 md:mt-0 md:first:mt-0 animate-on-scroll"
->
+<article class="mt-6 first:mt-0 md:mt-0 md:first:mt-0 animate-on-scroll">
   <div class="relative md:h-64 bg-surface-elevated rounded-sm shadow-lg mt-6">
     {
       image &&

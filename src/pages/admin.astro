@@ -124,7 +124,18 @@ const metadata = {
 
     <!-- Decap CMS Script -->
     <script>
+      // Type declarations for Decap CMS
+      declare global {
+        interface Window {
+          CMS?: {
+            registerPreviewStyle: (url: string) => void;
+            registerPreviewTemplate: (name: string, template: unknown) => void;
+          };
+        }
+      }
+
       // Import Decap CMS
+      // @ts-expect-error - External CDN module without type definitions
       import('https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js')
         .then(() => {
           // Hide loading indicator

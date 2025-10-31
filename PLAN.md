@@ -11,20 +11,14 @@ Setup for your professional services business with complete branding, deployed t
 - Create a new GitHub repository for your business
 - Push to your new remote repository
 
-### 1.2 Install Dependencies
-
-- Run `npm install` to install all packages
-- Run `npm run dev` to verify everything works locally
-- Visit http://localhost:4321 to see the template
-
 ## Phase 2: Business Information & Branding
 
 ### 2.1 Update Core Site Configuration (`src/config.yaml`)
 
 - **Site settings**: name, domain URL, base path
 - **SEO metadata**: title, description, Open Graph images
-- **Business info**: name, email, phone, address, coordinates
-- **Social media**: Twitter, Instagram, Facebook, LinkedIn URLs
+- **Business info**: name, email, phone, address
+- **Social media**: Twitter, Instagram, Facebook, LinkedIn, GitHub URLs
 - **Google Analytics**: Add your GA4 tracking ID (optional)
 - **Blog settings**: Keep enabled or disable if not needed
 
@@ -84,7 +78,7 @@ Setup for your professional services business with complete branding, deployed t
 ### 3.5 Contact Page (`src/pages/contact.astro`)
 
 - Verify contact form fields match your needs
-- Update embedded map with your location (uses coordinates from config.yaml)
+- Update embedded map with your location (uses config.yaml)
 - Note: Contact form needs backend setup (see Phase 5)
 
 ### 3.6 Navigation (`src/navigation.ts`)

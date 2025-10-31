@@ -103,6 +103,7 @@ export interface Widget {
   isDark?: boolean;
   bg?: string;
   classes?: Record<string, string | Record<string, string>>;
+  containerClass?: string;
 }
 
 export interface Headline {

@@ -24,13 +24,7 @@ const {
   items && items.length > 0 && (
     <div class={twMerge(`mt-8 md:mt-12`, containerClass)}>
       {items.map(({ title, description, icon, classes: itemClasses = {} }, index = 0) => (
-        <div
-          class={twMerge(
-            'flex animate-on-scroll',
-            panelClass,
-            itemClasses?.panel
-          )}
-        >
+        <div class={twMerge('flex animate-on-scroll', panelClass, itemClasses?.panel)}>
           <div class="flex flex-col items-center mr-4">
             <div>
               <div class="flex items-center justify-center">

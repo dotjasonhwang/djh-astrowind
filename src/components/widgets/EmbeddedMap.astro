@@ -16,8 +16,8 @@ const getMapEmbedUrl = () => {
     return `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=place_id:${location.placeId}&zoom=${zoom}`;
   }
 
-  // Fallback to coordinates or address
-  const query = location.coordinates || location.address;
+  // Use address for embedding
+  const query = location.address;
   return `https://maps.google.com/maps?q=${encodeURIComponent(query)}&t=&z=${zoom}&ie=UTF8&iwloc=&output=embed`;
 };
 

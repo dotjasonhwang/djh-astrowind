@@ -47,7 +47,10 @@ const {
                             description && (
                               <li class="mt-1.5 first:mt-0 flex items-start space-x-3 leading-7">
                                 <div class="rounded-full bg-primary mt-1">
-                                  <Icon name={icon ? icon : 'tabler:check'} class="w-5 h-5 font-bold p-1 text-on-primary" />
+                                  <Icon
+                                    name={icon ? icon : 'tabler:check'}
+                                    class="w-5 h-5 font-bold p-1 text-on-primary"
+                                  />
                                 </div>
                                 <span>{description}</span>
                               </li>

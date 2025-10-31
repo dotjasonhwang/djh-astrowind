@@ -14,7 +14,8 @@ const {
 } = Astro.props;
 
 // Base button styles - shared across all variants except 'link'
-const baseStyles = 'inline-flex items-center justify-center rounded-full font-medium text-center text-base leading-snug transition-regular py-3.5 px-6 md:px-8 focus:ring-primary focus:ring-offset-background focus:ring-2 focus:ring-offset-2 cursor-pointer';
+const baseStyles =
+  'inline-flex items-center justify-center rounded-full font-medium text-center text-base leading-snug transition-regular py-3.5 px-6 md:px-8 focus:ring-primary focus:ring-offset-background focus:ring-2 focus:ring-offset-2 cursor-pointer';
 
 // Variant-specific styles composed with base
 const variants = {
@@ -29,7 +30,11 @@ const variants = {
   type ? (
     <button
       type={type}
-      class={twMerge('grid grid-flow-col auto-cols-max items-center gap-1', variants[variant] || variants.secondary, className)}
+      class={twMerge(
+        'grid grid-flow-col auto-cols-max items-center gap-1',
+        variants[variant] || variants.secondary,
+        className
+      )}
       {...rest}
     >
       <Fragment set:html={text} />
@@ -37,7 +42,11 @@ const variants = {
     </button>
   ) : (
     <a
-      class={twMerge('grid grid-flow-col auto-cols-max items-center gap-1', variants[variant] || variants.secondary, className)}
+      class={twMerge(
+        'grid grid-flow-col auto-cols-max items-center gap-1',
+        variants[variant] || variants.secondary,
+        className
+      )}
       {...(target ? { target: target, rel: 'noopener noreferrer' } : {})}
       {...rest}
     >

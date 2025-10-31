@@ -28,9 +28,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Ast
 
 <footer class:list={['relative border-t border-border-subtle not-prose']}>
   <div class="bg-surface absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-  <div
-    class="relative max-w-7xl mx-auto px-4 sm:px-6 animate-together"
-  >
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 animate-together">
     <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
       <div class="col-span-12 lg:col-span-4">
         <div class="mt-2">
@@ -41,11 +39,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Ast
             secondaryLinks.map(({ text, href }, index) => (
               <>
                 {index !== 0 ? ' · ' : ''}
-                <a
-                  class="text-muted hover:underline transition-fast"
-                  href={href}
-                  set:html={text}
-                />
+                <a class="text-muted hover:underline transition-fast" href={href} set:html={text} />
               </>
             ))
           }
@@ -60,11 +54,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '' } = Ast
               <ul class="text-sm">
                 {links.map(({ text, href, ariaLabel }) => (
                   <li class="mt-2 first:mt-0">
-                    <a
-                      class="text-muted hover:underline transition-fast"
-                      href={href}
-                      aria-label={ariaLabel}
-                    >
+                    <a class="text-muted hover:underline transition-fast" href={href} aria-label={ariaLabel}>
                       <Fragment set:html={text} />
                     </a>
                   </li>

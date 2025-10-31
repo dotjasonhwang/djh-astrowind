@@ -83,6 +83,9 @@ export const footerData = {
     ...(BUSINESS.socialMedia?.linkedin
       ? [{ ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: BUSINESS.socialMedia.linkedin }]
       : []),
+    ...(BUSINESS.socialMedia?.github
+      ? [{ ariaLabel: 'Github', icon: 'tabler:brand-github', href: BUSINESS.socialMedia.github }]
+      : []),
   ],
   footNote: `
     © ${new Date().getFullYear()} ${BUSINESS.name}. All rights reserved.

@@ -4,11 +4,12 @@
  * Note: AAA standards are aspirational but not enforced
  */
 
-import { test } from '@playwright/test';
+import { test, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import type { Result } from 'axe-core';
 
 // Helper function to toggle dark mode
-async function setColorMode(page: any, mode: 'light' | 'dark') {
+async function setColorMode(page: Page, mode: 'light' | 'dark') {
   await page.evaluate((mode: 'light' | 'dark') => {
     if (mode === 'dark') {
       document.documentElement.classList.add('dark');
@@ -23,22 +24,25 @@ async function setColorMode(page: any, mode: 'light' | 'dark') {
 }
 
 // Helper function to format axe violations with component context
-function formatViolations(violations: any[]): string {
+function formatViolations(violations: Result[]): string {
   if (violations.length === 0) return '';
 
-  return violations.map((violation, index) => {
-    const nodes = violation.nodes.map((node: any, nodeIndex: number) => {
-      const target = Array.isArray(node.target) ? node.target.join(' ') : node.target;
-      const html = node.html?.substring(0, 150) + (node.html?.length > 150 ? '...' : '');
+  return violations
+    .map((violation, index) => {
+      const nodes = violation.nodes
+        .map((node, nodeIndex: number) => {
+          const target = Array.isArray(node.target) ? node.target.join(' ') : node.target;
+          const html = node.html?.substring(0, 150) + (node.html?.length > 150 ? '...' : '');
 
-      return `
+          return `
     Node ${nodeIndex + 1}:
       Element: ${target}
       HTML: ${html}
       ${node.failureSummary || ''}`;
-    }).join('\n');
+        })
+        .join('\n');
 
-    return `
+      return `
 Violation ${index + 1}: ${violation.help}
   Impact: ${violation.impact}
   WCAG: ${violation.tags.filter((t: string) => t.startsWith('wcag')).join(', ')}
@@ -46,7 +50,8 @@ Violation ${index + 1}: ${violation.help}
   Help: ${violation.helpUrl}
   ${nodes}
 `;
-  }).join('\n' + '='.repeat(80) + '\n');
+    })
+    .join('\n' + '='.repeat(80) + '\n');
 }
 
 test.describe('Accessibility Compliance', () => {
@@ -66,7 +71,9 @@ test.describe('Accessibility Compliance', () => {
           const violations = accessibilityScanResults.violations;
           if (violations.length > 0) {
             const formattedViolations = formatViolations(violations);
-            throw new Error(`Found ${violations.length} accessibility violation(s) on ${pagePath} (${colorMode}):\n${formattedViolations}`);
+            throw new Error(
+              `Found ${violations.length} accessibility violation(s) on ${pagePath} (${colorMode}):\n${formattedViolations}`
+            );
           }
         }
       });
