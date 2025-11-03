@@ -54,7 +54,6 @@
     "@astrojs/partytown": "^2.1.4",
     "@axe-core/playwright": "^4.11.0",
     "@eslint/js": "^9.33.0",
-    "@iconify-json/flat-color-icons": "^1.2.1",
     "@iconify-json/tabler": "^1.2.20",
     "@playwright/test": "^1.54.2",
     "@tailwindcss/typography": "^0.5.18",
