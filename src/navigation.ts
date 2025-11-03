@@ -77,14 +77,14 @@ export const footerData = {
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: BUSINESS.socialMedia?.twitter },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: BUSINESS.socialMedia?.instagram },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: BUSINESS.socialMedia?.facebook },
+    { ariaLabel: 'X', icon: 'lucide:twitter', href: BUSINESS.socialMedia?.twitter },
+    { ariaLabel: 'Instagram', icon: 'lucide:instagram', href: BUSINESS.socialMedia?.instagram },
+    { ariaLabel: 'Facebook', icon: 'lucide:facebook', href: BUSINESS.socialMedia?.facebook },
     ...(BUSINESS.socialMedia?.linkedin
-      ? [{ ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: BUSINESS.socialMedia.linkedin }]
+      ? [{ ariaLabel: 'LinkedIn', icon: 'lucide:linkedin', href: BUSINESS.socialMedia.linkedin }]
       : []),
     ...(BUSINESS.socialMedia?.github
-      ? [{ ariaLabel: 'Github', icon: 'tabler:brand-github', href: BUSINESS.socialMedia.github }]
+      ? [{ ariaLabel: 'Github', icon: 'lucide:github', href: BUSINESS.socialMedia.github }]
       : []),
   ],
   footNote: `
