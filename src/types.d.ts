@@ -102,7 +102,6 @@ export interface Widget {
   id?: string;
   isDark?: boolean;
   bg?: string;
-  classes?: Record<string, string | Record<string, string>>;
   containerClass?: string;
 }
 
@@ -119,7 +118,6 @@ interface TeamMember {
   image?: Image;
   socials?: Array<Social>;
   description?: string;
-  classes?: Record<string, string>;
 }
 
 interface Social {
@@ -137,7 +135,6 @@ export interface Item {
   title?: string;
   description?: string;
   icon?: string;
-  classes?: Record<string, string>;
   callToAction?: CallToAction;
   image?: Image;
 }
@@ -186,7 +183,6 @@ export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
   text?: string;
   icon?: string;
-  classes?: Record<string, string>;
   type?: 'button' | 'submit' | 'reset';
 }
 
@@ -202,7 +198,6 @@ export interface Collapse {
   iconDown?: string;
   items?: Array<Item>;
   columns?: number;
-  classes?: Record<string, string>;
 }
 
 export interface Form {

@@ -19,66 +19,68 @@ const {
 } = Astro.props;
 ---
 
-<WidgetWrapper id={id} wrapperClass="md:-mt-[76px]" containerClass="py-12 md:py-20 lg:py-0 lg:flex lg:items-center lg:h-screen lg:gap-8 animate-immediate" bg={bg}>
+<WidgetWrapper
+  id={id}
+  wrapperClass="md:-mt-[76px]"
+  containerClass="py-12 md:py-20 lg:py-0 lg:flex lg:items-center lg:h-screen lg:gap-8 animate-immediate"
+  bg={bg}
+>
   <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
   <div class="basis-1/2 text-center lg:text-left pb-10 md:pb-16 mx-auto">
-        {
-          tagline && (
-            <p
-              class="text-base text-secondary  font-bold tracking-wide uppercase animate-immediate"
-              set:html={tagline}
-            />
-          )
-        }
-        {
-          title && (
-            <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mt-4 font-heading animate-immediate"
-              set:html={title}
-            />
-          )
-        }
-        <div class="max-w-3xl mx-auto lg:max-w-none">
-          {subtitle && <p class="text-xl text-muted mt-6 animate-immediate" set:html={subtitle} />}
+    {
+      tagline && (
+        <p class="text-base text-secondary  font-bold tracking-wide uppercase animate-immediate" set:html={tagline} />
+      )
+    }
+    {
+      title && (
+        <h1
+          class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mt-4 font-heading animate-immediate"
+          set:html={title}
+        />
+      )
+    }
+    <div class="max-w-3xl mx-auto lg:max-w-none">
+      {subtitle && <p class="text-xl text-muted mt-6 animate-immediate" set:html={subtitle} />}
 
-          {
-            actions && (
-              <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6 lg:justify-start lg:m-0 lg:max-w-7xl animate-immediate">
-                {Array.isArray(actions) ? (
-                  actions.map((action) => (
-                    <div class="flex w-full sm:w-auto">
-                      <Button {...(action || {})} class="w-full sm:mt-0" />
-                    </div>
-                  ))
-                ) : (
-                  <Fragment set:html={actions} />
-                )}
-              </div>
-            )
-          }
+      {
+        actions && (
+          <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6 lg:justify-start lg:m-0 lg:max-w-7xl animate-immediate">
+            {Array.isArray(actions) ? (
+              actions.map((action) => (
+                <div class="flex w-full sm:w-auto">
+                  <Button {...(action || {})} class="w-full sm:mt-0" />
+                </div>
+              ))
+            ) : (
+              <Fragment set:html={actions} />
+            )}
+          </div>
+        )
+      }
+    </div>
+    {content && <Fragment set:html={content} />}
+  </div>
+  <div class="basis-1/2">
+    {
+      image && (
+        <div class="relative m-auto max-w-5xl animate-immediate">
+          {typeof image === 'string' ? (
+            <Fragment set:html={image} />
+          ) : (
+            <Image
+              class="mx-auto rounded-md w-full"
+              widths={[400, 768, 1024, 2040]}
+              sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+              loading="eager"
+              fetchpriority="high"
+              width={600}
+              height={600}
+              {...image}
+            />
+          )}
         </div>
-        {content && <Fragment set:html={content} />}
-      </div>
-      <div class="basis-1/2">
-        {
-          image && (
-            <div class="relative m-auto max-w-5xl animate-immediate">
-              {typeof image === 'string' ? (
-                <Fragment set:html={image} />
-              ) : (
-                <Image
-                  class="mx-auto rounded-md w-full"
-                  widths={[400, 768, 1024, 2040]}
-                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-                  loading="eager"
-                  fetchpriority="high"
-                  width={600}
-                  height={600}
-                  {...image}
-                />
-              )}
-            </div>
-          )
-        }
-      </div>
+      )
+    }
+  </div>
 </WidgetWrapper>

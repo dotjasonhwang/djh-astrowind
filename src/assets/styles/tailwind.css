@@ -14,7 +14,6 @@
   --foreground: #101010;
   --muted: #595959;
   --surface: rgb(243, 248, 255);
-  --surface-highlighted: white;
   --surface-elevated: rgb(246, 250, 255);
   --border-subtle: white;
   --primary: rgb(1 97 239);
@@ -33,7 +32,6 @@
   --foreground: #e5ecf6;
   --muted: rgba(229, 236, 246, 0.75);
   --surface: #030620;
-  --surface-highlighted: rgb(15, 23, 42);
   --surface-elevated: #374151;
   --border-subtle: #4b5563;
   --primary: #0161ef;
@@ -58,7 +56,6 @@
   --color-muted: var(--muted);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
-  --color-surface-highlighted: var(--surface-highlighted);
   --color-border-subtle: var(--border-subtle);
   --color-primary: var(--primary);
   --color-primary-bold: var(--primary-bold);

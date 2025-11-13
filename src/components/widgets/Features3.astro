@@ -17,14 +17,13 @@ const {
   isAfterContent,
 
   id,
-  containerClass = '',
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
 ---
 
 <WidgetWrapper
   id={id}
-  containerClass={`${isBeforeContent ? 'md:pb-8 lg:pb-12' : ''} ${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''} ${containerClass}`}
+  containerClass={`${isBeforeContent ? 'md:pb-8 lg:pb-12' : ''} ${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''}`}
   bg={bg}
 >
   <Headline title={title} subtitle={subtitle} tagline={tagline} />

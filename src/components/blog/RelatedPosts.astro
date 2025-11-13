@@ -18,9 +18,7 @@ const relatedPosts = post.tags ? await getRelatedPosts(post, 4) : [];
 {
   APP_BLOG.isRelatedPostsEnabled ? (
     <BlogHighlightedPosts
-      classes={{
-        container: 'pt-0 lg:pt-0 md:pt-0 animate-on-scroll',
-      }}
+      containerClass="pt-0 lg:pt-0 md:pt-0 animate-on-scroll"
       title="Related Posts"
       linkText="view all posts"
       linkUrl={getBlogPermalink()}
