@@ -2,10 +2,19 @@
 import type { Form as Props } from '~/types';
 import Button from '~/components/ui/Button.astro';
 
-const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props;
+const { inputs, textarea, disclaimer, button = 'Contact us', description = '', name = 'contact' } = Astro.props;
 ---
 
-<form>
+<form name={name} method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <!-- Hidden form name field for Netlify -->
+  <input type="hidden" name="form-name" value={name} />
+
+  <!-- Honeypot field for spam protection (hidden from users) -->
+  <div class="hidden" aria-hidden="true">
+    <label>
+      Don't fill this out if you're human: <input name="bot-field" />
+    </label>
+  </div>
   {
     inputs &&
       inputs.map(
