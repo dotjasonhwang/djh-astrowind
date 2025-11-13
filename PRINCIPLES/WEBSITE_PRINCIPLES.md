@@ -70,6 +70,7 @@
   - Padding: Space inside a component between its border and content (internal spacing)
 - Prefer margin-top over margin-bottom for vertical spacing consistency
 - Use first:mt-0 only for the first item in lists/repeated elements (not for singular elements)
+  - If it is a uniform spacing, use gap instead of mt
 - Use Tailwind's spacing scale (multiples of 8px base unit)
 
 ### Rounding
@@ -228,6 +229,16 @@
 
 ## 7. Assets
 
+### Favicon
+
+- Use [Real Favicon Generator](https://realfavicongenerator.net/) to generate all required favicon files and formats
+- Generates comprehensive favicon package for all platforms (iOS, Android, Windows, macOS)
+- Includes proper meta tags and configuration for optimal display across devices
+- Place generated files in `/public` directory as instructed by the generator
+- Update meta tags in layout files with the generated markup
+
+### Images & Icons
+
 - Don't scale icons/images beyond their original size, use background shapes to fill space.
 - More on asset handling in PRODUCTION_CHECKLIST.md
 
@@ -252,6 +263,10 @@
 - Meta descriptions under 155 characters
 - Descriptive page titles under 60 characters
 - Alt text for all meaningful images
+- In sections, follow the formula:
+  - Tagline: 1 or 2 word descriptions of section
+  - Title: Phrase that captures essense
+  - Subtitle: 1-2 sentence description
 
 ### Browser Support
 

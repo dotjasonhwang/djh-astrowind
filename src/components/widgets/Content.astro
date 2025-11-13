@@ -23,17 +23,9 @@ const {
 } = Astro.props;
 ---
 
-<WidgetWrapper id={id} containerClass={`max-w-7xl mx-auto ${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''}`} bg={bg}>
-  <Headline
-    title={title}
-    subtitle={subtitle}
-    tagline={tagline}
-    classes={{
-      container: 'max-w-xl sm:mx-auto lg:max-w-2xl',
-      subtitle: 'max-w-3xl mx-auto sm:text-center',
-    }}
-  />
-  <div class="mx-auto max-w-7xl p-4 md:px-8 mt-8 md:mt-12">
+<WidgetWrapper id={id} containerClass={`${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''}`} bg={bg}>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} />
+  <div class="p-4 md:px-8 mt-8 md:mt-12">
     <div class={`md:flex ${isReversed ? 'md:flex-row-reverse' : ''} md:gap-16`}>
       <div class="md:basis-1/2">
         {content && <div class="text-lg text-foreground" set:html={content} />}

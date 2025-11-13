@@ -72,12 +72,8 @@ export const footerData = {
       ],
     },
   ],
-  secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
-  ],
+  secondaryLinks: [],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'lucide:twitter', href: BUSINESS.socialMedia?.twitter },
     { ariaLabel: 'Instagram', icon: 'lucide:instagram', href: BUSINESS.socialMedia?.instagram },
     { ariaLabel: 'Facebook', icon: 'lucide:facebook', href: BUSINESS.socialMedia?.facebook },
     ...(BUSINESS.socialMedia?.linkedin

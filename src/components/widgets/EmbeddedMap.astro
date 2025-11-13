@@ -7,16 +7,11 @@ const { id, bg = await Astro.slots.render('bg') } = Astro.props;
 const location = BUSINESS?.location;
 const zoom = 15;
 
-// Generate Google Maps URLs
+// Generate Google Maps embed URL (simple, no API key required)
 const getMapEmbedUrl = () => {
   if (!location) return '';
 
-  // Use Place ID if available for more accurate embedding
-  if (location.placeId) {
-    return `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=place_id:${location.placeId}&zoom=${zoom}`;
-  }
-
-  // Use address for embedding
+  // Use address for embedding (fast and reliable, no API key needed)
   const query = location.address;
   return `https://maps.google.com/maps?q=${encodeURIComponent(query)}&t=&z=${zoom}&ie=UTF8&iwloc=&output=embed`;
 };
@@ -78,7 +73,7 @@ const regionId = `${mapId}-region`;
 
 {
   location && (
-    <WidgetWrapper id={mapId} containerClass="max-w-6xl" bg={bg}>
+    <WidgetWrapper id={mapId} bg={bg}>
       <div
         class="map-container relative overflow-hidden rounded-lg shadow-lg focus-within:outline-2 focus-within:outline-primary focus-within:outline-offset-2"
         role="region"
@@ -93,6 +88,8 @@ const regionId = `${mapId}-region`;
         <iframe
           src={embedUrl}
           width="100%"
+          height="100%"
+          style="border:0;"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"

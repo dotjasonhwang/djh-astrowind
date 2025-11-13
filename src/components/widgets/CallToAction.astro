@@ -23,8 +23,10 @@ const {
 } = Astro.props;
 ---
 
-<WidgetWrapper id={id} containerClass="max-w-6xl mx-auto" bg={bg}>
-  <div class="max-w-3xl mx-auto text-center py-6 px-12 rounded-md shadow-xl border border-border-subtle">
+<WidgetWrapper id={id} bg={bg}>
+  <div
+    class="bg-surface-elevated max-w-3xl mx-auto text-center py-6 px-12 rounded-md shadow-xl border border-border-subtle"
+  >
     <Headline title={title} subtitle={subtitle} tagline={tagline} />
     {
       actions && (
