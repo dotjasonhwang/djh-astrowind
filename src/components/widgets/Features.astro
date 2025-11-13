@@ -1,31 +1,76 @@
 ---
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import ItemGrid from '~/components/ui/ItemGrid.astro';
+import ItemGridCard from '~/components/ui/ItemGridCard.astro';
 import Headline from '~/components/ui/Headline.astro';
+import Image from '~/components/common/Image.astro';
 import type { Features as Props } from '~/types';
+
+export interface FeaturesProps extends Props {
+  variant?: 'horizontal' | 'vertical';
+  image?: string | unknown;
+}
 
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   tagline = await Astro.slots.render('tagline'),
   items = [],
-  columns = 2,
-
+  columns,
   defaultIcon,
+  variant = 'horizontal',
+  image,
+  isBeforeContent,
+  isAfterContent,
 
   id,
   bg = await Astro.slots.render('bg'),
-} = Astro.props;
+} = Astro.props as FeaturesProps;
+
+// Set default columns based on variant
+const defaultColumns = variant === 'vertical' ? 3 : 2;
+const gridColumns = columns ?? defaultColumns;
+
+// Icon classes based on variant
+const iconClasses =
+  variant === 'vertical'
+    ? { icon: 'w-12 h-12' }
+    : { icon: 'bg-primary text-on-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4' };
 ---
 
-<WidgetWrapper id={id} bg={bg}>
+<WidgetWrapper
+  id={id}
+  containerClass={`${isBeforeContent ? 'md:pb-8 lg:pb-12' : ''} ${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''}`}
+  bg={bg}
+>
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
-  <ItemGrid
-    items={items}
-    columns={columns}
-    defaultIcon={defaultIcon}
-    classes={{
-      icon: 'bg-primary text-on-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4',
-    }}
-  />
+
+  {
+    image && (
+      <div aria-hidden="true" class="aspect-w-16 aspect-h-7">
+        <div class="w-full h-80 object-cover rounded-xl mx-auto bg-placeholder shadow-lg">
+          {typeof image === 'string' ? (
+            <Fragment set:html={image} />
+          ) : (
+            <Image
+              class="w-full h-80 object-cover rounded-xl mx-auto bg-placeholder shadow-lg"
+              width="auto"
+              height={320}
+              widths={[400, 768]}
+              layout="fullWidth"
+              {...image}
+            />
+          )}
+        </div>
+      </div>
+    )
+  }
+
+  {
+    variant === 'vertical' ? (
+      <ItemGridCard items={items} columns={gridColumns} defaultIcon={defaultIcon} classes={iconClasses} />
+    ) : (
+      <ItemGrid items={items} columns={gridColumns} defaultIcon={defaultIcon} classes={iconClasses} />
+    )
+  }
 </WidgetWrapper>

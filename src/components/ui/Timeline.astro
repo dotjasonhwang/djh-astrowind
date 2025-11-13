@@ -1,6 +1,5 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { twMerge } from 'tailwind-merge';
 import type { Item } from '~/types';
 
 export interface Props {
@@ -9,38 +8,30 @@ export interface Props {
   classes?: Record<string, string>;
 }
 
-const { items = [], classes = {}, defaultIcon } = Astro.props as Props;
-
-const {
-  container: containerClass = '',
-  panel: panelClass = '',
-  title: titleClass = '',
-  description: descriptionClass = '',
-  icon: defaultIconClass = 'text-primary border-primary border-primary',
-} = classes;
+const { items = [], defaultIcon } = Astro.props as Props;
 ---
 
 {
   items && items.length > 0 && (
-    <div class={twMerge(`mt-8 md:mt-12`, containerClass)}>
+    <div class="mt-8 md:mt-12">
       {items.map(({ title, description, icon }, index = 0) => (
-        <div class={twMerge('flex animate-on-scroll', panelClass)}>
+        <div class="flex animate-on-scroll">
           <div class="flex flex-col items-center mr-4">
             <div>
               <div class="flex items-center justify-center">
                 {(icon || defaultIcon) && (
                   <Icon
                     name={icon || defaultIcon}
-                    class={twMerge('w-10 h-10 p-2 rounded-full border-2', defaultIconClass)}
+                    class="w-10 h-10 p-2 rounded-full border-2 text-primary border-primary"
                   />
                 )}
               </div>
             </div>
-            {index !== items.length - 1 && <div class="w-px h-full bg-black/10 bg-surface-elevated" />}
+            {index !== items.length - 1 && <div class="w-px h-full bg-surface-elevated" />}
           </div>
           <div class={`pt-1 ${index !== items.length - 1 ? 'pb-8' : ''}`}>
-            {title && <p class={twMerge('text-xl font-bold', titleClass)} set:html={title} />}
-            {description && <p class={twMerge('text-muted mt-2', descriptionClass)} set:html={description} />}
+            {title && <p class="text-xl font-bold" set:html={title} />}
+            {description && <p class="text-muted mt-2" set:html={description} />}
           </div>
         </div>
       ))}

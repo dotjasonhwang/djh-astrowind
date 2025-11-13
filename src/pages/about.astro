@@ -1,6 +1,5 @@
 ---
-import Features2 from '~/components/widgets/Features2.astro';
-import Features3 from '~/components/widgets/Features3.astro';
+import Features from '~/components/widgets/Features.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
@@ -47,7 +46,7 @@ const metadata = {
 
   <!-- Features3 Widget ************** -->
 
-  <Features3
+  <Features
     title="Our templates"
     subtitle="Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod."
     columns={3}
@@ -76,7 +75,7 @@ const metadata = {
 
   <!-- Features3 Widget ************** -->
 
-  <Features3
+  <Features
     columns={3}
     isAfterContent={true}
     items={[
@@ -180,7 +179,8 @@ const metadata = {
 
   <!-- Features2 Widget ************** -->
 
-  <Features2
+  <Features
+    variant="vertical"
     title="Our locations"
     tagline="Find us"
     columns={4}
@@ -210,7 +210,8 @@ const metadata = {
 
   <!-- Features2 Widget ************** -->
 
-  <Features2
+  <Features
+    variant="vertical"
     title="Technical Support"
     tagline="Contact us"
     columns={2}

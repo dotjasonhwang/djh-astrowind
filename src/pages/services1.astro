@@ -1,7 +1,7 @@
 ---
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
-import Features2 from '~/components/widgets/Features2.astro';
+import Features from '~/components/widgets/Features.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Layout from '~/layouts/PageLayout.astro';
@@ -27,7 +27,8 @@ const metadata = {
 
   <!-- Features2 Widget ************** -->
 
-  <Features2
+  <Features
+    variant="vertical"
     title="Service 1 Key Features"
     subtitle="Discover the comprehensive features and benefits that make our Service 1 offering stand out in the industry."
     columns={2}

@@ -30,11 +30,7 @@ const variants = {
   type ? (
     <button
       type={type}
-      class={twMerge(
-        'grid grid-flow-col auto-cols-max items-center gap-1',
-        variants[variant] || variants.secondary,
-        className
-      )}
+      class={twMerge('grid grid-flow-col auto-cols-max items-center gap-1', variants[variant], className)}
       {...rest}
     >
       <Fragment set:html={text} />
@@ -42,11 +38,7 @@ const variants = {
     </button>
   ) : (
     <a
-      class={twMerge(
-        'grid grid-flow-col auto-cols-max items-center gap-1',
-        variants[variant] || variants.secondary,
-        className
-      )}
+      class={twMerge('grid grid-flow-col auto-cols-max items-center gap-1', variants[variant], className)}
       {...(target ? { target: target, rel: 'noopener noreferrer' } : {})}
       {...rest}
     >

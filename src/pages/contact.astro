@@ -2,7 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
-import Features2 from '~/components/widgets/Features2.astro';
+import Features from '~/components/widgets/Features.astro';
 import EmbeddedMap from '~/components/widgets/EmbeddedMap.astro';
 import { BUSINESS } from 'astrowind:config';
 
@@ -45,7 +45,8 @@ const metadata = {
 
   <!-- Features2 Widget ************** -->
 
-  <Features2
+  <Features
+    variant="vertical"
     title="We are here to help!"
     items={[
       {

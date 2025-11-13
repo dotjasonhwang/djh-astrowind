@@ -4,7 +4,6 @@ import heroImage from '~/assets/images/hero-image.png';
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
 import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
@@ -116,7 +115,8 @@ const metadata = {
 
   <!-- Portfolio/Projects Preview ******* -->
 
-  <Features2
+  <Features
+    variant="vertical"
     title="Our Portfolio"
     subtitle="See examples of our recent work and successful project deliveries"
     tagline="Recent Projects"
