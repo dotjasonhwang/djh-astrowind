@@ -15,9 +15,8 @@
   --muted: #595959;
   --surface: rgb(243, 248, 255);
   --surface-elevated: rgb(246, 250, 255);
-  --border-subtle: white;
   --primary: rgb(1 97 239);
-  --primary-bold: rgb(1 70 175);
+  --primary-hover: rgb(1 70 175);
   --secondary: rgb(0 70 175);
   --accent: #5521b5;
   --on-primary: white;
@@ -33,9 +32,8 @@
   --muted: rgba(229, 236, 246, 0.75);
   --surface: #030620;
   --surface-elevated: #374151;
-  --border-subtle: #4b5563;
   --primary: #0161ef;
-  --primary-bold: rgb(1 84 207);
+  --primary-hover: rgb(51, 132, 231);
   --secondary: rgb(191 219 254);
   --accent: #ad78ff;
   --on-primary: white;
@@ -56,9 +54,8 @@
   --color-muted: var(--muted);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
-  --color-border-subtle: var(--border-subtle);
   --color-primary: var(--primary);
-  --color-primary-bold: var(--primary-bold);
+  --color-primary-hover: var(--primary-hover);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
   --color-on-primary: var(--on-primary);

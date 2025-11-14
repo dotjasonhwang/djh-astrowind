@@ -64,25 +64,17 @@ const { post, url } = Astro.props;
         {post.excerpt}
       </p>
 
-      {
-        post.image ? (
-          <Image
-            src={post.image}
-            class="max-w-full lg:max-w-[900px] mx-auto mt-6 sm:rounded-md bg-surface-elevated"
-            widths={[400, 900]}
-            sizes="(max-width: 900px) 400px, 900px"
-            alt={post?.excerpt || ''}
-            width={900}
-            height={506}
-            loading="eager"
-            decoding="async"
-          />
-        ) : (
-          <div class="max-w-3xl mx-auto px-4 md:px-6">
-            <div class="border-t border-border-subtle" />
-          </div>
-        )
-      }
+      <Image
+        src={post.image}
+        class="max-w-full lg:max-w-[900px] mx-auto mt-6 sm:rounded-md bg-surface-elevated"
+        widths={[400, 900]}
+        sizes="(max-width: 900px) 400px, 900px"
+        alt={post?.excerpt || ''}
+        width={900}
+        height={506}
+        loading="eager"
+        decoding="async"
+      />
     </header>
     <div
       class="mx-auto px-6 max-w-3xl prose prose-md lg:prose-xl prose-invert prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-primary prose-img:rounded-md prose-img:shadow-lg mt-8 md:mt-12 prose-headings:scroll-mt-[80px] prose-li:my-0"

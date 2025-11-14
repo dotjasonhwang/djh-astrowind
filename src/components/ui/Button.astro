@@ -15,12 +15,12 @@ const {
 
 // Base button styles - shared across all variants except 'link'
 const baseStyles =
-  'inline-flex items-center justify-center rounded-full font-medium text-center text-base leading-snug transition-regular py-3.5 px-6 md:px-8 focus:ring-primary focus:ring-offset-background focus:ring-2 focus:ring-offset-2 cursor-pointer';
+  'inline-flex items-center justify-center rounded-full font-medium text-center text-base leading-snug transition-regular py-3.5 px-6 focus:ring-primary focus:ring-offset-background focus:ring-2 focus:ring-offset-2 cursor-pointer uppercase';
 
 // Variant-specific styles composed with base
 const variants = {
-  primary: `${baseStyles} font-semibold bg-primary text-white border-primary border hover:bg-primary-bold hover:border-primary-bold uppercase`,
-  secondary: `${baseStyles} border-border-subtle border bg-transparent text-foreground hover:bg-surface-elevated hover:border-muted uppercase`,
+  primary: `${baseStyles} font-semibold bg-primary text-white border-primary border hover:bg-primary-hover hover:border-primary-hover`,
+  secondary: `${baseStyles} border-primary border bg-transparent text-foreground hover:bg-surface-elevated hover:border-muted`,
   tertiary: `${baseStyles} bg-transparent text-muted hover:text-foreground border-none shadow-none`,
   link: 'cursor-pointer hover:text-primary',
 };

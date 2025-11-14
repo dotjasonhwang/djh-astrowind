@@ -2,7 +2,6 @@
 import type { HTMLTag } from 'astro/types';
 import type { Widget } from '~/types';
 import { twMerge } from 'tailwind-merge';
-import Background from './Background.astro';
 
 export interface Props extends Widget {
   containerClass?: string;
@@ -18,7 +17,7 @@ const WrapperTag = as;
 <WrapperTag class={twMerge('relative not-prose scroll-mt-[72px]', wrapperClass)} {...id ? { id } : {}}>
   <div class="absolute inset-0 pointer-events-none -z-1" aria-hidden="true">
     <slot name="bg">
-      {bg ? <Fragment set:html={bg} /> : <Background />}
+      {bg && <Fragment set:html={bg} />}
     </slot>
   </div>
   <div

@@ -26,7 +26,7 @@ Setup for your professional services business with complete branding, deployed t
 
 - Replace color values in `:root` section (light mode):
   - `--primary`: Your main brand color (hex/rgb)
-  - `--primary-bold`: Darker shade of primary
+  - `--primary-hover`: Darker shade for hover states
   - `--secondary`: Secondary brand color
   - `--accent`: Accent/highlight color
 - Update `.dark` section if supporting dark mode
