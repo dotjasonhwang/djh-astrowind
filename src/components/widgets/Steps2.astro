@@ -21,15 +21,7 @@ const {
 <WidgetWrapper id={id} bg={bg}>
   <div class={`flex flex-col gap-8 md:gap-12 md:flex-row ${isReversed ? 'md:flex-row-reverse' : ''}`}>
     <div class={`w-full lg:w-1/2 gap-8 md:gap-12 ${isReversed ? 'lg:ml-16 md:ml-8 ml-0' : 'lg:mr-16 md:mr-8 mr-0'}`}>
-      <Headline
-        title={title}
-        subtitle={subtitle}
-        tagline={tagline}
-        classes={{
-          container: 'text-center md:text-left',
-          title: 'lg:text-5xl',
-        }}
-      />
+      <Headline title={title} subtitle={subtitle} tagline={tagline} />
 
       <div class="mt-8: md:mt-12 w-full text-center md:text-left">
         {

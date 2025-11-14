@@ -12,8 +12,7 @@ const {
   (title || subtitle || tagline) && (
     <div class="md:mx-auto text-center animate-on-scroll">
       {tagline && <p class="text-base text-secondary font-bold tracking-wide uppercase" set:html={tagline} />}
-      {title && <h2 class={'font-bold leading-tighter tracking-tighter font-heading text-3xl'} set:html={title} />}
-
+      {title && <h2 class="font-bold leading-tighter tracking-tighter font-heading text-3xl" set:html={title} />}
       {subtitle && <p class="mt-4 text-muted" set:html={subtitle} />}
     </div>
   )
